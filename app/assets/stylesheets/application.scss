@@ -62,6 +62,10 @@ nav.navbar {
   -webkit-box-direction: normal!important;
   -ms-flex-direction: row!important;
   flex-direction: row!important;
+
+  .navbar-brand {
+    color: #19241b;
+  }
 }
 
 .main-body {
