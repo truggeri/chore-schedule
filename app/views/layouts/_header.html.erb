@@ -1,5 +1,5 @@
 <header>
   <nav class="navbar">
-    <%= link_to("Chore Schedule", root_url, class: "navbar-brand") %>
+    <%= link_to(safe_join([content_tag(:i, "", class: "fa fa-broom"), " Chore Schedule"]), root_url, class: "navbar-brand") %>
   </nav>
 </header>
