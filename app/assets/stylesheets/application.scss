@@ -14,3 +14,56 @@
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+$color-blue: #D7E8F3;
+$color-yellow: #DFDB90;
+$color-dark-green: #324536;
+$color-green: #0B6D64;
+$color-red: #B93D69;
+
+$color-2-green: #324536;
+$color-2-yellow: #BABA38;
+$color-2-tan: #DCDAC3;
+$color-2-lime: #AABF62;
+$color-2-red: #954E5C;
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 48px;
+  background-color: #f5f5f5;
+  padding: 24px;
+}
+
+footer {
+  border-top: 1px solid #dcdcdc;
+  margin-top: 24px;
+
+  p {
+    font-size: 13px;
+    color:     #777;
+  }
+}
+
+h1 {
+  color: $color-2-green;
+}
+
+nav.navbar {
+  background-color: $color-2-lime;
+  // box-shadow: 0px 2px 8px #ccc;
+  border-bottom: 1px solid rgb(222, 226, 230);
+  box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, .05);
+  margin-bottom: 24px;
+  padding-left: 64px;
+  padding-right: 64px;
+  -webkit-box-orient: horizontal!important;
+  -webkit-box-direction: normal!important;
+  -ms-flex-direction: row!important;
+  flex-direction: row!important;
+}
+
+.main-body {
+  text-align: center;
+}
