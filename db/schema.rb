@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_215620) do
+ActiveRecord::Schema.define(version: 2019_04_15_000430) do
 
   create_table "chores", force: :cascade do |t|
     t.bigint "category_id"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 2019_04_14_215620) do
     t.integer "frequency_type", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_performed"
+    t.datetime "perform_next"
     t.index ["category_id"], name: "index_chores_on_category_id"
+    t.index [nil], name: "index_chores_on_preform_next"
   end
 
 end

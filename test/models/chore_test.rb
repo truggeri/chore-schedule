@@ -5,14 +5,17 @@
 #  id             :integer          not null, primary key
 #  description    :string           not null
 #  frequency      :integer          not null
-#  frequency_type :integer          default(NULL), not null
+#  frequency_type :integer          default("days"), not null
+#  last_performed :datetime
+#  perform_next   :datetime
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  category_id    :bigint
 #
 # Indexes
 #
-#  index_chores_on_category_id  (category_id)
+#  index_chores_on_category_id   (category_id)
+#  index_chores_on_preform_next  ()
 #
 
 require 'test_helper'

@@ -1,0 +1,10 @@
+<div><%= link_to("Back", chores_url) %></div>
+<% if @chore.present? %>
+  <h1><%= @chore.description %></h1>
+  <div class="container text-center">
+    <% if @chore.last_performed.present? %>
+      <div>Last done: <%= @chore.last_performed %></div>
+    <% end %>
+    <div>Due again: <%= @chore.perform_next.strftime("%A %B %e %Y") %></div>
+  </div>
+<% end %>
