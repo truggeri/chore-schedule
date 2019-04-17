@@ -1,7 +1,11 @@
 module ChoresHelper
-  def time_until_next_due(chore)
-    distance = distance_of_time_in_words(Time.now, chore.perform_next)
-    distance << " overdue" if chore.perform_next.past?
-    distance
+  def text_until_next_due(chore)
+    if (Time.now - chore.perform_next).abs < 1.day
+      text = "Soon"
+    else
+      text = distance_of_time_in_words(Time.now, chore.perform_next)
+      text << " overdue" if chore.perform_next.past?
+    end
+    text
   end
 end
