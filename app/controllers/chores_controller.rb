@@ -35,22 +35,19 @@ class ChoresController < ApplicationController
   end
 
   def perform_now
-    respond_to do |format|
-      format.js do
-        @chore = Chore.find_by(id: params[:id])
-        ajax_redirect_to(chores_path); return if @chore.blank?
-        @chore.last_performed = Time.now.utc
-        @chore.set_first_time
-        if @chore.save
-          flash[:success] = "Chore performed"
-        else
-          flash[:error] = "Chore could not be performed"
-        end
-        ajax_redirect_to(chore_path(@chore))
-      end
+    respond_to :js
+    @chore = Chore.find_by(id: params[:id])
+    ajax_redirect_to(chores_path); return if @chore.blank?
+    @chore.last_performed = Time.now.utc
+    @chore.set_first_time
+    if @chore.save
+      flash[:success] = "Chore performed"
+    else
+      flash[:error] = "Chore could not be performed"
     end
+    ajax_redirect_to(chore_path(@chore))
   end
-
+  
   private
 
   def permitted_params
