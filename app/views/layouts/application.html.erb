@@ -20,7 +20,7 @@
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type} col-md-8") %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type} alert-padding") %>
       <% end %>
     </div>
     <div class="main-body">

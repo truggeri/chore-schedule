@@ -4,8 +4,8 @@
 <p><%= link_to(safe_join([content_tag(:i, "", class: "fa fa-plus-circle"), " Create new"]), new_chore_path) %></p>
 
 <% if @chores.present? && @chores.size.positive? %>
-  <table class="table table-hover thead-light">
-    <thead class="thead-light" >
+  <table class="table">
+    <thead class="" >
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Frequency</th>

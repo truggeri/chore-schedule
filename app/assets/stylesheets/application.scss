@@ -15,6 +15,9 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Tillana');
+
 $color-blue: #D7E8F3;
 $color-yellow: #DFDB90;
 $color-dark-green: #324536;
@@ -25,6 +28,9 @@ $color-2-green: #324536;
 $color-2-yellow: #BABA38;
 $color-2-tan: #DCDAC3;
 $color-2-lime: #AABF62;
+$color-3-lime-light: rgb(215,227,161);
+$color-3-lime-dark: rgb(140, 155, 70);
+$color-3-lime-dark2: #63781A;
 $color-2-red: #954E5C;
 
 a {
@@ -33,6 +39,16 @@ a {
 
 a:hover {
   color: $color-2-red;
+}
+
+alert-padding {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+.chore-note {
+  font-family: 'Tillana', cursive;
+  font-size: 24px;
 }
 
 .debug_dump {
@@ -47,6 +63,7 @@ a:hover {
 footer {
   border-top: 1px solid #dcdcdc;
   margin-top: 24px;
+  padding-top: 8px;
 
   p {
     font-size: 13px;
@@ -55,12 +72,16 @@ footer {
 }
 
 h1 {
-  text-align: center;
   color: $color-2-green;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 600;
+  text-align: center;
 }
 
 .main-body {
-  padding: 8px 24px 8px 24px;
+  margin-left: 16%;
+  margin-right: 16%;
+  padding: 24px;
 }
 
 nav.navbar {
@@ -68,6 +89,7 @@ nav.navbar {
   // box-shadow: 0px 2px 8px #ccc;
   border-bottom: 1px solid rgb(222, 226, 230);
   box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, .05);
+  background-image: linear-gradient(to bottom right,$color-3-lime-dark 0%, $color-2-lime 30%, $color-3-lime-light 100%);
   margin-bottom: 24px;
   padding-left: 64px;
   padding-right: 64px;
@@ -78,5 +100,7 @@ nav.navbar {
 
   .navbar-brand {
     color: #19241b;
+    //font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Permanent Marker', cursive;
   }
 }
