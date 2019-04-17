@@ -3,8 +3,10 @@
   <h1><%= @chore.description %></h1>
   <div class="container text-center">
     <% if @chore.last_performed.present? %>
-      <div>Last done: <%= @chore.last_performed %></div>
+      <div>Last done on <%= @chore.last_performed.strftime("%A, %B %e %Y") %></div>
     <% end %>
-    <div class="chore-note">Due by <%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= distance_of_time_in_words(Time.now, @chore.perform_next) %>)</div>
+    <div class="chore-note">Due by <%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= time_until_next_due(@chore) %>)</div>
   </div>
+  <button type="button" class="btn btn-success"
+          onclick="perform_chore_now('<%= perform_now_chore_path(@chore.id) %>');">Perform Now</button>
 <% end %>

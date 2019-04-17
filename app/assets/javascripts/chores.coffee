@@ -19,3 +19,16 @@ initial_delete_setup = () ->
   return
 
 initial_delete_setup()
+
+@perform_chore_now = (path) ->
+  $.ajaxSetup
+    url: path
+    type: 'GET'
+    headers: 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    statusCode: 302: (response) ->
+      redirect_url = response.getResponseHeader('X-Ajax-Redirect-Url')
+      if redirect_url != undefined
+        window.location.pathname = redirect_url
+      return
+  $.ajax()
+  return
