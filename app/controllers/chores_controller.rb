@@ -5,7 +5,10 @@ class ChoresController < ApplicationController
 
   def show
     @chore = Chore.find_by(id: params[:id])
-    @logs = ChorePerformanceLog.where(chore: @chore).order(performed_at: :desc).limit(5)
+    @logs = ChorePerformanceLog.includes(:user)
+                               .where(chore: @chore)
+                               .order(performed_at: :desc).limit(5)
+    @users = User.all
   end
 
   def new
@@ -42,7 +45,7 @@ class ChoresController < ApplicationController
     @chore.last_performed = Time.now.utc
     @chore.set_first_time
     if @chore.save
-      ChorePerformanceLog.create(chore: @chore)
+      ChorePerformanceLog.create(chore: @chore, user: User.find_by(id: params[:user_id]))
       flash[:success] = "Chore performed"
     else
       flash[:error] = "Chore could not be performed"

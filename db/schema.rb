@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_112557) do
+ActiveRecord::Schema.define(version: 2019_04_17_115102) do
 
   create_table "chore_performance_logs", force: :cascade do |t|
     t.bigint "chore_id", null: false
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2019_04_17_112557) do
     t.datetime "perform_next"
     t.index ["category_id"], name: "index_chores_on_category_id"
     t.index [nil], name: "index_chores_on_preform_next"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "chores_total", default: 0, null: false
+    t.integer "chores_week", default: 0, null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name"
   end
 
 end

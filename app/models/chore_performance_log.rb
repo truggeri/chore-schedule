@@ -12,7 +12,8 @@
 #
 
 class ChorePerformanceLog < ApplicationRecord
-  belongs_to :chore
+  belongs_to  :chore
+  belongs_to  :user, counter_cache: :chores_total
 
   before_create -> { self.performed_at = Time.now.utc }
 end
