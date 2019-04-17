@@ -27,6 +27,14 @@ $color-2-tan: #DCDAC3;
 $color-2-lime: #AABF62;
 $color-2-red: #954E5C;
 
+a {
+  color: $color-2-green;
+}
+
+a:hover {
+  color: $color-2-red;
+}
+
 .debug_dump {
   clear: both;
   float: left;

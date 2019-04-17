@@ -28,7 +28,10 @@ class ChoresController < ApplicationController
     else
       flash[:error] = "Chore could not be removed"
     end
-    redirect_to(chores_path)
+    respond_to do |format|
+      format.js   { ajax_redirect_to(chores_path) }
+      format.html { redirect_to(chores_path) }
+    end
   end
 
   private
