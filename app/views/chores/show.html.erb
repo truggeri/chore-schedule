@@ -9,4 +9,24 @@
   </div>
   <button type="button" class="btn btn-success"
           onclick="perform_chore_now('<%= perform_now_chore_path(@chore.id) %>');">Perform Now</button>
+  <br />
+  <% if @logs.present? %>
+    <br /><br />
+    <table class="table">
+      <thead class="" >
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Done By</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @logs.each do |log| %>
+        <tr>
+          <td><%= log.performed_at.strftime("%a, %B %e %Y, %l %P") %></td>
+          <td><%= log.user_id %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>

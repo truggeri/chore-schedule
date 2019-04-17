@@ -5,6 +5,7 @@ class ChoresController < ApplicationController
 
   def show
     @chore = Chore.find_by(id: params[:id])
+    @logs = ChorePerformanceLog.where(chore: @chore).order(performed_at: :desc).limit(5)
   end
 
   def new
@@ -41,13 +42,14 @@ class ChoresController < ApplicationController
     @chore.last_performed = Time.now.utc
     @chore.set_first_time
     if @chore.save
+      ChorePerformanceLog.create(chore: @chore)
       flash[:success] = "Chore performed"
     else
       flash[:error] = "Chore could not be performed"
     end
     ajax_redirect_to(chore_path(@chore))
   end
-  
+
   private
 
   def permitted_params
