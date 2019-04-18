@@ -8,6 +8,7 @@
     <div class="chore-note">
       Due by <%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
     </div>
+    <%= category_badge(@chore) %>
   </div>
   <div><br />Perform as <%= perform_as_buttons(@users) %></div>
   <br />

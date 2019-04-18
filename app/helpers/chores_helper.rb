@@ -9,6 +9,15 @@ module ChoresHelper
     text
   end
 
+  def category_badge(chore)
+    if chore.category.present?
+      style = "background-color: \##{chore.category.color};" if chore.category.color.present?
+      badge = content_tag(:span, chore.category.name, class: "badge badge-pill badge-secondary", style: style)
+      link = link_to(badge, category_path(chore.category))
+    end
+    content_tag(:div, link, id: "category-badge")
+  end
+
   def perform_as_buttons(users)
     output = []
     user_icon = content_tag(:i, "", class: "fa fa-user")

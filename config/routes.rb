@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :chores do
     get 'perform_now', on: :member
   end
+
+  resources :category, only: %i[index show]
 end

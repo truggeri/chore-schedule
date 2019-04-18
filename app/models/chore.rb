@@ -19,7 +19,8 @@
 #
 
 class Chore < ApplicationRecord
-  has_many :chore_performance_logs, dependent: :destroy
+  has_many    :chore_performance_logs, dependent: :destroy
+  belongs_to  :category, counter_cache: :chore_count
 
   validates :description, presence: true, length: { maximum: 100 }, uniqueness: true
   enum frequency_type: { days: 0, weeks: 1, months: 2 }

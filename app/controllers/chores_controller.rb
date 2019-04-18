@@ -4,7 +4,7 @@ class ChoresController < ApplicationController
   end
 
   def show
-    @chore = Chore.find_by(id: params[:id])
+    @chore = Chore.includes(:category).find_by(id: params[:id])
     @logs = ChorePerformanceLog.includes(:user)
                                .where(chore: @chore)
                                .order(performed_at: :desc).limit(5)
