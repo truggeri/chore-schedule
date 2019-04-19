@@ -5,6 +5,7 @@
     <thead class="" >
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Chores</th>
       <th scope="col">&nbsp;</th>
     </tr>
     </thead>
@@ -12,6 +13,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category_color_badge(category) %><%= link_to(category.name, category_path(category)) %></td>
+        <td><%= category.chore_count %></td>
         <td><button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"
                     onclick="adjust_delete_path('<%= category_path(category) %>', '<%= category.name %>')">
           <i class="fa fa-trash"></i>
