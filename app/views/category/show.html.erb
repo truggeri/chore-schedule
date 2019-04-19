@@ -1,3 +1,30 @@
+<div>
+  <%= link_to(safe_join([content_tag(:i, "", class: "fas fa-arrow-circle-left"), " Back"]), category_index_path) %>
+</div>
+
 <% if @category.present? %>
   <h1><%= @category.name %></h1>
+  <p><%= @category.chore_count.humanize&.capitalize %> chore<%= "s" if @category.chore_count != 1 %> in this category.</p>
+  <% if @chores.present? %>
+    <br />
+    <h2>Chores</h2>
+    <table class="table">
+      <thead class="" >
+      <tr>
+        <th scope="col">Chore</th>
+        <th scope="col">Last Done</th>
+        <th scope="col">Next Due</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @chores.each do |chore| %>
+        <tr>
+          <td><%= chore.description %></td>
+          <td><%= chore.last_performed.strftime("%a, %B %e %Y, %l %P") %></td>
+          <td><%= chore.perform_next.strftime("%a, %B %e %Y, %l %P") %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>

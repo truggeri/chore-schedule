@@ -5,6 +5,7 @@ class CategoryController < ApplicationController
 
   def show
     @category = Category.find_by(id: params[:id])
+    @chores   = @category&.chores
   end
 
   def new
