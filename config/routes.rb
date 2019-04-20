@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     get 'perform_now', on: :member
   end
 
-  resources :category, only: %i[index show create]
+  resources :category, only: %i[index show create destroy]
 end

@@ -19,6 +19,19 @@ class CategoryController < ApplicationController
     redirect_to(category_index_path)
   end
 
+  def destroy
+    @chore = Category.find_by(id: params[:id])
+    if @chore&.delete
+      flash[:success] = "Category successfully removed"
+    else
+      flash[:error] = "Category could not be removed"
+    end
+    respond_to do |format|
+      format.js   { ajax_redirect_to(category_index_path) }
+      format.html { redirect_to(category_index_path) }
+    end
+  end
+
   private
 
   def permitted_params
