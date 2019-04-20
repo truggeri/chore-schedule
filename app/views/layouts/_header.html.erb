@@ -1,6 +1,20 @@
 <header>
-  <nav class="navbar">
+  <nav class="navbar navbar-expand-lg">
     <%= link_to(safe_join([content_tag(:i, "", class: "fa fa-broom"), " Chore Schedule"]),
                 root_url, class: "navbar-brand") %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li ckass="nav-spacer">&nbsp;&nbsp;&nbsp;</li>
+        <li class="nav-item">
+          <%= link_to("Chores", chores_path, class: "nav-link") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to("Categories", category_index_path, class: "nav-link") %>
+        </li>
+      </ul>
+    </div>
   </nav>
 </header>
