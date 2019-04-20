@@ -1,6 +1,7 @@
 class CategoryController < ApplicationController
   def index
     @categories = Category.all
+    @category = Category.new
   end
 
   def show
@@ -8,18 +9,14 @@ class CategoryController < ApplicationController
     @chores   = @category&.chores
   end
 
-  def new
-    @category = Category.new
-  end
-
   def create
     @category = Category.new(permitted_params)
     if @category.save
       flash[:success] = "#{@category.name} created successfully"
-      redirect_to(@category)
     else
-      render "new"
+      flash[:error] = "Category could not be created"
     end
+    redirect_to(category_index_path)
   end
 
   private

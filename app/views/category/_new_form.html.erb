@@ -1,0 +1,13 @@
+<%= form_for(@category, url: { action: "create" }) do |f| %>
+  <div class="form-group">
+    <%= label(:category, :name) %>
+    <%= f.text_field(:name, class: "form-control") %>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= label(:category, :color) %>
+      <%= f.text_field(:color, class: "form-control") %>
+    </div>
+  </div>
+  <br />
+<% end %>
