@@ -92,7 +92,7 @@ nav.navbar {
   // box-shadow: 0px 2px 8px #ccc;
   border-bottom: 1px solid rgb(222, 226, 230);
   box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, .05);
-  background-image: linear-gradient(to bottom right,$color-3-lime-dark 0%, $color-2-lime 30%, $color-3-lime-light 100%);
+  background-image: linear-gradient(to left,$color-3-lime-dark 0%, $color-2-lime 60%, $color-2-lime 100%);
   margin-bottom: 24px;
   padding-left: 64px;
   padding-right: 64px;
@@ -106,4 +106,8 @@ nav.navbar {
     //font-family: 'Gloria Hallelujah', cursive;
     font-family: 'Permanent Marker', cursive;
   }
+}
+
+.navbar-toggler-icon {
+  color: #19241b;
 }
