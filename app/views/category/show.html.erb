@@ -19,7 +19,7 @@
       <tbody>
       <% @chores.each do |chore| %>
         <tr>
-          <td><%= chore.description %></td>
+          <td><%= link_to(chore.description, chore_path(chore)) %></td>
           <td><%= chore.last_performed.strftime("%a, %B %e %Y, %l %P") %></td>
           <td><%= chore.perform_next.strftime("%a, %B %e %Y, %l %P") %></td>
         </tr>
