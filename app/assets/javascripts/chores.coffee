@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+@chore_new_submit = () ->
+  $('#new_chore').trigger( "submit" )
+  return
+
 @adjust_delete_path = (path, name) ->
   $.ajaxSetup url: path
   $('#chore-name').text(" " + name)

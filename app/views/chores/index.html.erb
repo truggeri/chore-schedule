@@ -1,7 +1,8 @@
 <h1>Chores</h1>
-<br />
 
-<p><%= link_to(safe_join([content_tag(:i, "", class: "fa fa-plus-circle"), " Create new"]), new_chore_path) %></p>
+<button type="button" class="btn create-button" data-toggle="modal" data-target="#createChoreModal">
+  <i class="fa fa-plus-circle"></i> Create
+</button>
 
 <% if @chores.present? && @chores.size.positive? %>
   <table class="table">
@@ -28,4 +29,5 @@
   </table>
 <% end %>
 
+<%= render("create_modal") %>
 <%= render("remove_confirm_modal") %>

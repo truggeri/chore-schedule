@@ -1,6 +1,7 @@
 class ChoresController < ApplicationController
   def index
     @chores = Chore.all
+    @chore = Chore.new
   end
 
   def show
