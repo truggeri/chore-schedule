@@ -1,24 +1,11 @@
-# README
+# Chore Schedule
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app for making and keeping a chore schedule.
 
-Things you may want to cover:
+## About the Application
 
-* Ruby version
+This app is focused on household chores. Users can create chores, assign them a frequency in days, weeks or months and "perform" them to reset the next due clock. They can assign chores into custom categories as well.
 
-* System dependencies
+## About Development
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This app is being developed using Ruby on Rails. It is very important to note that I am _purposely_ not following many good development practices (tests, services, etc.). This is being done as a benchmark of how fast an app can be created, not because of laziness. If the output of the app is useful, I intend on writing a test suite and refactoring some of the code written. 
