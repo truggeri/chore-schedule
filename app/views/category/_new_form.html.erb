@@ -7,7 +7,7 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <%= label(:category, :color) %>
-        <%= f.text_field(:color, class: "form-control") %>
+        <%= f.color_field(:color, class: "form-control", value: "\##{@category&.color}") %>
       </div>
     </div>
   <% end %>

@@ -35,6 +35,7 @@ class CategoryController < ApplicationController
   private
 
   def permitted_params
+    params[:category][:color] = params[:category][:color][1..] if params[:category][:color][0] == "#"
     params.require(:category).permit(:name, :color)
   end
 end
