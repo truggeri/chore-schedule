@@ -2,6 +2,7 @@ class ChoresController < ApplicationController
   def index
     @chores = Chore.all
     @chore = Chore.new
+    @categories = Category.all.pluck( :name, :id)
   end
 
   def show
@@ -58,7 +59,22 @@ class ChoresController < ApplicationController
 
   def permitted_params
     frequency_type_to_sym(params[:chore][:frequency_type].to_i)
-    params.require(:chore).permit(:description, :frequency, :frequency_type, :last_performed, :perform_next)
+    adjust_category_id(params[:chore][:category_id])
+    params.require(:chore).permit(:category_id, :description,
+                                  :frequency, :frequency_type, :last_performed, :perform_next)
+  end
+
+  def adjust_category_id(param)
+    if param == "-" || !param.to_i.positive?
+      params[:chore][:category_id] = nil
+      return false
+    end
+    category = Category.find_by(id: param.to_i)
+    params[:chore][:category_id] = if category&.valid?
+                                     param.to_i
+                                   else
+                                     nil
+                                   end
   end
 
   def frequency_type_to_sym(ft)

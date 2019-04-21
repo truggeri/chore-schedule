@@ -14,5 +14,13 @@
       </div>
       <small class="form-text text-muted">How often is this chore performed?</small>
     </div>
+    <% if @categories&.size.positive? %>
+      <div class="form-row">
+        <div class="form-group">
+          <%= label(:chore, :category) %>
+          <%= category_select(@categories) %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>

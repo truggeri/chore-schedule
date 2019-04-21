@@ -16,7 +16,10 @@
     <tbody>
     <% @chores.each do |chore| %>
       <tr>
-        <td><%= link_to(chore.description, chore_path(chore)) %></td>
+        <td>
+          <%= category_mini_link(chore.category) %>
+          <%= link_to(chore.description, chore_path(chore)) %>
+        </td>
         <td><%= link_to([chore.frequency, chore.frequency_type].join(" "), chore_path(chore)) %></td>
         <td><button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"
                     onclick="adjust_delete_path('<%= chore_path(chore) %>', '<%= chore.description %>')">
