@@ -23,8 +23,8 @@
           <%= link_to(chore.description, chore_path(chore)) %>
         </td>
         <td><%= link_to([chore.frequency, chore.frequency_type].join(" "), chore_path(chore)) %></td>
-        <td><%= link_to(chore.perform_next&.strftime("%A, %B %e %Y"), chore_path(chore)) %></td>
-        <td><%= chore.days_until_due %></td>
+        <td><%= link_to(chore.perform_next&.strftime("%a, %B %e %Y"), chore_path(chore)) %></td>
+        <td><%= days_until_due(chore) %></td>
         <td><button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"
                     onclick="adjust_delete_path('<%= chore_path(chore) %>', '<%= chore.description %>')">
           <i class="fa fa-trash"></i>

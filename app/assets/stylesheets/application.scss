@@ -16,7 +16,7 @@
 @import "bootstrap";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Tillana');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker');
 
 $color-blue: #D7E8F3;
 $color-yellow: #DFDB90;
@@ -48,6 +48,10 @@ alert-padding {
 
 .badge {
   font-size: 14px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .chore-note {
@@ -103,7 +107,6 @@ nav.navbar {
 
   .navbar-brand {
     color: #19241b;
-    //font-family: 'Gloria Hallelujah', cursive;
     font-family: 'Permanent Marker', cursive;
   }
 }

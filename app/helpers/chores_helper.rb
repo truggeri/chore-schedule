@@ -36,6 +36,13 @@ module ChoresHelper
     select(:chore, :category_id, options)
   end
 
+  def days_until_due(chore)
+    days = chore.days_until_due
+    return days if days.positive?
+    return "Today" if days.zero?
+    content_tag(:span, days.abs, class: "text-danger font-weight-bold")
+  end
+
   def perform_as_buttons(users)
     output = []
     user_icon = content_tag(:i, "", class: "fa fa-user")
