@@ -8,8 +8,10 @@
   <table class="table">
     <thead class="" >
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Frequency</th>
+      <% %i[description frequency perform_next].each do |column| %>
+        <th scope="col"><%= header_with_sort(column) %></th>
+      <% end %>
+      <th scope="col"><%= header_with_sort(:perform_next, "Days until Due") %></th>
       <th scope="col">&nbsp;</th>
     </tr>
     </thead>
@@ -21,6 +23,8 @@
           <%= link_to(chore.description, chore_path(chore)) %>
         </td>
         <td><%= link_to([chore.frequency, chore.frequency_type].join(" "), chore_path(chore)) %></td>
+        <td><%= link_to(chore.perform_next&.strftime("%A, %B %e %Y"), chore_path(chore)) %></td>
+        <td><%= chore.days_until_due %></td>
         <td><button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"
                     onclick="adjust_delete_path('<%= chore_path(chore) %>', '<%= chore.description %>')">
           <i class="fa fa-trash"></i>

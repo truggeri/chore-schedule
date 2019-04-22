@@ -1,6 +1,8 @@
 class ChoresController < ApplicationController
   def index
-    @chores = Chore.all
+    @sort = determine_sort(params[:sort].presence)
+    @order = determine_order(params[:order].presence)
+    @chores = Chore.all.order(@sort => @order)
     @chore = Chore.new
     @categories = Category.all.pluck( :name, :id)
   end
@@ -56,6 +58,15 @@ class ChoresController < ApplicationController
   end
 
   private
+
+  def determine_sort(param)
+    return nil unless param&.to_sym.in?(%i[description frequency perform_next])
+    param.to_sym
+  end
+
+  def determine_order(param)
+    param == "desc" ? :desc : :asc
+  end
 
   def permitted_params
     frequency_type_to_sym(params[:chore][:frequency_type].to_i)

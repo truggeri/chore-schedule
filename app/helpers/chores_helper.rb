@@ -1,4 +1,10 @@
 module ChoresHelper
+  COLUMN_DISPLAY_NAMES = {
+    description:  "Name",
+    frequency:    "Frequency",
+    perform_next: "Next Due"
+  }.freeze
+
   def category_badge(chore)
     if chore.category.present?
       style = "background-color: \##{chore.category.color};" if chore.category.color.present?
@@ -40,6 +46,19 @@ module ChoresHelper
                             onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
     end
     safe_join(output, "   ")
+  end
+
+  # TODO-20190421 This method works, but is not very clean
+  def header_with_sort(name, display = nil)
+    display ||= COLUMN_DISPLAY_NAMES[name]
+    output = []
+    if name == @sort
+      query_order = :desc if @order == :asc
+      order_class = @order == :desc ? "fa-sort-up" : "fa-sort-down"
+      output << content_tag(:i, "", class: "fas #{order_class}")
+    end
+    output.prepend(link_to(display, chores_path(sort: name, order: query_order)))
+    safe_join(output, " ")
   end
 
   def text_until_next_due(chore)

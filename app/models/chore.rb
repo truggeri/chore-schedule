@@ -32,6 +32,10 @@ class Chore < ApplicationRecord
     self.perform_next = Time.now.utc + frequency_to_time
   end
 
+  def days_until_due
+    (perform_next - Time.now).to_i / 86_400 # seconds in a day
+  end
+
   def frequency_to_time
     eval("#{frequency}.#{frequency_type}")
   end
