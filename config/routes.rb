@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :accounts
   root 'static_pages#index'
 
   resources :chores, only: %i[index show create destroy] do

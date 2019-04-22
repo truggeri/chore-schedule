@@ -1,4 +1,6 @@
 class CategoryController < ApplicationController
+  before_action :authenticate_account!
+
   def index
     @categories = Category.all.order(name: :asc)
     @category = Category.new

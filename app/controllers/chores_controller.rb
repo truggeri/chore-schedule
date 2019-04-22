@@ -1,4 +1,6 @@
 class ChoresController < ApplicationController
+  before_action :authenticate_account!
+
   def index
     @sort = determine_sort(params[:sort].presence)
     @order = determine_order(params[:order].presence)
