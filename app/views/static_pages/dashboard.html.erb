@@ -6,13 +6,18 @@
           <div class="row main-row">
             <div class="main-header">Chores</div>
           </div>
-          <% @chores.each_with_index do |chore, index| %>
+          <% @chores.each do |chore| %>
             <div class="row">
               <div class="col-sm column-box">
-                <%= chore_box(chore, last_row: index == @chores.size - 1) %>
+                <%= chore_box(chore) %>
               </div>
             </div>
           <% end %>
+          <div class="row">
+            <div class="col-sm">
+              <%= more_link(chores_path) %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 main-column">
@@ -27,6 +32,11 @@
               </div>
             </div>
           <% end %>
+          <div class="row">
+            <div class="col-sm">
+              <%= more_link(category_index_path) %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
