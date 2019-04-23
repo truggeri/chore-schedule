@@ -1,0 +1,34 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 main-column">
+        <div class="container">
+          <div class="row main-row">
+            <div class="main-header">Chores</div>
+          </div>
+          <% @chores.each_with_index do |chore, index| %>
+            <div class="row">
+              <div class="col-sm column-box">
+                <%= chore_box(chore, last_row: index == @chores.size - 1) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 main-column">
+        <div class="container">
+          <div class="row main-row">
+            <div class="main-header">Categories</div>
+          </div>
+          <% @categories.each do |cat| %>
+            <div class="row">
+              <div class="col-sm column-box">
+                <h5><%= cat.name %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
