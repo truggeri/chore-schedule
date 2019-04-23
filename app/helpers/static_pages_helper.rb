@@ -9,7 +9,7 @@ module StaticPagesHelper
 
   def chore_box(chore = nil, last_row: false)
     return content_tag(:div, "", class: "chore-box") if chore.nil?
-    contents = [content_tag(:h4, chore.description)]
+    contents = [content_tag(:h4, link_to(chore.description, chore_path(chore)))]
     contents << content_tag(:div, chore.last_performed_string, class: "last-done")
     top_row = content_tag(:div, safe_join(contents), class: "top-row")
     bottom_row_text = "Next due on #{chore&.perform_next_string}, #{days_until_due(chore, false)} days"
