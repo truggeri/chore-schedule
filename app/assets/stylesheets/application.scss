@@ -76,6 +76,24 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.category-box {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+
+  .category-count {
+    flex: 1 1 auto;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  h5.category-header {
+    flex: 0 1 auto;
+    margin: 0px
+  }
+}
+
 .chore-box {
   border-bottom: 1px solid #ddd;
   padding: 12px 8px 12px 8px;

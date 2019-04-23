@@ -23,7 +23,7 @@
           <% @categories.each do |cat| %>
             <div class="row">
               <div class="col-sm column-box">
-                <h5><%= cat.name %></h5>
+                <%= category_box(cat) %>
               </div>
             </div>
           <% end %>
