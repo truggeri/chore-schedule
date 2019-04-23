@@ -48,6 +48,7 @@ class Chore < ApplicationRecord
   # Should be in a decorator
   #
   def last_performed_string
+    return "never" if last_performed.blank?
     last_performed&.strftime("%a, %B %e %Y")
   end
 

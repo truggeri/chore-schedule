@@ -100,8 +100,15 @@ body {
 
   .bottom-row {
     color: #555;
-    //font-size: 14px;
-    //font-style: italic;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .days-until-due {
+    flex: 1 1 auto;
+    text-align: right;
   }
 
   h4 {
@@ -110,9 +117,6 @@ body {
 
   .last-done {
     flex: 1 1 auto;
-    font-size: 14px;
-    font-style: italic;
-    text-align: right;
   }
 
   .top-row {
