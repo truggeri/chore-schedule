@@ -23,6 +23,10 @@ class Category < ApplicationRecord
   before_validation :add_color, on: :create
   after_initialize  :add_color if :new_record?
 
+  def self.front_page(limit: 5)
+    all.order(chore_count: :desc).limit(limit)
+  end
+
   private
 
   def add_color

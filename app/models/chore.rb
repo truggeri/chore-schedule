@@ -39,4 +39,19 @@ class Chore < ApplicationRecord
   def frequency_to_time
     eval("#{frequency}.#{frequency_type}")
   end
+
+  def self.front_page(limit: 5)
+    all.order(perform_next: :asc).limit(limit)
+  end
+
+  #
+  # Should be in a decorator
+  #
+  def last_performed_string
+    last_performed&.strftime("%a, %B %e %Y")
+  end
+
+  def perform_next_string
+    perform_next&.strftime("%a, %B %e %Y")
+  end
 end
