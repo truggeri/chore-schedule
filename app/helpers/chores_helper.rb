@@ -36,6 +36,22 @@ module ChoresHelper
     select(:chore, :category_id, options)
   end
 
+  def chore_sort_by_name
+    COLUMN_DISPLAY_NAMES[@sort]
+  end
+
+  def chore_sort_icon
+    @order == :desc ? "fas fa-sort-alpha-up" : "fas fa-sort-alpha-down"
+  end
+
+  def chore_sort_links
+    output = []
+    %i[description frequency perform_next].each do |column|
+      output << header_with_sort(column)
+    end
+    safe_join(output, "\n")
+  end
+
   def days_until_due(chore, stylize = true)
     days = chore.days_until_due
     return days if days.positive?
@@ -55,17 +71,10 @@ module ChoresHelper
     safe_join(output, "   ")
   end
 
-  # TODO-20190421 This method works, but is not very clean
   def header_with_sort(name, display = nil)
     display ||= COLUMN_DISPLAY_NAMES[name]
-    output = []
-    if name == @sort
-      query_order = :desc if @order == :asc
-      order_class = @order == :desc ? "fa-sort-up" : "fa-sort-down"
-      output << content_tag(:i, "", class: "fas #{order_class}")
-    end
-    output.prepend(link_to(display, chores_path(sort: name, order: query_order)))
-    safe_join(output, " ")
+    query_order = :desc if @order == :asc
+    link_to(display, chores_path(sort: name, order: query_order), class: "dropdown-item")
   end
 
   def text_until_next_due(chore)

@@ -6,14 +6,22 @@
           <div class="row main-row">
             <div class="main-header">Chores</div>
           </div>
-          <div class="row">
+          <div class="row row-padded">
             <div class="col">
-              <button type="button" class="btn create-button" data-toggle="modal" data-target="#createChoreModal">
+              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
                 <i class="fa fa-plus-circle"></i> Create
               </button>
             </div>
             <div class="col" style="text-align: right;">
-              Sort by: xxxxx
+              <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="<%= chore_sort_icon %>"></i> <%= chore_sort_by_name %>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="sortMenuButton">
+                  <%= chore_sort_links %>
+                </div>
+              </div>
             </div>
           </div>
           <% @chores.each do |chore| %>
@@ -30,7 +38,7 @@
 </div>
 
 
-<% if @chores.present? && @chores.size.positive? %>
+<% if false && @chores.present? && @chores.size.positive? %>
   <table class="table">
     <thead class="" >
     <tr>

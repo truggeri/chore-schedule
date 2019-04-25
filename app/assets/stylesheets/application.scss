@@ -47,6 +47,8 @@ $color-lime: #A2C523;
 $color-earth: #7D4427;
 
 $background-color: #f0f0f0;
+$button-bg-color: #eee;
+$button-border-color: #333;
 $header-color: $color-thunder-cloud;
 $header-border-color: #656673;
 $light-bg-color: white;
@@ -74,6 +76,21 @@ alert-padding {
 body {
   background-color: $background-color;
   font-family: 'Open Sans', sans-serif;
+}
+
+button.button-close {
+  background-color: $button-bg-color;
+  border: 1px solid $button-border-color;
+}
+
+button.button-create {
+  background-color: $button-bg-color;
+  border: 1px solid $button-border-color;
+}
+
+button.button-sort {
+  background-color: $button-bg-color;
+  border: 1px solid $button-border-color;
 }
 
 .category-box {
@@ -204,6 +221,7 @@ h1 {
   text-align: center;
   top: -32px;
 }
+
 .main-row {
   height: 16px;
 }
@@ -236,4 +254,8 @@ nav.navbar {
 
 .navbar-toggler-icon {
   color: #19241b;
+}
+
+.row-padded {
+  padding-bottom: 16px;
 }

@@ -62,7 +62,7 @@ class ChoresController < ApplicationController
   private
 
   def determine_sort(param)
-    return nil unless param&.to_sym.in?(%i[description frequency perform_next])
+    return :perform_next unless param&.to_sym.in?(%i[description frequency perform_next])
     param.to_sym
   end
 

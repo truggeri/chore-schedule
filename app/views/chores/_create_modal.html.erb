@@ -12,11 +12,15 @@
       <div class="modal-body">
         <%= render("new_form") %>
       </div>
-      <div class="modal-footer">
-        <button type="button" value="Create" class="btn btn-primary" onclick="chore_new_submit();">
+      <div class="modal-footer row">
+        <div class="col">
+          <button type="button" value="Create" class="btn btn-outline-success" onclick="chore_new_submit();">
           <i class="fa fa-plus"></i> Create
         </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        <div class="col text-right">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
