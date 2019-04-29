@@ -1,34 +1,57 @@
-<div><%= link_to(safe_join([content_tag(:i, "", class: "fas fa-arrow-circle-left"), " Back"]), chores_url) %></div>
-<% if @chore.present? %>
-  <h1><%= @chore.description %></h1>
-  <div class="container text-center">
-    <% if @chore.last_performed.present? %>
-      <div>Last done on <%= @chore.last_performed.strftime("%A, %B %e %Y") %></div>
-    <% end %>
-    <div class="chore-note">
-      Due by <%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 main-column">
+        <div class="container">
+          <div class="row main-row">
+            <div class="main-header"><%= @chore.description %></div>
+          </div>
+          <div class="row text-left">
+            <div class="col text-left">
+              <%= link_to(safe_join([content_tag(:i, "", class: "fas fa-arrow-circle-left"), " All Chores"]), chores_url) %>
+            </div>
+            <div class="col text-right">
+              <%= category_badge(@chore) %>
+            </div>
+          </div>
+          <div class="row"><div class="col">&nbsp;</div></div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= last_performed_text(@chore) %>
+            </div>
+<!--            <div class="col-md-2 text-center"><%#= category_badge(@chore) %></div>-->
+            <div class="col-md-6 text-right">
+              Due by <br /><%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
+            </div>
+          </div>
+        </div>
+        <div class="row text-center" style="padding: 16px;">
+          <div class="col-12" style="border-top: 1px solid #bbb; padding: 8px;"><h5>Perform Now</h5></div>
+          <div class="col"></div>
+          <%= perform_as_columns(@users) %>
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <% if @logs.present? %>
+            <table class="table">
+              <thead class="" >
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Done By</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @logs.each do |log| %>
+                <tr>
+                  <td><%= log.performed_at.strftime("%a, %B %e %Y, %l %P") %></td>
+                  <td><%= log.user&.name %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <%= category_badge(@chore) %>
   </div>
-  <div><br />Perform as <%= perform_as_buttons(@users) %></div>
-  <br />
-  <% if @logs.present? %>
-    <br /><br />
-    <table class="table">
-      <thead class="" >
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Done By</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @logs.each do |log| %>
-        <tr>
-          <td><%= log.performed_at.strftime("%a, %B %e %Y, %l %P") %></td>
-          <td><%= log.user&.name %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
+</div>

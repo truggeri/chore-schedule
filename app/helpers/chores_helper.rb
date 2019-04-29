@@ -59,6 +59,14 @@ module ChoresHelper
     stylize == true ? content_tag(:span, days.abs, class: "text-danger font-weight-bold") : days.abs
   end
 
+  def last_performed_text(chore)
+    if @chore.last_performed.present?
+      safe_join(["Last performed on", "<br />".html_safe, "#{chore.last_performed.strftime('%A, %B %e %Y')}"])
+    else
+      "Not yet performed"
+    end
+  end
+
   def perform_as_buttons(users)
     output = []
     user_icon = content_tag(:i, "", class: "fa fa-user")
@@ -69,6 +77,19 @@ module ChoresHelper
                             onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
     end
     safe_join(output, "   ")
+  end
+
+  def perform_as_columns(users)
+    output = []
+    user_icon = content_tag(:i, "", class: "fa fa-user")
+    users.each do |user|
+      user_button = content_tag(:button, user_icon + " #{user.name}",
+                                type: "button",
+                                class: "btn btn-outline-success",
+                                onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
+      output << content_tag(:div, user_button, class: "col text-center")
+    end
+    safe_join(output, "")
   end
 
   def header_with_sort(name, display = nil)
