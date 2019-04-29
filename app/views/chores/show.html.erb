@@ -40,7 +40,20 @@
           <div class="col-12 chore-padding-8" style="font-style: italic; font-size: 13px;"></div>
           <%= history_columns(@logs) %>
         </div>
+        <div class="row chore-padding-16">
+          <div class="col text-center">
+            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#removeConfirmModal">
+              <i class="fa fa-trash"></i> Remove
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<%= render("remove_confirm_modal") %>
+
+<script>
+  adjust_delete_path('<%= chore_path(@chore) %>', '<%= @chore.description %>')
+</script>
