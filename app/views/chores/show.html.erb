@@ -19,37 +19,20 @@
             <div class="col-md-6">
               <%= last_performed_text(@chore) %>
             </div>
-<!--            <div class="col-md-2 text-center"><%#= category_badge(@chore) %></div>-->
             <div class="col-md-6 text-right">
               Due by <br /><%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
             </div>
           </div>
         </div>
-        <div class="row text-center" style="padding: 16px;">
-          <div class="col-12" style="border-top: 1px solid #bbb; padding: 8px;"><h5>Perform Now</h5></div>
+        <div class="row chore-padding-16">
+          <div class="col-12 chore-padding-8 chore-border-light"><h5>Perform Now</h5></div>
           <div class="col"></div>
           <%= perform_as_columns(@users) %>
           <div class="col"></div>
         </div>
-        <div class="row">
-          <% if @logs.present? %>
-            <table class="table">
-              <thead class="" >
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Done By</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @logs.each do |log| %>
-                <tr>
-                  <td><%= log.performed_at.strftime("%a, %B %e %Y, %l %P") %></td>
-                  <td><%= log.user&.name %></td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          <% end %>
+        <div class="row chore-padding-16">
+          <div class="col-12 chore-padding-8 chore-border-light"><h5>History</h5></div>
+          <%= history_columns(@logs) %>
         </div>
       </div>
     </div>

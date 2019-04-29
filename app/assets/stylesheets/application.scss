@@ -111,6 +111,14 @@ button.button-sort {
   }
 }
 
+.chore-border-light {
+  border-top: 1px solid #bbb;
+}
+
+.chore-border-ultralight {
+  border-top: 1px solid #eee;
+}
+
 .chore-box {
   border-bottom: 1px solid #ddd;
   padding: 12px 8px 12px 8px;
@@ -144,6 +152,14 @@ button.button-sort {
 
 .chore-note {
   font-size: 24px;
+}
+
+.chore-padding-16 {
+  padding: 16px;
+}
+
+.chore-padding-8 {
+  padding: 8px;
 }
 
 .container {
