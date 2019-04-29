@@ -15,6 +15,14 @@
           <%= link_to("Categories", category_index_path, class: "nav-link") %>
         </li>
       </ul>
+      <div class="navbar-user">
+        <% if account_signed_in? %>
+          <%= link_to(safe_join([content_tag(:i, "", class: "fa fa-exit"), "Sign Out"]), destroy_account_session_path, method: :delete) %>
+          <i class="fa fa-user"></i>
+        <% else %>
+          <%= link_to(safe_join([content_tag(:i, "", class: "fa fa-user"), "Log in"]), new_account_session_path) %>
+        <% end %>
+      </div>
     </div>
   </nav>
 </header>
