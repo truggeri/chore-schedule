@@ -70,7 +70,7 @@ module ChoresHelper
       end
       safe_join(output)
     else
-      content_tag(:div, "No history found", class: "col")
+      content_tag(:div, "This chore hasn't been performed yet", class: "col font-italic")
     end
   end
 

@@ -36,3 +36,9 @@ initial_delete_setup()
       return
   $.ajax()
   return
+
+enable_tooltips = () ->
+  $('[data-toggle="tooltip"]').tooltip()
+  return
+
+enable_tooltips()

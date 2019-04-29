@@ -31,7 +31,13 @@
           <div class="col"></div>
         </div>
         <div class="row chore-padding-16">
-          <div class="col-12 chore-padding-8 chore-border-light"><h5>History</h5></div>
+          <div class="col-12 chore-padding-8 chore-border-light">
+            <h5>
+              History
+              <i class="fa fa-info-circle" style="font-size: 12px;" data-toggle="tooltip" data-placement="bottom" title="The last five times this chore was performed"></i>
+            </h5>
+          </div>
+          <div class="col-12 chore-padding-8" style="font-style: italic; font-size: 13px;"></div>
           <%= history_columns(@logs) %>
         </div>
       </div>
