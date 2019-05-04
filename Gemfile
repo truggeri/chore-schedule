@@ -28,12 +28,18 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'flamegraph'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'memory_profiler'
   gem 'pry'
+  gem 'rack-mini-profiler', require: false
   gem 'solargraph', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'stackprof'
   gem 'web-console', '>= 3.3.0'
+
+# For call-stack profiling flamegraphs
 end
 
 group :test do
