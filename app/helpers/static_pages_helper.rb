@@ -19,7 +19,7 @@ module StaticPagesHelper
   end
 
   def more_link(link)
-    link_text = safe_join(["More", content_tag(:i,"", class: "fas fa-angle-double-right")], " ")
+    link_text = safe_join(["More", fa_icon("angle-double-right")], " ")
     content_tag(:div, link_to(link_text, link), class: "more-link")
   end
 end

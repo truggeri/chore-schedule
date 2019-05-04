@@ -16,7 +16,7 @@
               <div class="dropdown">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="<%= chore_sort_icon %>"></i> <%= chore_sort_by_name %>
+                  <%= chore_sort_icon(@order) %> <%= chore_sort_by_name %>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="sortMenuButton">
                   <%= chore_sort_links %>

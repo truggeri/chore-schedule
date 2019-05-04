@@ -40,8 +40,9 @@ module ChoresHelper
     COLUMN_DISPLAY_NAMES[@sort]
   end
 
-  def chore_sort_icon
-    @order == :desc ? "fas fa-sort-alpha-up" : "fas fa-sort-alpha-down"
+  def chore_sort_icon(order)
+    klass = order == :desc ? "fas fa-sort-alpha-up" : "fas fa-sort-alpha-down"
+    content_tag(:i, "", class: klass)
   end
 
   def chore_sort_links
@@ -63,7 +64,7 @@ module ChoresHelper
     if logs.present?
       output = []
       logs.each do |log|
-        name_tag = content_tag(:h6, safe_join([content_tag(:i, "", class: "fa fa-user"), log.user&.name], " "))
+        name_tag = content_tag(:h6, safe_join([fa_icon("user"), log.user&.name], " "))
         output << content_tag(:div, name_tag, class: "col-5 text-left chore-padding-8 chore-border-ultralight")
         time_tag = content_tag(:span, log.performed_at.strftime("%a, %B %e %Y, %l %P"), class: "text-right")
         output << content_tag(:div, time_tag, class: "col-7 text-right chore-padding-8 chore-border-ultralight")
@@ -84,9 +85,8 @@ module ChoresHelper
 
   def perform_as_buttons(users)
     output = []
-    user_icon = content_tag(:i, "", class: "fa fa-user")
     users.each do |user|
-      output << content_tag(:button, user_icon + " #{user.name}",
+      output << content_tag(:button, fa_icon("user") + " #{user.name}",
                             type: "button",
                             class: "btn btn-success",
                             onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
@@ -96,9 +96,8 @@ module ChoresHelper
 
   def perform_as_columns(users)
     output = []
-    user_icon = content_tag(:i, "", class: "fa fa-user")
     users.each do |user|
-      user_button = content_tag(:button, user_icon + " #{user.name}",
+      user_button = content_tag(:button, fa_icon("user") + " #{user.name}",
                                 type: "button",
                                 class: "btn btn-outline-success",
                                 onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
