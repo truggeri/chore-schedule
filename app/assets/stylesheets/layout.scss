@@ -1,0 +1,59 @@
+@import "colors.scss";
+
+footer {
+  border-top: 1px solid #dcdcdc;
+  margin-top: 24px;
+  padding-top: 8px;
+
+  p {
+    font-size: 13px;
+    color:     #777;
+  }
+}
+
+.main-body {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.main-column {
+  background-color: $light-bg-color;
+  border-top: 5px double $header-border-color;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0px 3px 8px #bbb;
+  padding: 4px;
+  margin: 24px 8px 8px 8px;
+}
+.main-content {
+  padding: 8px;
+  width: 100%;
+}
+.main-header {
+  background-color: $light-bg-color;
+  border: 2px solid $header-border-color;
+  border-radius: 8px;
+  color: $header-color;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 28px;
+  padding: 4px 24px 4px 24px;
+  position: relative;
+  text-align: center;
+  top: -32px;
+}
+
+.main-row {
+  height: 16px;
+}
+
+.row-padded {
+  padding-bottom: 16px;
+}
+
+.top-level-container {
+  max-width: 100%;
+}

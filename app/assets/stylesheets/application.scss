@@ -12,10 +12,6 @@
  *
  */
 
- // Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
-@import "font-awesome";
-
 // Fonts
 @font-face {
   font-family: 'Permanent Marker';
@@ -24,43 +20,9 @@
 
 @import "*";
 
-$color-blue: #D7E8F3;
-$color-yellow: #DFDB90;
-$color-dark-green: #324536;
-$color-green: #0B6D64;
-$color-red: #B93D69;
-
-$color-2-green: #324536;
-$color-2-yellow: #BABA38;
-$color-2-tan: #DCDAC3;
-$color-2-lime: #AABF62;
-$color-3-lime-light: rgb(215,227,161);
-$color-3-lime-dark: rgb(140, 155, 70);
-$color-3-lime-dark2: #63781A;
-$color-2-red: #954E5C;
-
-// Crisp & Dramatic
-$color-thunder-cloud: #505160;
-$color-thunder-cloud-light: #D2D4F6;
-$color-waterfall: #68829E;
-$color-moss: #AEBD38;
-$color-meadow: #598234;
-
-// Outdoorsy & Natural
-$color-forest-green: #2E4600;
-$color-grass: #486B00;
-$color-lime: #A2C523;
-$color-earth: #7D4427;
-
-$background-color: #f0f0f0;
-$button-bg-color: #eee;
-$button-border-color: #333;
-$header-color: $color-thunder-cloud;
-$header-border-color: #656673;
-$light-bg-color: white;
-$link-color: $color-waterfall;
-$nav-header-color: $header-color;
-$nav-primary-color: #ccc;
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+@import "font-awesome";
 
 a {
   color: $link-color;
@@ -75,102 +37,10 @@ alert-padding {
   margin-right: 64px;
 }
 
-.badge {
-  font-size: 14px;
-}
 
 body {
   background-color: $background-color;
   font-family: 'Open Sans', sans-serif;
-}
-
-button.button-close {
-  background-color: $button-bg-color;
-  border: 1px solid $button-border-color;
-}
-
-button.button-create {
-  background-color: $button-bg-color;
-  border: 1px solid $button-border-color;
-}
-
-button.button-sort {
-  background-color: $button-bg-color;
-  border: 1px solid $button-border-color;
-}
-
-.category-box {
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  flex-direction: row;
-  padding: 12px;
-
-  .category-count {
-    flex: 1 1 auto;
-    font-size: 14px;
-    text-align: right;
-  }
-
-  h5.category-header {
-    flex: 0 1 auto;
-    margin: 0px
-  }
-}
-
-.chore-border-light {
-  border-top: 1px solid #bbb;
-}
-
-.chore-border-ultralight {
-  border-top: 1px solid #eee;
-}
-
-.chore-box {
-  border-bottom: 1px solid #ddd;
-  padding: 12px 8px 12px 8px;
-
-  .bottom-row {
-    color: #555;
-    display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    font-style: italic;
-  }
-
-  .days-until-due {
-    flex: 1 1 auto;
-    text-align: right;
-  }
-
-  h4 {
-    flex: 0 1 auto;
-  }
-
-  .last-done {
-    flex: 1 1 auto;
-  }
-
-  .top-row {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
-.chore-note {
-  font-size: 24px;
-}
-
-.chore-padding-16 {
-  padding: 16px;
-}
-
-.chore-padding-8 {
-  padding: 8px;
-}
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .debug_dump {
@@ -187,105 +57,12 @@ button.button-sort {
 
 }
 
-footer {
-  border-top: 1px solid #dcdcdc;
-  margin-top: 24px;
-  padding-top: 8px;
-
-  p {
-    font-size: 13px;
-    color:     #777;
-  }
-}
-
-h1 {
-  color: $header-color;
-  font-family: 'Permanent Marker', cursive;
-  font-weight: 600;
-  text-align: center;
-}
-
 .last-row {
   border-bottom: 0px;
-}
-
-.main-body {
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-.main-column {
-  background-color: $light-bg-color;
-  border-top: 5px double $header-border-color;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  box-shadow: 0px 3px 8px #bbb;
-  padding: 4px;
-  margin: 24px 8px 8px 8px;
-}
-.main-content {
-  padding: 8px;
-  width: 100%;
-}
-.main-header {
-  background-color: $light-bg-color;
-  border: 2px solid $header-border-color;
-  border-radius: 8px;
-  color: $header-color;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 28px;
-  font-weight: 600;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 28px;
-  padding: 4px 24px 4px 24px;
-  position: relative;
-  text-align: center;
-  top: -32px;
-}
-
-.main-row {
-  height: 16px;
 }
 
 .more-link {
   font-size: 14px;
   padding: 8px;
   text-align: center;
-}
-
-nav.navbar {
-  background-color: $nav-primary-color;
-  // box-shadow: 0px 2px 8px #ccc;
-  border-bottom: 1px solid rgb(222, 226, 230);
-  box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, .05);
-  //background-image: linear-gradient(to left,$color-3-lime-dark 0%, $nav-primary-color 60%, $nav-primary-color 100%);
-  margin-bottom: 24px;
-  padding-left: 64px;
-  padding-right: 64px;
-  -webkit-box-orient: horizontal!important;
-  -webkit-box-direction: normal!important;
-  -ms-flex-direction: row!important;
-  flex-direction: row!important;
-
-  .navbar-brand {
-    color: $nav-header-color;
-    font-family: 'Permanent Marker', cursive;
-  }
-}
-
-.navbar-toggler-icon {
-  color: #19241b;
-}
-
-.navbar-user {
-  color: $nav-header-color;
-}
-
-.row-padded {
-  padding-bottom: 16px;
-}
-
-.top-level-container {
-  max-width: 100%;
 }

@@ -1,0 +1,27 @@
+nav.navbar {
+  background-color: $nav-primary-color;
+  // box-shadow: 0px 2px 8px #ccc;
+  border-bottom: 1px solid rgb(222, 226, 230);
+  box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, .05);
+  //background-image: linear-gradient(to left,$color-3-lime-dark 0%, $nav-primary-color 60%, $nav-primary-color 100%);
+  margin-bottom: 24px;
+  padding-left: 64px;
+  padding-right: 64px;
+  -webkit-box-orient: horizontal!important;
+  -webkit-box-direction: normal!important;
+  -ms-flex-direction: row!important;
+  flex-direction: row!important;
+
+  .navbar-brand {
+    color: $nav-header-color;
+    font-family: 'Permanent Marker', cursive;
+  }
+}
+
+.navbar-toggler-icon {
+  color: #19241b;
+}
+
+.navbar-user {
+  color: $nav-header-color;
+}
