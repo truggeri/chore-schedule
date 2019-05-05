@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :authenticate_account!, only: [:dashboard]
+
   def index; end
 
   def dashboard
