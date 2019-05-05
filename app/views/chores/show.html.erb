@@ -56,5 +56,7 @@
 <%= render("remove_confirm_modal") %>
 
 <script>
-  adjust_delete_path('<%= chore_path(@chore) %>', '<%= @chore.description %>')
+  window.onload = function() {
+    adjust_delete_path('<%= chore_path(@chore) %>', '<%= @chore.description %>');
+  };
 </script>
