@@ -30,9 +30,8 @@ class Category < ApplicationRecord
   private
 
   def add_color
-    if color.blank?
-      self.color = ""
-      3.times.each { self.color += Random.rand(0..255).to_s(16) }
-    end
+    return nil unless color.blank?
+    self.color = ""
+    3.times.each { self.color += "%02X" % Random.rand(0..255) }
   end
 end

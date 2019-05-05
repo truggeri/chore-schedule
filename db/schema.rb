@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_04_22_125001) do
     t.datetime "last_performed"
     t.datetime "perform_next"
     t.index ["category_id"], name: "index_chores_on_category_id"
-    t.index [nil], name: "index_chores_on_preform_next"
+    t.index ["perform_next"], name: "index_chores_on_preform_next"
   end
 
   create_table "users", force: :cascade do |t|
