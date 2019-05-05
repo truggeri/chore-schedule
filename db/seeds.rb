@@ -21,6 +21,7 @@ cats[:bedroom]  = Category.create!(name: "Bedroom", color: nil)
 cats[:kitchen]  = Category.create!(name: "Kitchen", color: nil)
 cats[:living]   = Category.create!(name: "Living Room", color: nil)
 cats[:yard]     = Category.create!(name: "Yard", color: nil)
+cats[:garage]   = Category.create!(name: "Garage", color: nil)
 
 Chore.create!(description: "Clean shower", frequency: 1, frequency_type: :weeks, category_id: cats[:bathroom].id)
 Chore.create!(description: "Clean toilet", frequency: 2, frequency_type: :weeks, category_id: cats[:bathroom].id)

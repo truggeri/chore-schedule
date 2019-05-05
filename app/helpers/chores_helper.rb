@@ -61,18 +61,17 @@ module ChoresHelper
   end
 
   def history_columns(logs)
-    if logs.present?
-      output = []
-      logs.each do |log|
-        name_tag = content_tag(:h6, safe_join([fa_icon("user"), log.user&.name], " "))
-        output << content_tag(:div, name_tag, class: "col-5 text-left chore-padding-8 chore-border-ultralight")
-        time_tag = content_tag(:span, log.performed_at.strftime("%a, %B %e %Y, %l %P"), class: "text-right")
-        output << content_tag(:div, time_tag, class: "col-7 text-right chore-padding-8 chore-border-ultralight")
-      end
-      safe_join(output)
-    else
-      content_tag(:div, "This chore hasn't been performed yet", class: "col font-italic")
+    if logs.blank?
+      return content_tag(:div, "This chore hasn't been performed yet", class: "col font-italic")
     end
+    output = []
+    logs.each do |log|
+      name_tag = content_tag(:h6, safe_join([fa_icon("user"), log.user&.name], " "))
+      output << content_tag(:div, name_tag, class: "col-5 text-left chore-padding-8 chore-border-ultralight")
+      time_tag = content_tag(:span, log.performed_at.strftime("%a, %B %e %Y, %l %P"), class: "text-right")
+      output << content_tag(:div, time_tag, class: "col-7 text-right chore-padding-8 chore-border-ultralight")
+    end
+    safe_join(output)
   end
 
   def last_performed_text(chore)
