@@ -37,38 +37,5 @@
   </div>
 </div>
 
-
-<% if false && @chores.present? && @chores.size.positive? %>
-  <table class="table">
-    <thead class="" >
-    <tr>
-      <% %i[description frequency perform_next].each do |column| %>
-        <th scope="col"><%= header_with_sort(column) %></th>
-      <% end %>
-      <th scope="col"><%= header_with_sort(:perform_next, "Days until Due") %></th>
-      <th scope="col">&nbsp;</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @chores.each do |chore| %>
-      <tr>
-        <td>
-          <%= category_mini_link(chore.category) %>
-          <%= link_to(chore.description, chore_path(chore)) %>
-        </td>
-        <td><%= link_to([chore.frequency, chore.frequency_type].join(" "), chore_path(chore)) %></td>
-        <td><%= link_to(chore.perform_next&.strftime("%a, %B %e %Y"), chore_path(chore)) %></td>
-        <td><%= days_until_due(chore) %></td>
-        <td><button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"
-                    onclick="adjust_delete_path('<%= chore_path(chore) %>', '<%= chore.description %>')">
-          <i class="fa fa-trash"></i>
-        </button>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-<% end %>
-
 <%= render("create_modal") %>
 <%= render("remove_confirm_modal") %>

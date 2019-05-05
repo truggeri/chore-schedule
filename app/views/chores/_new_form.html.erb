@@ -1,26 +1,25 @@
-<% if @chore.present? %>
-  <%= form_for @chore, url: { action: "create" } do |f| %>
-    <div class="form-group">
-      <%= label(:chore, :description) %>
-      <%= f.text_field(:description, class: "form-control") %>
+<% return unless @chore.present? %>
+<%= form_for @chore, url: { action: "create" } do |f| %>
+  <div class="form-group">
+    <%= label(:chore, :description) %>
+    <%= f.text_field(:description, class: "form-control") %>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= label(:chore, :frequency) %>
+      <%= f.text_field(:frequency, class: "form-control") %>
     </div>
+    <div class="form-group col-md-6 align-bottom">
+      <%= f.select(:frequency_type, Chore.frequency_types, class: "form-control") %>
+    </div>
+    <small class="form-text text-muted">How often is this chore performed?</small>
+  </div>
+  <% if @categories&.size.positive? %>
     <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= label(:chore, :frequency) %>
-        <%= f.text_field(:frequency, class: "form-control") %>
+      <div class="form-group">
+        <%= label(:chore, :category) %>
+        <%= category_select(@categories) %>
       </div>
-      <div class="form-group col-md-6 align-bottom">
-        <%= f.select(:frequency_type, Chore.frequency_types, class: "form-control") %>
-      </div>
-      <small class="form-text text-muted">How often is this chore performed?</small>
     </div>
-    <% if @categories&.size.positive? %>
-      <div class="form-row">
-        <div class="form-group">
-          <%= label(:chore, :category) %>
-          <%= category_select(@categories) %>
-        </div>
-      </div>
-    <% end %>
   <% end %>
 <% end %>
