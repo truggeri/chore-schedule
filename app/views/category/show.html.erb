@@ -11,7 +11,7 @@
               <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Categories"]), category_index_path) %>
             </div>
             <div class="col text-right">
-              <%= category_badge_with_count(@category, @chores.size) %>
+              <%= category_badge_with_count(@category, "#{@chores.size} chores") %>
             </div>
           </div>
         </div>

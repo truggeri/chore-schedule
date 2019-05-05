@@ -6,12 +6,12 @@
   $('#new_category').trigger( "submit" )
   return
 
-@adjust_delete_path = (path, name) ->
+@adjust_category_delete_path = (path, name) ->
   $.ajaxSetup url: path
   $('#category-name').text(" " + name)
   return
 
-initial_delete_setup = () ->
+initial_category_delete_setup = () ->
   $.ajaxSetup
     type: 'DELETE'
     headers: 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -22,4 +22,4 @@ initial_delete_setup = () ->
       return
   return
 
-initial_delete_setup()
+initial_category_delete_setup()
