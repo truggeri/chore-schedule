@@ -41,4 +41,4 @@ enable_tooltips = () ->
   $('[data-toggle="tooltip"]').tooltip()
   return
 
-enable_tooltips()
+$(document).ready(enable_tooltips())
