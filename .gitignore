@@ -10,6 +10,8 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+
+# Ignore postgres db
 /data
 
 # Ignore all logfiles and tempfiles.
@@ -31,6 +33,11 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore JetBrains files
 .idea
 
+# Ignore MacOSX thumbnail files
 .DS_Store
+
+# Ignore env files
+*.env
