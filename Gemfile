@@ -3,10 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
+gem 'pg', '~> 1.1.4'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
-gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
 
 # third-party gems
