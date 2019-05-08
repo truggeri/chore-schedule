@@ -20,7 +20,7 @@
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <% flash.each do |message_type, message| %>
-        <% message_type = "danger"  if message_type == "error" %>
+        <% message_type = "danger"  if message_type == "error" || message_type == "alert" %>
         <% message_type = "primary" if message_type == "notice" %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type} alert-padding") %>
       <% end %>

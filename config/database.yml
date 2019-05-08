@@ -10,7 +10,7 @@ default: &default
   port: 5432
   pool: 5
   timeout: 5000
-  username: <%= ENV['CHORE_SCHEDULE_DB_USERNAME'] %>
+  username: <%= ENV["CHORE_SCHEDULE_DB_USERNAME"] %>
   password: <%= ENV["CHORE_SCHEDULE_DB_PASSWORD"] %>
 
 development:
