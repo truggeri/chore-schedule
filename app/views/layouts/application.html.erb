@@ -18,7 +18,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container-fluid">
+    <div class="container-fluid body-container">
       <% flash.each do |message_type, message| %>
         <% message_type = "danger"  if message_type == "error" || message_type == "alert" %>
         <% message_type = "primary" if message_type == "notice" %>
