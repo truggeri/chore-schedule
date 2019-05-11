@@ -41,8 +41,8 @@ module ChoresHelper
   end
 
   def chore_sort_icon(order)
-    klass = order == :desc ? "fas fa-sort-alpha-up" : "fas fa-sort-alpha-down"
-    content_tag(:i, "", class: klass)
+    klass = order == :desc ? "sort-alpha-up" : "sort-alpha-down"
+    fa_icon(klass, "fas")
   end
 
   def chore_sort_links

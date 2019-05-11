@@ -22,11 +22,11 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-// https://fontawesome.com/how-to-use/on-the-web/using-with/sass
-@import url(asset-path("font-awesome/fontawesome.scss"));
-@import url(asset-path("font-awesome/brands.scss"));
-@import url(asset-path("font-awesome/solid.scss"));
 
+// https://fontawesome.com/how-to-use/on-the-web/using-with/sass
+@import "fontawesome/fontawesome.scss";
+@import "fontawesome/solid.scss";
+@import "fontawesome/brands.scss";
 
 a {
   color: $link-color;

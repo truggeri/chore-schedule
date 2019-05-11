@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-    <%= link_to(safe_join([content_tag(:i, "", class: "fas fa-clipboard-list"), " Chore Schedule"]),
+    <%= link_to(safe_join([fa_icon("clipboard-list", "fas"), " Chore Schedule"]),
                 root_url, class: "navbar-brand") %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +18,10 @@
       </ul>
       <div class="navbar-user">
         <% if account_signed_in? %>
-          <%= link_to(safe_join([content_tag(:i, "", class: "fas fa-door-open"),"  Sign Out"]),
+          <%= link_to(safe_join([fa_icon("door-open", "fas"),"  Sign Out"]),
                       destroy_account_session_path, method: :delete) %>
         <% else %>
-          <%= link_to(safe_join([content_tag(:i, "", class: "fa fa-user"), "  Log in"]),
+          <%= link_to(safe_join([fa_icon("user"), "  Log in"]),
                       new_account_session_path) %>
         <% end %>
       </div>
