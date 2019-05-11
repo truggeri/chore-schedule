@@ -41,3 +41,4 @@
 
 # Ignore env files
 *.env
+production.yaml
