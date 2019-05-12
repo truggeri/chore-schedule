@@ -26,7 +26,19 @@ $color-grass: #486B00;
 $color-lime: #A2C523;
 $color-earth: #7D4427;
 
-$background-color: #f0f0f0;
+// Gray
+$color-gray-bg: #F0F0F0;
+$color-gray-button-bg: #EEEEEE;
+$color-gray-button-border: #333333;
+$color-gray-header: #505160;
+$color-gray-header-border: #656673;
+$color-gray-bg-light: #FFFFFF;
+$color-gray-link: #68829E;
+$color-gray-nav-header: #505160;
+$color-gray-nav-primary: #CCCCCC;
+
+// Final output
+$background-color: $color-gray-bg;
 $button-bg-color: #eee;
 $button-border-color: #333;
 $header-color: $color-thunder-cloud;
