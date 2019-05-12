@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colors.scss";
+
 .chore-border-light {
   border-top: 1px solid #bbb;
 }
@@ -15,7 +17,7 @@
   padding: 12px 8px 12px 8px;
 
   .bottom-row {
-    color: #555;
+    color: $body-text-color;
     display: flex;
     flex-direction: row;
     font-size: 14px;

@@ -1,49 +1,47 @@
-$color-blue: #D7E8F3;
-$color-yellow: #DFDB90;
-$color-dark-green: #324536;
-$color-green: #0B6D64;
-$color-red: #B93D69;
-
-$color-2-green: #324536;
-$color-2-yellow: #BABA38;
-$color-2-tan: #DCDAC3;
-$color-2-lime: #AABF62;
-$color-3-lime-light: rgb(215,227,161);
-$color-3-lime-dark: rgb(140, 155, 70);
-$color-3-lime-dark2: #63781A;
-$color-2-red: #954E5C;
-
 // Crisp & Dramatic
-$color-thunder-cloud: #505160;
-$color-thunder-cloud-light: #D2D4F6;
-$color-waterfall: #68829E;
-$color-moss: #AEBD38;
-$color-meadow: #598234;
+$color-thunder-cloud:       #505160;
+$color-thunder-cloud-light: #F5F6FB;
+$color-thunder-cloud-dark:  #404150;
+$color-waterfall:           #68829E;
+//$color-moss:                #AEBD38;
+//$color-meadow:              #598234;
 
-// Outdoorsy & Natural
-$color-forest-green: #2E4600;
-$color-grass: #486B00;
-$color-lime: #A2C523;
-$color-earth: #7D4427;
+// Gradient off Thunder Cloud
+// https://mycolor.space/?hex=%23505160&sub=1
+$color-purple:              #826684;
+$color-rose:                #C37990;
+$color-blush:               #F79484;
+$color-tangerine:           #FFC06F;
+$color-lemon:               #F9F871;
 
 // Gray
-$color-gray-bg: #F0F0F0;
-$color-gray-button-bg: #EEEEEE;
-$color-gray-button-border: #333333;
-$color-gray-header: #505160;
-$color-gray-header-border: #656673;
-$color-gray-bg-light: #FFFFFF;
-$color-gray-link: #68829E;
-$color-gray-nav-header: #505160;
-$color-gray-nav-primary: #CCCCCC;
+//$color-gray-bg:            #F0F0F0;
+//$color-gray-button-bg:     #EEEEEE;
+//$color-gray-button-border: #333333;
+//$color-gray-header:        #505160;
+//$color-gray-header-border: #656673;
+//$color-gray-bg-light:      #FFFFFF;
+//$color-gray-link:          #68829E;
+//$color-gray-nav-header:    #505160;
+//$color-gray-nav-primary:   #CCCCCC;
+
+// Bootstrap overrides
+$danger:                   $color-blush;
+$primary:                  $color-rose;
+$secondary:                $color-thunder-cloud;
+$success:                  $color-purple;
 
 // Final output
-$background-color: $color-gray-bg;
-$button-bg-color: #eee;
-$button-border-color: #333;
-$header-color: $color-thunder-cloud;
-$header-border-color: #656673;
-$light-bg-color: white;
-$link-color: $color-waterfall;
-$nav-header-color: $header-color;
-$nav-primary-color: #ccc;
+$background-color:         #FFFEF6;
+$background-color-dark:    #E9E9E0;
+$body-text-color:          $color-thunder-cloud;
+$header-color:             $color-purple;
+$header-border-color:      $color-purple;
+$light-bg-color:           #fdfdfd;
+$link-color:               $color-thunder-cloud;
+$link-color-hover:         $color-rose;
+$nav-bg-color:             $color-waterfall;
+$nav-bg-color-light:       #9fBbD6;
+$nav-header-color:         $color-thunder-cloud-light;
+$nav-link-color:           $color-thunder-cloud-light;
+$nav-link-color-hover:     $color-lemon;

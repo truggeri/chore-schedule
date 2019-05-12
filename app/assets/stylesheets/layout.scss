@@ -11,7 +11,7 @@ footer {
 
   p {
     font-size: 13px;
-    color:     #777;
+    color:     $body-text-color;
   }
 }
 
@@ -29,10 +29,12 @@ footer {
   padding: 4px;
   margin: 24px 8px 8px 8px;
 }
+
 .main-content {
   padding: 8px;
   width: 100%;
 }
+
 .main-header {
   background-color: $light-bg-color;
   border: 2px solid $header-border-color;
@@ -43,11 +45,12 @@ footer {
   font-weight: 600;
   margin-left: auto;
   margin-right: auto;
+  min-height: 38px;
   line-height: 28px;
   padding: 4px 24px 4px 24px;
   position: relative;
   text-align: center;
-  top: -32px;
+  top: -28px;
 }
 
 .main-row {
