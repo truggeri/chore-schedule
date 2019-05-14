@@ -26,6 +26,6 @@ namespace :account do
     account = Account.find_by(id: input.to_i)
     account = Account.find_by(email: input) unless account.present?
 
-    account.delete
+    account.delete if account.present?
   end
 end
