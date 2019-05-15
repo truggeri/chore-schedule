@@ -18,7 +18,7 @@
   src: url(asset-path('PermanentMarker-Regular.ttf'));
 }
 
-@import "*";
+@import "custom-bootstrap.scss";
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
@@ -27,6 +27,8 @@
 @import "fontawesome/fontawesome.scss";
 @import "fontawesome/solid.scss";
 @import "fontawesome/brands.scss";
+
+@import "*";
 
 a {
   color: $link-color;
