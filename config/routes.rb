@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     get 'perform_now', on: :member
   end
   resources :category, only: %i[index show create destroy]
+
+  get '/service-worker.js', to: "service_worker#service_worker"
+  get '/manifest.json',     to: "service_worker#manifest"
+  get '/offline.html',      to: "service_worker#offline"
 end
