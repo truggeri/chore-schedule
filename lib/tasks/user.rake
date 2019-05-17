@@ -6,34 +6,21 @@ namespace :user do
   end
 
   desc "Create a user"
-  task :create => :environment do
-    input = {}
-    %i[name].each do |field|
-      puts "#{field.to_s.humanize}:"
-      input[field] = STDIN.gets.chomp
-    end
-
-    user = User.create(name: input[:name])
+  task :create, [:name] => :environment do |_task, args|
+    user = User.create(name: args[:name])
     puts "# User created successfully with id #{user.id}" if user&.persisted?
   end
 
   desc "Remove a user"
-  task :remove => :environment do
-    puts "Id or name of user"
-    input = STDIN.gets.chomp
-
-    user = User.find_by(id: input.to_i)
-    user = User.find_by(name: input) unless user.present?
-
+  task :remove, [:id] => :environment do |_task, args|
+    user = User.find_by(id: args[:id].to_i)
+    user = User.find_by(name: args[:id]) unless user.present?
     user.delete if user.present?
   end
 
   desc "Remove all users"
-  task :remove_all => :environment do
-    puts "Type yes to remove all users:"
-    input = STDIN.gets.chomp
-
-    if input == "yes"
+  task :remove_all, [:confirm] => :environment do |_taks, args|
+    if args[:confirm] == "yes"
       User.all.each do |user|
         user.delete
       end

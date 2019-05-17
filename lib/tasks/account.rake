@@ -6,22 +6,15 @@ namespace :account do
   end
 
   desc "Create an account"
-  task :create => :environment do
-    input = {}
-    %i[email name password password_confirmation].each do |field|
-      puts "#{field.to_s.humanize}:"
-      input[field] = STDIN.gets.chomp
-    end
-
-    account = Account.create(email: input[:email], name: input[:name],
-                             password: input[:password], password_confirmation: input[:password_confirmation])
+  task :create, %i[email name password password_confirmation] => :environment do |_task, args|
+    account = Account.create(email: args[:email], name: args[:name],
+                             password: args[:password], password_confirmation: args[:password_confirmation])
     puts "# Account created successfully with id #{account.id}" if account&.persisted?
   end
 
   desc "Remove an account"
-  task :remove => :environment do
-    puts "Id or email of account"
-    input = STDIN.gets.chomp
+  task :remove, [:id] => :environment do |_task, args|
+    input = args[:id]
 
     account = Account.find_by(id: input.to_i)
     account = Account.find_by(email: input) unless account.present?
