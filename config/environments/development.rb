@@ -18,8 +18,10 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
+    config.assets.version = '1.0'
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, s-maxage=#{1.day.to_i}, max-age=#{181.days.to_i}",
+      'Expires' => 1.day.from_now.to_formatted_s(:rfc822).to_s
     }
   else
     config.action_controller.perform_caching = false
