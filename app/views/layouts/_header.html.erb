@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <%= link_to(safe_join([fa_icon("clipboard-list", "fas"), " Chore Plan for Us"]),
-                root_url, class: "navbar-brand") %>
+                root_url, class: "navbar-brand", 'aria-label': "Go home") %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,10 +21,10 @@
       <div class="navbar-user">
         <% if account_signed_in? %>
           <%= link_to(safe_join([fa_icon("door-open", "fas"),"  Sign Out"]),
-                      destroy_account_session_path, method: :delete) %>
+                      destroy_account_session_path, method: :delete, 'aria-label': "Sign out") %>
         <% else %>
           <%= link_to(safe_join([fa_icon("user"), "  Log in"]),
-                      new_account_session_path) %>
+                      new_account_session_path, 'aria-label': "Log in") %>
         <% end %>
       </div>
     </div>
