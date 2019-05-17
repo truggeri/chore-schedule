@@ -18,8 +18,9 @@ module StaticPagesHelper
     content_tag(:div, safe_join([top_row, bottom_row]), class: "chore-box")
   end
 
-  def more_link(link)
-    link_text = safe_join(["More", fa_icon("angle-double-right")], " ")
+  def more_link(link, additional_text = "")
+    text = additional_text.present? ? "More #{additional_text}" : "More"
+    link_text = safe_join([text, fa_icon("angle-double-right")], " ")
     content_tag(:div, link_to(link_text, link), class: "more-link")
   end
 end

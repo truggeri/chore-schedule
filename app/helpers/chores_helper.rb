@@ -57,7 +57,7 @@ module ChoresHelper
     days = chore.days_until_due
     return days if days.positive?
     return "Today" if days.zero?
-    stylize == true ? content_tag(:span, days.abs, class: "text-danger font-weight-bold") : days.abs
+    stylize == true ? content_tag(:span, days.abs, class: "chore-overdue-text font-weight-bold") : days.abs
   end
 
   def history_columns(logs)
