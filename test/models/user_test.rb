@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id           :integer          not null, primary key
+#  id           :bigint(8)        not null, primary key
 #  chores_total :integer          default(0), not null
 #  chores_week  :integer          default(0), not null
 #  name         :string           not null
