@@ -38,6 +38,18 @@ nav.navbar {
   }
 }
 
+.navbar-family-name {
+  color: $background-color-dark;
+  display: block;
+  padding-right: 16px;
+}
+
+@include media-breakpoint-up(sm) {
+  .navbar-family-name {
+    display: inline;
+  }
+}
+
 .navbar-user {
   a {
     color: $nav-link-color;

@@ -20,6 +20,7 @@
       </ul>
       <div class="navbar-user">
         <% if account_signed_in? %>
+          <%= family_display %>
           <%= link_to(safe_join([fa_icon("door-open", "fas"),"  Sign Out"]),
                       destroy_account_session_path, method: :delete, 'aria-label': "Sign out") %>
         <% else %>
