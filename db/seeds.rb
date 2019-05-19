@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Family.create(name: FFaker::Name.last_name)
+
 Account.create(email: "test@dev.com", name: "Test Account",
                password: ENV['SEED_PASSWORD'] || "password1234",
                password_confirmation: ENV['SEED_PASSWORD'] || "password1234")

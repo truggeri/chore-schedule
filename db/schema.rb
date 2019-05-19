@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_22_125001) do
+ActiveRecord::Schema.define(version: 2019_05_19_014733) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,6 +57,13 @@ ActiveRecord::Schema.define(version: 2019_04_22_125001) do
     t.datetime "perform_next"
     t.index ["category_id"], name: "index_chores_on_category_id"
     t.index ["perform_next"], name: "index_chores_on_preform_next"
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
