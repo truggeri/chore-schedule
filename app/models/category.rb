@@ -8,16 +8,20 @@
 #  name        :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  family_id   :bigint(8)
 #
 # Indexes
 #
-#  index_categories_on_name  (name)
+#  index_categories_on_family_id  (family_id)
+#  index_categories_on_name       (name)
 #
 
 class Category < ApplicationRecord
-  has_many :chores
+  belongs_to :family
+  has_many   :chores
 
   validates :color, format: { with: /[0-9A-Fa-f]{6}/ }, allow_nil: true
+  validates :family, presence: true
   validates :name, presence: true, uniqueness: true
 
   before_validation :add_color, on: :create

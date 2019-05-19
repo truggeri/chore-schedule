@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_014733) do
+ActiveRecord::Schema.define(version: 2019_05_19_020003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 2019_05_19_014733) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "family_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["family_id"], name: "index_accounts_on_family_id"
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_05_19_014733) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "family_id"
+    t.index ["family_id"], name: "index_categories_on_family_id"
     t.index ["name"], name: "index_categories_on_name"
   end
 
@@ -44,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_05_19_014733) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "family_id"
+    t.index ["family_id"], name: "index_chore_performance_logs_on_family_id"
   end
 
   create_table "chores", force: :cascade do |t|
@@ -55,7 +61,9 @@ ActiveRecord::Schema.define(version: 2019_05_19_014733) do
     t.datetime "updated_at", null: false
     t.datetime "last_performed"
     t.datetime "perform_next"
+    t.bigint "family_id"
     t.index ["category_id"], name: "index_chores_on_category_id"
+    t.index ["family_id"], name: "index_chores_on_family_id"
     t.index ["perform_next"], name: "index_chores_on_preform_next"
   end
 
@@ -72,6 +80,8 @@ ActiveRecord::Schema.define(version: 2019_05_19_014733) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "family_id"
+    t.index ["family_id"], name: "index_users_on_family_id"
     t.index ["name"], name: "index_users_on_name"
   end
 

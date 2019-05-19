@@ -11,18 +11,22 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  category_id    :bigint(8)
+#  family_id      :bigint(8)
 #
 # Indexes
 #
 #  index_chores_on_category_id   (category_id)
+#  index_chores_on_family_id     (family_id)
 #  index_chores_on_preform_next  (perform_next)
 #
 
 class Chore < ApplicationRecord
-  has_many    :chore_performance_logs, dependent: :destroy
-  belongs_to  :category, counter_cache: :chore_count, optional: true
+  belongs_to :category, counter_cache: :chore_count, optional: true
+  belongs_to :family
+  has_many   :chore_performance_logs, dependent: :destroy
 
   validates :description, presence: true, length: { maximum: 100 }, uniqueness: true
+  validates :family, presence: true
   enum frequency_type: { days: 0, weeks: 1, months: 2 }
   validates :frequency, numericality: { greater_than: 0 }
 

@@ -12,5 +12,4 @@
 class Family < ApplicationRecord
   validates :name, uniqueness: true, length: { maximum: 100 }, format: { with: /\A[a-zA-Z0-9 -]+\z/,
                                                                          message: "only allows letters, numbers and -" }
-
 end

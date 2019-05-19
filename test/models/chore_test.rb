@@ -11,10 +11,12 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  category_id    :bigint(8)
+#  family_id      :bigint(8)
 #
 # Indexes
 #
 #  index_chores_on_category_id   (category_id)
+#  index_chores_on_family_id     (family_id)
 #  index_chores_on_preform_next  (perform_next)
 #
 

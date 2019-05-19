@@ -11,10 +11,12 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  family_id              :bigint(8)
 #
 # Indexes
 #
 #  index_accounts_on_email                 (email) UNIQUE
+#  index_accounts_on_family_id             (family_id)
 #  index_accounts_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
