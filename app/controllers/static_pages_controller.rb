@@ -4,8 +4,8 @@ class StaticPagesController < ApplicationController
   def index; end
 
   def dashboard
-    @chores = Chore.front_page
+    @chores = Chore.front_page.family(current_account&.family)
     @chore = Chore.new
-    @categories = Category.front_page
+    @categories = Category.front_page.family(current_account&.family)
   end
 end

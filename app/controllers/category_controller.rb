@@ -2,17 +2,18 @@ class CategoryController < ApplicationController
   before_action :authenticate_account!
 
   def index
-    @categories = Category.all.order(name: :asc)
+    @categories = Category.family(current_account&.family).order(name: :asc)
     @category = Category.new
   end
 
   def show
-    @category = Category.find_by(id: params[:id])
+    @category = Category.find_by(id: params[:id], family: current_account&.family)
     @chores   = @category&.chores
   end
 
   def create
     @category = Category.new(permitted_params)
+    @category.family = current_account&.family
     if @category.save
       flash[:success] = "#{@category.name} created successfully"
     else
@@ -22,7 +23,7 @@ class CategoryController < ApplicationController
   end
 
   def destroy
-    @chore = Category.find_by(id: params[:id])
+    @chore = Category.find_by(id: params[:id], family: current_account&.family)
     if @chore&.delete
       flash[:success] = "Category successfully removed"
     else
