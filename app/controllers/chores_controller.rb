@@ -33,6 +33,22 @@ class ChoresController < ApplicationController
     end
   end
 
+  def edit
+    @chore = Chore.includes(:category).find_by(id: params[:id], family: current_account&.family)
+    @categories = Category.family(current_account&.family).pluck(:name, :id)
+  end
+
+  def update
+    @chore = Chore.includes(:category).find_by(id: params[:id], family: current_account&.family)
+    if @chore&.update_attributes(permitted_params)
+      flash[:success] = "Chore '#{@chore.description}' has been updated"
+      redirect_to(@chore)
+    else
+      flash[:error] = "Chore update as unsuccessful"
+      redirect_to(chores_path)
+    end
+  end
+
   def destroy
     @chore = Chore.find_by(id: params[:id], family: current_account&.family)
     if @chore&.delete

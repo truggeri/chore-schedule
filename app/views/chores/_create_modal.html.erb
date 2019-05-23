@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= render("new_form") %>
+        <%= render(partial: "form", locals: { show_buttons: false }) %>
       </div>
       <div class="modal-footer row">
         <div class="col">

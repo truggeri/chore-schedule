@@ -28,7 +28,6 @@
           <div class="col-12 chore-padding-8 chore-border-light"><h5>Perform Now</h5></div>
           <div class="col-12"></div>
           <%= perform_as_columns(@users) %>
-<!--          <div class="col"></div>-->
         </div>
         <div class="row chore-padding-16">
           <div class="col-12 chore-padding-8 chore-border-light">
@@ -42,7 +41,12 @@
           <%= history_columns(@logs) %>
         </div>
         <div class="row chore-padding-16">
-          <div class="col text-center">
+          <div class="col-6 text-center">
+            <button class="btn btn-outline-primary" onclick="window.location.href = '<%= edit_chore_path(@chore) %>';">
+              <%= fa_icon("edit", "fas") %> Edit
+            </button>
+          </div>
+          <div class="col-6 text-center">
             <button class="btn btn-outline-danger" data-toggle="modal" data-target="#removeConfirmModal">
               <%= fa_icon("trash") %> Remove
             </button>
