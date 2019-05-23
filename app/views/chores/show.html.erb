@@ -42,7 +42,7 @@
         </div>
         <div class="row chore-padding-16">
           <div class="col-6 text-center">
-            <button class="btn btn-outline-primary" onclick="window.location.href = '<%= edit_chore_path(@chore) %>';">
+            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editChoreModal">
               <%= fa_icon("edit", "fas") %> Edit
             </button>
           </div>
@@ -58,9 +58,10 @@
 </div>
 
 <%= render("remove_confirm_modal") %>
+<%= render("edit_modal") %>
 
 <script>
-  window.onload = function() {
+  document.addEventListener("turbolinks:load", function() {
     adjust_delete_path('<%= chore_path(@chore) %>', '<%= @chore.description %>');
-  };
+  });
 </script>

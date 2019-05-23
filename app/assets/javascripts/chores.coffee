@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+@chore_edit_submit = (id) ->
+  $('#edit_chore_'+id).trigger( "submit" )
+  return
+
 @chore_new_submit = () ->
   $('#new_chore').trigger( "submit" )
   return

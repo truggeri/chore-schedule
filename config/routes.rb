@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'static_pages#dashboard'
-  resources :chores, only: %i[index show create edit update destroy] do
+  resources :chores, only: %i[index show create update destroy] do
     get 'perform_now', on: :member
   end
   resources :category, only: %i[index show create destroy]
