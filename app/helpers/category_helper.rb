@@ -28,7 +28,7 @@ module CategoryHelper
     trash_button = <<~END_OF_BUTTON
       <button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"
       onclick="adjust_category_delete_path('#{category_path(category)}', '#{category.name}');">
-      <i class="fa fa-trash"></i>
+      #{fa_icon('trash')}
       </button>
     END_OF_BUTTON
     cols << content_tag(:div, trash_button.html_safe, class: "#{COLUMN_CLASSES} col-md-1 col-3 text-center")
