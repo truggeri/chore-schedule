@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@category_new_submit = () ->
+@create_category_submit = () ->
   $('#new_category').trigger( "submit" )
   return
 

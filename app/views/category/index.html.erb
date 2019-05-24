@@ -20,5 +20,5 @@
   </div>
 </div>
 
-<%= render("create_modal") %>
+<%= render(partial: "shared/generic_modal", locals: { action: "create", model: "category" }) %>
 <%= render("remove_confirm_modal") %>
