@@ -16,7 +16,7 @@ module ChoresHelper
 
   def chore_edit_modal
     render(
-      partial: "generic_modal",
+      partial: "shared/generic_modal",
       locals: {
         action: "edit",
         form: render(partial: "form", locals: { given_action: "update", show_buttons: false }),
