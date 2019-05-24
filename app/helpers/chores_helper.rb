@@ -14,6 +14,19 @@ module ChoresHelper
     content_tag(:div, link, id: "category-badge")
   end
 
+  def chore_edit_modal
+    render(
+      partial: "generic_modal",
+      locals: {
+        action: "edit",
+        form: render(partial: "form", locals: { given_action: "update", show_buttons: false }),
+        form_action: "edit_chore_submit(#{@chore.id});",
+        model: "chore",
+        submit_icon: fa_icon("edit", "fas"),
+      }
+    )
+  end
+
   def category_mini_badge(category)
     color = category&.color.presence || "f0f0f0"
     style = "background-color: \##{color}; margin-right: 8px; border: 1px solid \##{color}"
