@@ -31,6 +31,7 @@ class Chore < ApplicationRecord
   validates :frequency, numericality: { greater_than: 0 }
 
   before_create :set_first_time
+  before_save   :adjust_perform_next
 
   def set_first_time
     self.perform_next = Time.now.utc + frequency_to_time
@@ -42,6 +43,10 @@ class Chore < ApplicationRecord
 
   def frequency_to_time
     eval("#{frequency}.#{frequency_type}")
+  end
+
+  def adjust_perform_next
+    self.perform_next = last_performed + frequency_to_time if last_performed.present?
   end
 
   def self.front_page(limit: 5)
