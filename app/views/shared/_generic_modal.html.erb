@@ -21,10 +21,18 @@
         <%= form %>
       </div>
       <div class="modal-footer">
-        <button type="button" value="<%= action.capitalize %>" class="btn btn-primary" onclick="<%= form_action %>">
-          <%= submit_icon %> <%= action.capitalize %>
-        </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <button type="button" value="<%= action.capitalize %>"
+                      class="btn btn-primary" onclick="<%= form_action %>">
+                <%= submit_icon %> Save</button>
+            </div>
+            <div class="col-6 text-right">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
