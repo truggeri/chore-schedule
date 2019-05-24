@@ -1,12 +1,12 @@
 class ChoresController < ApplicationController
   before_action :authenticate_account!
+  before_action :load_categories, only: %i[index show]
 
   def index
     @sort = determine_sort(params[:sort].presence)
     @order = determine_order(params[:order].presence)
     @chores = Chore.family(current_account&.family).order(@sort => @order)
     @chore = Chore.new
-    @categories = Category.family(current_account&.family).pluck( :name, :id)
   end
 
   def show
@@ -16,10 +16,6 @@ class ChoresController < ApplicationController
                                .family(current_account&.family)
                                .order(performed_at: :desc).limit(5)
     @users = User.family(current_account&.family)
-  end
-
-  def new
-    @chore = Chore.new
   end
 
   def create
@@ -80,6 +76,10 @@ class ChoresController < ApplicationController
   end
 
   private
+
+  def load_categories
+    @categories = Category.family(current_account&.family).pluck( :name, :id)
+  end
 
   def determine_sort(param)
     return :perform_next unless param&.to_sym.in?(%i[description frequency perform_next])

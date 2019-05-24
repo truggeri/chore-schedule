@@ -1,6 +1,5 @@
 <% return unless @chore.present? %>
 <% given_action ||= "create" %>
-<% show_buttons ||= false %>
 <%= form_for @chore, url: { action: given_action } do |f| %>
   <div class="row">
     <div class="col-12 chore-padding-8">
@@ -12,21 +11,13 @@
       <%= f.text_field(:frequency, class: "form-control") %>
     </div>
     <div class="col-4 chore-padding-8" style="margin-top: 40px;">
-      <%= f.select(:frequency_type, Chore.frequency_types, class: "form-control") %>
+      <%= f.select(:frequency_type, Chore.frequency_types,
+                   class: "form-control", selected: Chore.frequency_types[@chore.frequency_type]) %>
     </div>
     <% if @categories&.size&.positive? %>
       <div class="col-12 chore-padding-8">
         <%= label(:chore, :category) %><br />
         <%= category_select(@categories) %>
-      </div>
-    <% end %>
-    <% if show_buttons %>
-      <div class="col-6 chore-padding-8 text-center">
-        <%= f.submit("Save", class: "btn btn-primary") %>
-      </div>
-      <div class="col-6 chore-padding-8 text-center">
-        <button type="button" class="btn btn-secondary"
-                onclick="window.location.href = '<%= chore_path(@chore) %>';">Cancel</button>
       </div>
     <% end %>
   </div>
