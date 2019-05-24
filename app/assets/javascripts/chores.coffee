@@ -45,4 +45,6 @@ enable_tooltips = () ->
   $('[data-toggle="tooltip"]').tooltip()
   return
 
-$(document).ready(enable_tooltips())
+document.addEventListener 'turbolinks:load', ->
+  enable_tooltips()
+  return
