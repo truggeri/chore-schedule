@@ -8,6 +8,7 @@
 #  name         :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  account_id   :bigint(8)
 #  family_id    :bigint(8)
 #
 # Indexes
@@ -21,6 +22,11 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = create(:user)
+  end
+
+  test "has account" do
+    @user.account = nil
+    assert(!@user.valid?)
   end
 
   test "has family" do

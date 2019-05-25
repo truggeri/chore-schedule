@@ -8,14 +8,13 @@
 
 fam = Family.create(name: FFaker::Name.last_name)
 
-Account.create(email: "test@dev.com", name: "Test Account",
+acc = Account.create(email: "test@dev.com", name: "Test Account",
                password: ENV['SEED_PASSWORD'] || "password1234",
                password_confirmation: ENV['SEED_PASSWORD'] || "password1234", family: fam)
 
-User.create!(name: "Thomas", family: fam)
-User.create!(name: "Claire", family: fam)
-User.create!(name: "Benny", family: fam)
-User.create!(name: "Lilah", family: fam)
+%w[Thomas Claire Benny Lilah].each do |name|
+  User.create!(name: name, account: acc, family: fam)
+end
 
 cats = {}
 cats[:bathroom] = Category.create!(name: "Bathroom", color: nil, family: fam)

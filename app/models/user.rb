@@ -8,6 +8,7 @@
 #  name         :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  account_id   :bigint(8)
 #  family_id    :bigint(8)
 #
 # Indexes
@@ -17,9 +18,11 @@
 #
 
 class User < ApplicationRecord
+  belongs_to :account
   belongs_to :family
   has_many   :chore_performance_log, dependent: :nullify
 
-  validates :family, presence: true
-  validates :name,   presence: true
+  validates :account, presence: true
+  validates :family,  presence: true
+  validates :name,    presence: true
 end

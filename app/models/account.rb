@@ -26,6 +26,7 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   belongs_to :family
+  has_one :user
 
   validates :family, presence: true
 end

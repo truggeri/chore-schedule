@@ -8,6 +8,7 @@
 #  name         :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  account_id   :bigint(8)
 #  family_id    :bigint(8)
 #
 # Indexes
@@ -18,6 +19,7 @@
 
 FactoryBot.define do
   factory :user do
+    account
     chores_total { Random.rand(0..5) }
     chores_week  { Random.rand(0..chores_total) }
     family
