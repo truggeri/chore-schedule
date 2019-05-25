@@ -7,7 +7,7 @@ FactoryBot.define do
     last_performed { FFaker::Time.between(1.month.ago, 1.minute.ago) }
 
     after(:create) do |chore|
-      log = create(:chore_performance_logs, chore: chore, family: chore.family, performed_at: last_performed)
+      log = create(:chore_performance_log, chore: chore, family: chore.family, performed_at: chore.last_performed)
       chore.chore_performance_logs << log
     end
 

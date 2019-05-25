@@ -8,7 +8,9 @@ FactoryBot.define do
 
     after(:create) do |log|
       chore = log.chore
-      chore.update(:last_performed, log.performed_at) if chore.last_performed < log.performed_at
+      if chore.last_performed.present? && chore.last_performed < log.performed_at
+        chore.update(last_performed: log.performed_at)
+      end
     end
   end
 end

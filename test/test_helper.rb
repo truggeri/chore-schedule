@@ -4,6 +4,6 @@ require "rails/test_help"
 
 module ActiveSupport
   class TestCase
-    fixtures :none
+    include FactoryBot::Syntax::Methods
   end
 end

@@ -20,10 +20,30 @@
 #  index_chores_on_preform_next  (perform_next)
 #
 
-require 'test_helper'
+require "test_helper"
 
 class ChoreTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @chore = create(:chore, :never_done)
+  end
+
+  # NOTE - good candidate for Timecop
+  test "first time due" do
+    assert_in_delta(Time.now.utc + eval("#{@chore.frequency}.#{@chore.frequency_type}"), @chore.perform_next, 5.seconds)
+  end
+
+  test "description not nil" do
+    @chore.description = [nil, "", "  "].sample
+    assert(!@chore.valid?)
+  end
+
+  test "description length 100" do
+    @chore.description = FFaker::Lorem.characters(101)
+    assert(!@chore.valid?)
+  end
+
+  test "frequency > 0" do
+    @chore.frequency = 0
+    assert(!@chore.valid?)
+  end
 end
