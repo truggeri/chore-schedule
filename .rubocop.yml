@@ -12,7 +12,7 @@ Layout/EmptyLines:
   Exclude:
     - 'Gemfile'
 Layout/EmptyLineAfterGuardClause:
-  Enabled: false
+  Enabled: true
 Layout/ExtraSpacing:
   Enabled: true
   Exclude:
