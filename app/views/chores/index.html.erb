@@ -1,43 +1,30 @@
 <% provide(:title, "Chores") %>
 
-<div class="main-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 main-column">
-        <div class="container">
-          <div class="row main-row">
-            <div class="main-header">Chores</div>
-          </div>
-          <div class="row row-padded">
-            <div class="col">
-              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
-                <%= fa_icon("plus-circle") %> Create
-              </button>
-            </div>
-            <div class="col" style="text-align: right;">
-              <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= chore_sort_icon(@order) %> <%= chore_sort_by_name %>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="sortMenuButton">
-                  <%= chore_sort_links %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% @chores.each do |chore| %>
-            <div class="row">
-              <div class="col-sm column-box">
-                <%= chore_box(chore) %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+<div class="row row-padded">
+  <div class="col">
+    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
+      <%= fa_icon("plus-circle") %> Create
+    </button>
+  </div>
+  <div class="col" style="text-align: right;">
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= chore_sort_icon(@order) %> <%= chore_sort_by_name %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="sortMenuButton">
+        <%= chore_sort_links %>
       </div>
     </div>
   </div>
 </div>
+<% @chores.each do |chore| %>
+  <div class="row">
+    <div class="col-sm column-box">
+      <%= chore_box(chore) %>
+    </div>
+  </div>
+<% end %>
 
 <%= render(partial: "shared/generic_modal", locals: { action: "create", model: "chore" }) %>
 <%= render("remove_confirm_modal") %>

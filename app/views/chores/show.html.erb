@@ -1,61 +1,48 @@
 <% provide(:title, @chore&.description || "Chore") %>
 
-<div class="main-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 main-column">
-        <div class="container">
-          <div class="row main-row">
-            <div class="main-header"><%= @chore.description %></div>
-          </div>
-          <div class="row text-left">
-            <div class="col text-left">
-              <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Chores"]), chores_url) %>
-            </div>
-            <div class="col text-right">
-              <%= category_badge(@chore) %>
-            </div>
-          </div>
-          <div class="row"><div class="col">&nbsp;</div></div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= last_performed_text(@chore) %>
-            </div>
-            <div class="col-md-6 text-right">
-              Due by <br /><%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
-            </div>
-          </div>
-        </div>
-        <div class="row chore-padding-16">
-          <div class="col-12 chore-padding-8 chore-border-light"><h5>Perform Now</h5></div>
-          <div class="col-12"></div>
-          <%= perform_as_columns(@users) %>
-        </div>
-        <div class="row chore-padding-16">
-          <div class="col-12 chore-padding-8 chore-border-light">
-            <h5>
-              History
-              <i class="fa fa-info-circle" style="font-size: 12px;" data-toggle="tooltip" data-placement="right"
-                 title="The last five times this chore was performed"></i>
-            </h5>
-          </div>
-          <div class="col-12 chore-padding-8" style="font-style: italic; font-size: 13px;"></div>
-          <%= history_columns(@logs) %>
-        </div>
-        <div class="row chore-padding-16">
-          <div class="col-6 text-center">
-            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editChoreModal">
-              <%= fa_icon("edit", "fas") %> Edit
-            </button>
-          </div>
-          <div class="col-6 text-center">
-            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#removeConfirmModal">
-              <%= fa_icon("trash") %> Remove
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row text-left">
+  <div class="col text-left">
+    <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Chores"]), chores_url) %>
+  </div>
+  <div class="col text-right">
+    <%= category_badge(@chore) %>
+  </div>
+</div>
+<div class="row"><div class="col">&nbsp;</div></div>
+<div class="row">
+  <div class="col-md-6">
+    <%= last_performed_text(@chore) %>
+  </div>
+  <div class="col-md-6 text-right">
+    Due by <br /><%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
+  </div>
+</div>
+<div class="row chore-padding-16">
+  <div class="col-12 chore-padding-8 chore-border-light"><h5>Perform Now</h5></div>
+  <div class="col-12"></div>
+  <%= perform_as_columns(@users) %>
+</div>
+<div class="row chore-padding-16">
+  <div class="col-12 chore-padding-8 chore-border-light">
+    <h5>
+      History
+      <i class="fa fa-info-circle" style="font-size: 12px;" data-toggle="tooltip" data-placement="right"
+         title="The last five times this chore was performed"></i>
+    </h5>
+  </div>
+  <div class="col-12 chore-padding-8" style="font-style: italic; font-size: 13px;"></div>
+  <%= history_columns(@logs) %>
+</div>
+<div class="row chore-padding-16">
+  <div class="col-6 text-center">
+    <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editChoreModal">
+      <%= fa_icon("edit", "fas") %> Edit
+    </button>
+  </div>
+  <div class="col-6 text-center">
+    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#removeConfirmModal">
+      <%= fa_icon("trash") %> Remove
+    </button>
   </div>
 </div>
 

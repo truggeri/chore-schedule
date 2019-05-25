@@ -1,45 +1,33 @@
 <% provide(:title, "Dashboard") %>
 
-<div class="main-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 main-column">
-        <div class="container">
-          <div class="row main-row">
-            <div class="main-header">Chores</div>
-          </div>
-          <% @chores.each do |chore| %>
-            <div class="row">
-              <div class="col-sm column-box">
-                <%= chore_box(chore) %>
-              </div>
-            </div>
-          <% end %>
-          <div class="row">
-            <div class="col-sm">
-              <%= more_link(chores_path, "Chores") %>
-            </div>
-          </div>
+<div class="row">
+  <div class="col-lg-8">
+    <h3>Chores</h3>
+    <% @chores.each do |chore| %>
+      <div class="row">
+        <div class="col-sm column-box">
+          <%= chore_box(chore) %>
         </div>
       </div>
-      <div class="col-lg-3 main-column">
-        <div class="container">
-          <div class="row main-row">
-            <div class="main-header">Categories</div>
-          </div>
-          <% @categories.each do |cat| %>
-            <div class="row">
-              <div class="col-sm column-box">
-                <%= category_box(cat) %>
-              </div>
-            </div>
-          <% end %>
-          <div class="row">
-            <div class="col-sm">
-              <%= more_link(category_index_path, "Categories") %>
-            </div>
-          </div>
+    <% end %>
+    <div class="row chore-padding-16">
+      <div class="col-sm">
+        <%= more_link(chores_path, "Chores") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <h3>Categories</h3>
+    <% @categories.each do |cat| %>
+      <div class="row">
+        <div class="col-sm column-box">
+          <%= category_box(cat) %>
         </div>
+      </div>
+    <% end %>
+    <div class="row chore-padding-16">
+      <div class="col-sm">
+        <%= more_link(category_index_path, "Categories") %>
       </div>
     </div>
   </div>

@@ -1,31 +1,18 @@
 <% provide(:title, @category&.name || "Category") %>
 
-<div class="main-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 main-column">
-        <div class="container">
-          <div class="row main-row">
-            <div class="main-header"><%= @category.name %></div>
-          </div>
-          <div class="row text-left">
-            <div class="col text-left">
-              <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Categories"]), category_index_path) %>
-            </div>
-            <div class="col text-right">
-              <%= category_badge_with_count(@category, "#{@chores.size} chores") %>
-            </div>
-          </div>
-        </div>
-        <div class="row chore-padding-16">
-          <div class="col-12 chore-padding-8">
-            <h5>Chores</h5>
-          </div>
-          <div class="col-12">
-            <%= chore_summary_columns(@chores) %>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row text-left">
+  <div class="col text-left">
+    <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Categories"]), category_index_path) %>
+  </div>
+  <div class="col text-right">
+    <%= category_badge_with_count(@category, "#{@chores.size} chores") %>
+  </div>
+</div>
+<div class="row chore-padding-16">
+  <div class="col-12 chore-padding-8">
+    <h5>Chores</h5>
+  </div>
+  <div class="col-12">
+    <%= chore_summary_columns(@chores) %>
   </div>
 </div>

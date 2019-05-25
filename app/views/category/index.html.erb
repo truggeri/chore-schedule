@@ -1,26 +1,13 @@
 <% provide(:title, "Categories") %>
 
-<div class="main-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 main-column">
-        <div class="container">
-          <div class="row main-row">
-            <div class="main-header">Categories</div>
-          </div>
-          <div class="row row-padded">
-            <div class="col">
-              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createCategoryModal">
-                <%= fa_icon("plus-circle") %> Create
-              </button>
-            </div>
-          </div>
-          <%= category_summary(@categories) %>
-        </div>
-      </div>
-    </div>
+<div class="row row-padded">
+  <div class="col">
+    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createCategoryModal">
+      <%= fa_icon("plus-circle") %> Create
+    </button>
   </div>
 </div>
+<%= category_summary(@categories) %>
 
 <%= render(partial: "shared/generic_modal", locals: { action: "create", model: "category" }) %>
 <%= render("remove_confirm_modal") %>
