@@ -21,8 +21,13 @@
 #
 
 FactoryBot.define do
+  sequence :skill do |n|
+    "#{FFaker::Skill.specialty} #{n}"
+  end
+
   factory :chore do
-    description { FFaker::Skill.specialty }
+
+    description { generate(:skill) }
     family
     frequency      { Random.rand(1..4) }
     frequency_type { Chore.frequency_types.keys.sample }
