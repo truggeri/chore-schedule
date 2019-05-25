@@ -9,10 +9,25 @@
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
+require "test_helper"
 
 class FamilyTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @family = create(:family)
+  end
+
+  test "name not nil" do
+    @family.name = [nil, "", "  "].sample
+    assert(!@family.valid?)
+  end
+
+  test "name length 100" do
+    @family.name = FFaker::Lorem.characters(101)
+    assert(!@family.valid?)
+  end
+
+  test "name is unique" do
+    second_family = build(:family, name: @family.name)
+    assert(!second_family.valid?)
+  end
 end
