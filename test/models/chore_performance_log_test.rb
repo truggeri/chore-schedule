@@ -16,10 +16,26 @@
 #  index_chore_performance_logs_on_family_id  (family_id)
 #
 
-require 'test_helper'
+require "test_helper"
 
 class ChorePerformanceLogTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @chore_log = create(:chore_performance_log)
+  end
+
+  test "has family" do
+    @chore_log.family = nil
+    assert(!@chore_log.valid?)
+  end
+
+  test "has chore" do
+    @chore_log.chore = nil
+    assert(!@chore_log.valid?)
+  end
+
+  # NOTE - good candidate for Timecop
+  test "performed_at" do
+    @chore_log = create(:chore_performance_log, performed_at: nil)
+    assert_in_delta(Time.now.utc, @chore_log.performed_at, 5.seconds)
+  end
 end

@@ -17,7 +17,7 @@ class FamilyTest < ActiveSupport::TestCase
   end
 
   test "name not nil" do
-    @family.name = [nil, "", "  "].sample
+    @family.name = [nil, ""].sample
     assert(!@family.valid?)
   end
 

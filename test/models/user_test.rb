@@ -16,10 +16,20 @@
 #  index_users_on_name       (name)
 #
 
-require 'test_helper'
+require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = create(:user)
+  end
+
+  test "has family" do
+    @user.family = nil
+    assert(!@user.valid?)
+  end
+
+  test "has name" do
+    @user.name = nil
+    assert(!@user.valid?)
+  end
 end

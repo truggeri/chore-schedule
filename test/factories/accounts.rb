@@ -20,15 +20,12 @@
 #  index_accounts_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-require "test_helper"
-
-class AccountTest < ActiveSupport::TestCase
-  def setup
-    @account = create(:account)
-  end
-
-  test "has family" do
-    @account.family = nil
-    assert(!@account.valid?)
+FactoryBot.define do
+  factory :account do
+    email { FFaker::Internet.safe_email }
+    family
+    name                  { FFaker::Name.html_safe_name }
+    password              { FFaker::Internet.password }
+    password_confirmation { password }
   end
 end

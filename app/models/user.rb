@@ -19,7 +19,7 @@
 class User < ApplicationRecord
   belongs_to :family
   has_many   :chore_performance_log, dependent: :nullify
-  
+
   validates :family, presence: true
-  validates :name, presence: true
+  validates :name,   presence: true
 end

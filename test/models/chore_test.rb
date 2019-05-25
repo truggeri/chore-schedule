@@ -33,7 +33,7 @@ class ChoreTest < ActiveSupport::TestCase
   end
 
   test "description not nil" do
-    @chore.description = [nil, "", "  "].sample
+    @chore.description = [nil, ""].sample
     assert(!@chore.valid?)
   end
 
@@ -44,6 +44,11 @@ class ChoreTest < ActiveSupport::TestCase
 
   test "frequency > 0" do
     @chore.frequency = 0
+    assert(!@chore.valid?)
+  end
+
+  test "has family" do
+    @chore.family = nil
     assert(!@chore.valid?)
   end
 end
