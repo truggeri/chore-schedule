@@ -4,9 +4,9 @@ class StaticPagesController < ApplicationController
   def index; end
 
   def dashboard
-    @chores = Chore.front_page.family(current_account&.family)
-    @chore = Chore.new
-    @categories = Category.front_page.family(current_account&.family)
-    @user_summary = Chore.joins(:assignments).overdue.where(assignments: { user: current_account&.user }).by_urgency
+    overdue_chores =  Chore.overdue.by_user(current_account&.user).by_urgency
+    due_soon_chores = Chore.almost_due.by_user(current_account&.user).by_urgency
+
+    render("dashboard", locals: { overdue_chores: overdue_chores, due_soon_chores: due_soon_chores })
   end
 end

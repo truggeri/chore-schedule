@@ -43,15 +43,21 @@ class Chore < ApplicationRecord
   end
 
   def frequency_to_time
-    eval("#{frequency}.#{frequency_type}")
+    eval("#{frequency}.#{frequency_type}", __FILE__, __LINE__)
   end
 
   def adjust_perform_next
     self.perform_next = last_performed + frequency_to_time if last_performed.present?
   end
 
-  scope :overdue, -> { where("perform_next < ?", Time.now.utc) }
+  # rubocop:disable Style/Lambda
+  scope :almost_due, ->(days = 3) {
+    where("perform_next > ?", Time.now.utc).where("perform_next < ?", days.days.from_now)
+  }
+  scope :by_user, ->(user) { joins(:assignments).where(assignments: { user: user }) }
   scope :by_urgency, -> { order(perform_next: :asc) }
+  scope :overdue, -> { where("perform_next < ?", Time.now.utc) }
+  # rubocop:enable Style/Lambda
 
   def self.front_page(limit: 5)
     all.by_urgency.limit(limit)
@@ -62,6 +68,7 @@ class Chore < ApplicationRecord
   #
   def last_performed_string
     return "never" if last_performed.blank?
+
     last_performed&.strftime("%a, %B %e %Y")
   end
 

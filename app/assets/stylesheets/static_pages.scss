@@ -1,3 +1,26 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "colors.scss";
+
+.dashboard-line {
+  background-color: $color-purple;
+  min-height: 3px;
+  max-height: 3px;
+  padding: 0 0 3px 0;
+}
+
+.to-left {
+  background: linear-gradient(to right, $color-purple, $color-blush);
+}
+
+.to-right {
+  background: linear-gradient(to right, $color-purple, $color-blush);
+}
+
+@include media-breakpoint-up(md) {
+  .to-left {
+    background: linear-gradient(to left, $color-purple, $color-blush);
+  }
+}

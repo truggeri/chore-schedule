@@ -1,34 +1,49 @@
 <% provide(:title, "Dashboard") %>
 
-<div class="row">
-  <div class="col-lg-8">
-    <h3>Chores</h3>
-    <% @chores.each do |chore| %>
-      <div class="row">
-        <div class="col-sm column-box">
-          <%= chore_box(chore) %>
+<%
+  overdue_chores ||= nil # no default, just for formatting
+  due_soon_chores ||= nil
+  full_row_size = overdue_chores.present? && due_soon_chores.present? ? 6 : 12
+  nothing_to_do = !overdue_chores.present? && !due_soon_chores.present?
+%>
+
+<div class="row" style="padding-top: 16px;">
+  <% if overdue_chores.present? %>
+    <div class="col-sm-12 col-md-<%= full_row_size %>">
+      <h3>Overdue</h3>
+      <div class="to-right dashboard-line">&nbsp;</div>
+      <% overdue_chores.each do |chore| %>
+        <div class="row">
+          <div class="col-sm column-box">
+            <%= chore_box(chore) %>
+          </div>
         </div>
-      </div>
-    <% end %>
-    <div class="row chore-padding-16">
-      <div class="col-sm">
-        <%= more_link(chores_path, "Chores") %>
-      </div>
+      <% end %>
+      <%= more_link(chores_path, "Chores") %>
+      <br />
     </div>
-  </div>
-  <div class="col-lg-4">
-    <h3>Categories</h3>
-    <% @categories.each do |cat| %>
-      <div class="row">
-        <div class="col-sm column-box">
-          <%= category_box(cat) %>
+  <% end %>
+
+  <% if due_soon_chores.present? %>
+    <div class="col-sm-12 col-md-<%= full_row_size %>">
+      <h3>Due Soon</h3>
+      <div class="to-left dashboard-line">&nbsp;</div>
+      <% due_soon_chores.each do |chore| %>
+        <div class="row">
+          <div class="col-sm column-box">
+            <%= chore_box(chore) %>
+          </div>
         </div>
-      </div>
-    <% end %>
-    <div class="row chore-padding-16">
-      <div class="col-sm">
-        <%= more_link(category_index_path, "Categories") %>
-      </div>
+      <% end %>
+      <%= more_link(chores_path, "Chores") %>
+      <br />
     </div>
-  </div>
+  <% end %>
+
+  <% if nothing_to_do %>
+    <div class="col-12">
+      <h3>🎉 You're all done 🎉</h3>
+      <%= more_link(chores_path, "Chores") %>
+    </div>
+  <% end %>
 </div>
