@@ -10,8 +10,11 @@
 #
 
 FactoryBot.define do
+  sequence :family_name do |n|
+    "#{FFaker::Name.html_safe_last_name} #{n}"
+  end
   factory :family do
     active { true }
-    name   { FFaker::Name.html_safe_last_name }
+    name   { generate(:family_name) }
   end
 end

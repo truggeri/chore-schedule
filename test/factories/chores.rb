@@ -26,7 +26,6 @@ FactoryBot.define do
   end
 
   factory :chore do
-
     description { generate(:skill) }
     family
     frequency      { Random.rand(1..4) }
