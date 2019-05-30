@@ -20,6 +20,7 @@
 class User < ApplicationRecord
   belongs_to :account
   belongs_to :family
+  has_many   :assignments, dependent: :destroy
   has_many   :chore_performance_log, dependent: :nullify
 
   validates :account, presence: true

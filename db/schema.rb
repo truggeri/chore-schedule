@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_222754) do
+ActiveRecord::Schema.define(version: 2019_05_30_013132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2019_05_25_222754) do
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["family_id"], name: "index_accounts_on_family_id"
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "chore_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "times_performed", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chore_id"], name: "index_assignments_on_chore_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|

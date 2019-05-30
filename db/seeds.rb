@@ -47,7 +47,7 @@ user_ids = User.all.pluck(:id)
 chore_ids = Chore.all.pluck(:id)
 chore_ids.each do |chore_id|
   performed = Random.rand(0..4)
-  (0..performed).each do |i|
+  (0..performed).each do |_i|
     log = ChorePerformanceLog.create(chore_id: chore_id, user_id: user_ids.sample, family: fam)
     log.performed_at = Random.rand(1..50).days.ago
     log.save
@@ -58,4 +58,8 @@ chore_ids.each do |chore_id|
   chore.last_performed = performed_at[0]
   chore.perform_next = performed_at[0] + chore.frequency_to_time
   chore.save
+
+  random_user_id = user_ids.sample
+  times_done = ChorePerformanceLog.where(chore: chore, user_id: random_user_id).count
+  Assignment.create(chore: chore, user_id: random_user_id, times_performed: times_done) if Random.rand(0..2).zero?
 end

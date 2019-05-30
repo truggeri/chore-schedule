@@ -23,6 +23,7 @@
 class Chore < ApplicationRecord
   belongs_to :category, counter_cache: :chore_count, optional: true
   belongs_to :family
+  has_many   :assignments, dependent: :destroy
   has_many   :chore_performance_logs, dependent: :destroy
 
   validates :description, presence: true, length: { maximum: 100 }, uniqueness: true
