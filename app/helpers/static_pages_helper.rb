@@ -1,6 +1,7 @@
 module StaticPagesHelper
-  def category_box(category, last_row: false)
+  def category_box(category)
     return nil if category.nil?
+
     name_link = link_to(category.name, category_path(category))
     header = content_tag(:h5, name_link, class: "category-header")
     count_box = content_tag(:div, category.chore_count, class: "category-count")
@@ -9,6 +10,7 @@ module StaticPagesHelper
 
   def chore_box(chore = nil)
     return content_tag(:div, "", class: "chore-box") if chore.nil?
+
     top_contents = [content_tag(:h4, link_to(chore.description, chore_path(chore)))]
     top_contents << content_tag(:div, days_until_due(chore, true), class: "days-until-due")
     top_row = content_tag(:div, safe_join(top_contents), class: "top-row")

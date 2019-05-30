@@ -8,12 +8,11 @@
 
 fam = Family.create(name: FFaker::Name.last_name)
 
-acc = Account.create(email: "test@dev.com", name: "Test Account",
-               password: ENV['SEED_PASSWORD'] || "password1234",
-               password_confirmation: ENV['SEED_PASSWORD'] || "password1234", family: fam)
-
 %w[Thomas Claire Benny Lilah].each do |name|
-  User.create!(name: name, account: acc, family: fam)
+  a = Account.create(email: "test+#{name}@dev.com", name: "#{name.capitalize} Test", family: fam,
+                    password: ENV['SEED_PASSWORD'] || "password1234",
+                    password_confirmation: ENV['SEED_PASSWORD'] || "password1234")
+  User.create!(name: name, account: a, family: fam)
 end
 
 cats = {}

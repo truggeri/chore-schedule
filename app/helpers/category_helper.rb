@@ -8,6 +8,7 @@ module CategoryHelper
 
   def category_summary(categories)
     return "No categories" if categories.empty?
+
     output = []
     header_cols = []
     header_cols << content_tag(:div, "", class: "col chore-padding-8  text-center")
@@ -20,6 +21,7 @@ module CategoryHelper
 
   def category_summary_row(category)
     return content_tag(:div, "", class: "") if category.nil?
+
     cols = []
     cols << content_tag(:div, safe_join([category_badge_with_count(category),
                                               link_to(category.name, category_path(category))], " "),

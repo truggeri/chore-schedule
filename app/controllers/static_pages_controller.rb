@@ -7,5 +7,6 @@ class StaticPagesController < ApplicationController
     @chores = Chore.front_page.family(current_account&.family)
     @chore = Chore.new
     @categories = Category.front_page.family(current_account&.family)
+    @user_summary = Chore.joins(:assignments).overdue.where(assignments: { user: current_account&.user }).by_urgency
   end
 end

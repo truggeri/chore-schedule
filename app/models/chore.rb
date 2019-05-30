@@ -50,8 +50,11 @@ class Chore < ApplicationRecord
     self.perform_next = last_performed + frequency_to_time if last_performed.present?
   end
 
+  scope :overdue, -> { where("perform_next < ?", Time.now.utc) }
+  scope :by_urgency, -> { order(perform_next: :asc) }
+
   def self.front_page(limit: 5)
-    all.order(perform_next: :asc).limit(limit)
+    all.by_urgency.limit(limit)
   end
 
   #
