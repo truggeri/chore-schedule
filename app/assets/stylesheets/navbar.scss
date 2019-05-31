@@ -58,4 +58,13 @@ nav.navbar {
     color: $nav-link-color-hover;
     text-decoration: none;
   }
+
+  li.nav-item {
+    padding: 8px 0 8px 0;
+  }
+}
+
+.navbar-user-name {
+  color: $background-color-dark;
+  padding-right: 16px;
 }

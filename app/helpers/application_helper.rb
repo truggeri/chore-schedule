@@ -5,6 +5,7 @@ module ApplicationHelper
 
   def family_display
     return "" if session[:family_name].blank?
+
     output_text = safe_join([fa_icon("users", "fas"), " #{session[:family_name]} Family"])
     content_tag(:span, output_text, class: "navbar-family-name")
   end
@@ -16,5 +17,12 @@ module ApplicationHelper
     else
       page_title + " | " + base_title
     end
+  end
+
+  def user_display
+    return "" if current_account&.user.blank?
+
+    output_text = safe_join([fa_icon("user", "fas"), " #{current_account.user.name}"])
+    content_tag(:span, output_text, class: "navbar-user-name")
   end
 end
