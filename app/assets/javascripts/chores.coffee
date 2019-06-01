@@ -28,7 +28,7 @@ initial_delete_setup = () ->
 
 initial_delete_setup()
 
-@perform_chore_now = (path) ->
+@perform_or_assign_chore = (path) ->
   $.ajaxSetup
     url: path
     type: 'GET'

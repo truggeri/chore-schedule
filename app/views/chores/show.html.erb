@@ -18,9 +18,8 @@
   </div>
 </div>
 <div class="row chore-padding-16">
-  <div class="col-12 chore-padding-8 chore-border-light"><h5>Perform Now</h5></div>
-  <div class="col-12"></div>
-  <%= perform_as_columns(@users) %>
+  <%= render(partial: "user_actions",
+             locals: { users: @users, chore_assigned: @chore.assignments.first&.user_id, chore_id: @chore.id }) %>
 </div>
 <div class="row chore-padding-16">
   <div class="col-12 chore-padding-8 chore-border-light">

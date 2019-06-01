@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'static_pages#dashboard'
-  resources :chores, only: %i[index show create update destroy] do
+  resources :category, only: %i[index show create destroy]
+  resources :chores,   only: %i[index show create update destroy] do
+    get 'assign',      on: :member
     get 'perform_now', on: :member
   end
-  resources :category, only: %i[index show create destroy]
 
   get '/service-worker.js', to: "service_worker#service_worker"
   get '/manifest.json',     to: "service_worker#manifest"

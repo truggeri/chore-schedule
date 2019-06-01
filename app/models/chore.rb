@@ -29,7 +29,7 @@ class Chore < ApplicationRecord
   validates :description, presence: true, length: { maximum: 100 }, uniqueness: true
   validates :family, presence: true
   enum frequency_type: { days: 0, weeks: 1, months: 2 }
-  validates :frequency, numericality: { greater_than: 0 }
+  validates :frequency, numericality: { only_integer: true, greater_than: 0 }
 
   before_create :set_first_time
   before_save   :adjust_perform_next
@@ -43,7 +43,7 @@ class Chore < ApplicationRecord
   end
 
   def frequency_to_time
-    eval("#{frequency}.#{frequency_type}", __FILE__, __LINE__)
+    eval("#{frequency.to_s}.#{frequency_type}", binding, __FILE__, __LINE__ + 1)
   end
 
   def adjust_perform_next

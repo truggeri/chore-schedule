@@ -10,12 +10,12 @@ class ChoresController < ApplicationController
   end
 
   def show
-    @chore = Chore.includes(:category).find_by(id: params[:id], family: current_account&.family)
+    @chore = Chore.includes(:category, :assignments).find_by(id: params[:id], family: current_account&.family)
     @logs = ChorePerformanceLog.includes(:user)
                                .where(chore: @chore)
                                .family(current_account&.family)
                                .order(performed_at: :desc).limit(5)
-    @users = User.family(current_account&.family)
+    @users = User.family(current_account&.family).order(:id)
   end
 
   def create
@@ -62,6 +62,7 @@ class ChoresController < ApplicationController
     respond_to :js
     @chore = Chore.find_by(id: params[:id], family: current_account&.family)
     ajax_redirect_to(chores_path); return if @chore.blank?
+
     @chore.last_performed = Time.now.utc
     @chore.set_first_time
     if @chore.save
@@ -71,6 +72,21 @@ class ChoresController < ApplicationController
       flash[:success] = "Chore performed"
     else
       flash[:error] = "Chore could not be performed"
+    end
+    ajax_redirect_to(chore_path(@chore))
+  end
+
+  def assign
+    respond_to :js
+    @chore = Chore.find_by(id: params[:id], family: current_account&.family)
+    ajax_redirect_to(chores_path); return if @chore.blank?
+
+    @assignment = Assignment.create(chore: @chore,
+                                    user:  User.find_by(id: params[:user_id]))
+    if @assignment.persisted?
+      flash[:success] = "Chore assigned"
+    else
+      flash[:error] = "Chore could not be assigned"
     end
     ajax_redirect_to(chore_path(@chore))
   end
