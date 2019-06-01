@@ -9,12 +9,16 @@
   </div>
 </div>
 <div class="row"><div class="col">&nbsp;</div></div>
-<div class="row">
-  <div class="col-md-6">
+<div class="row chore-padding-16">
+  <div class="col-12 col-md-4 chore-padding-8 chore-border-light"><h5>Last Done</h5></div>
+  <div class="col-12 col-md-8 chore-padding-8 chore-performed-text chore-border-light">
     <%= last_performed_text(@chore) %>
   </div>
-  <div class="col-md-6 text-right">
-    Due by <br /><%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
+</div>
+<div class="row chore-padding-16">
+  <div class="col-12 col-md-4 chore-padding-8 chore-border-ultralight"><h5>Due By</h5></div>
+  <div class="col-12 col-md-8 chore-padding-8 chore-performed-text chore-border-ultralight">
+    <%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
   </div>
 </div>
 <div class="row chore-padding-16">

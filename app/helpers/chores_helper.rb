@@ -79,11 +79,7 @@ module ChoresHelper
   end
 
   def last_performed_text(chore)
-    if @chore.last_performed.present?
-      safe_join(["Last performed on", "<br />".html_safe, "#{chore.last_performed.strftime('%A, %B %e %Y')}"])
-    else
-      "Not yet performed"
-    end
+    chore&.last_performed&.strftime('%A, %B %e %Y') || "Not yet performed"
   end
 
   def perform_as_buttons(users)
