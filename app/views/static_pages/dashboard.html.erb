@@ -12,13 +12,7 @@
     <div class="col-sm-12 col-md-<%= full_row_size %>">
       <h3>Overdue</h3>
       <div class="to-right dashboard-line">&nbsp;</div>
-      <% overdue_chores.each do |chore| %>
-        <div class="row">
-          <div class="col-sm column-box">
-            <%= chore_box(chore) %>
-          </div>
-        </div>
-      <% end %>
+      <%= render(partial: "chores/listing", locals: { chores: overdue_chores }) %>
       <%= more_link(chores_path, "Chores") %>
       <br />
     </div>
@@ -28,13 +22,7 @@
     <div class="col-sm-12 col-md-<%= full_row_size %>">
       <h3>Due Soon</h3>
       <div class="to-left dashboard-line">&nbsp;</div>
-      <% due_soon_chores.each do |chore| %>
-        <div class="row">
-          <div class="col-sm column-box">
-            <%= chore_box(chore) %>
-          </div>
-        </div>
-      <% end %>
+      <%= render(partial: "chores/listing", locals: { chores: due_soon_chores }) %>
       <%= more_link(chores_path, "Chores") %>
       <br />
     </div>

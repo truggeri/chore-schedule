@@ -33,15 +33,6 @@ module ChoresHelper
     content_tag(:div, " ", class: "badge", style: style)
   end
 
-  def category_mini_link(category)
-    badge = category_mini_badge(category)
-    if category.present?
-      link_to(badge, category_path(category))
-    else
-      badge
-    end
-  end
-
   def category_select(categories)
     return "" if categories.nil? || categories.size.zero?
     options = [nil, '-']
@@ -70,7 +61,7 @@ module ChoresHelper
     days = chore.days_until_due
     return days if days.positive?
     return "Today" if days.zero?
-    stylize == true ? content_tag(:span, days.abs, class: "chore-overdue-text font-weight-bold") : days.abs
+    stylize == true ? content_tag(:span, "Overdue", class: "chore-overdue-text font-weight-bold") : days.abs
   end
 
   def history_columns(logs)

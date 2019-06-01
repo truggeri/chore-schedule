@@ -1,0 +1,22 @@
+<%
+  chores ||= nil
+%>
+
+<% return nil if chores.blank? %>
+
+<div class="row">
+  <% chores.each do |chore| %>
+    <div class="col-12 col-lg-6 chore-box">
+      <div class="top-row">
+        <h4><%= link_to(chore.description, chore_path(chore)) %></h4>
+        <div class="days-until-due"><%= days_until_due(chore, true) %></div>
+      </div>
+      <div class="bottom-row">
+        <% assigned_text = chore.assignments.last&.user&.name %>
+        <% assigned_text = assigned_text.present? ? "Assigned to " + assigned_text : "Not assigned" %>
+        <div class="last-done"><%= assigned_text %></div>
+        Next due on <%= chore&.perform_next_string %>
+      </div>
+    </div>
+  <% end %>
+</div>

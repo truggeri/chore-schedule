@@ -18,13 +18,8 @@
     </div>
   </div>
 </div>
-<% @chores.each do |chore| %>
-  <div class="row">
-    <div class="col-sm column-box">
-      <%= chore_box(chore) %>
-    </div>
-  </div>
-<% end %>
+
+<%= render(partial: "chores/listing", locals: { chores: @chores }) %>
 
 <%= render(partial: "shared/generic_modal", locals: { action: "create", model: "chore" }) %>
 <%= render("remove_confirm_modal") %>
