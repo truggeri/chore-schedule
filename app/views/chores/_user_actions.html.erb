@@ -8,17 +8,28 @@
 
 <div class="col-12 chore-padding-8 chore-border-light">
   <h5>
-    <%= chore_assigned ? "Perform" : "Assign" %> Chore
+    Perform Chore
     <i class="fa fa-info-circle" style="font-size: 12px;" data-toggle="tooltip" data-placement="right"
      title="Who performed this chore? Assigned user is highlighted"></i>
   </h5>
 </div>
 <div class="col-12"></div>
 <% users.each do |user| %>
-  <div class="col-12 col-sm-6 col-md-3 text-center chore-padding-8">
-    <% onclick_path = chore_assigned ? perform_now_chore_path(chore_id, user_id: user.id) : assign_chore_path(chore_id, user_id: user.id) %>
+  <div class="col-12 col-sm-6 col-md-3 text-center chore-padding-8" style="position: relative;">
+    <% onclick_path = perform_now_chore_path(chore_id, user_id: user.id) %>
     <% btn_cls = chore_assigned == user.id ? "btn-success" : "btn-outline-success" %>
-    <button class="btn <%= btn_cls %> full_btn" onclick="perform_or_assign_chore('<%= onclick_path %>');">
+    <% unless chore_assigned %>
+      <div style="position: absolute; right: 8px;">
+        <button class="btn btn-outline-success"
+                onclick="perform_or_assign_chore('<%= assign_chore_path(chore_id, user_id: user.id) %>');"
+                data-toggle="tooltip" data-placement="right"
+                title="Assign chore to <%= user.name %>"><%= fa_icon("address-book", "fas") %></button>
+      </div>
+    <% end %>
+    <button class="btn <%= btn_cls %> full_btn"
+            onclick="perform_or_assign_chore('<%= onclick_path %>');"
+            data-toggle="tooltip" data-placement="bottom"
+            title="Perform this chore as <%= user.name %>">
       <%= fa_icon("user") %> <%= user.name %>
     </button>
   </div>
