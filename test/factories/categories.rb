@@ -36,5 +36,11 @@ FactoryBot.define do
         end
       end
     end
+
+    trait :without_color do
+      after(:create) do |cat|
+        cat.update(color: nil)
+      end
+    end
   end
 end

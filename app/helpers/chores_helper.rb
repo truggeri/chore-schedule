@@ -19,7 +19,7 @@ module ChoresHelper
       partial: "shared/generic_modal",
       locals: {
         action: "edit",
-        form: render(partial: "form", locals: { given_action: "update", show_buttons: false }),
+        form: render(partial: "/chores/form", locals: { given_action: "update", show_buttons: false }),
         form_action: "edit_chore_submit(#{@chore.id});",
         model: "chore",
         submit_icon: fa_icon("edit", "fas"),
@@ -34,14 +34,15 @@ module ChoresHelper
   end
 
   def category_select(categories)
-    return "" if categories.nil? || categories.size.zero?
+    return "" unless categories&.size&.positive?
+
     options = [nil, '-']
     categories.each { |c| options << c }
     select(:chore, :category_id, options)
   end
 
-  def chore_sort_by_name
-    COLUMN_DISPLAY_NAMES[@sort]
+  def chore_sort_by_name(sort)
+    COLUMN_DISPLAY_NAMES[sort]
   end
 
   def chore_sort_icon(order)
@@ -61,13 +62,13 @@ module ChoresHelper
     days = chore.days_until_due
     return days if days.positive?
     return "Today" if days.zero?
+
     stylize == true ? content_tag(:span, "Overdue", class: "chore-overdue-text font-weight-bold") : days.abs
   end
 
   def history_columns(logs)
-    if logs.blank?
-      return content_tag(:div, "This chore hasn't been performed yet", class: "col font-italic")
-    end
+    return content_tag(:div, "This chore hasn't been performed yet", class: "col font-italic") if logs.blank?
+
     output = []
     logs.each do |log|
       name_tag = content_tag(:h6, safe_join([fa_icon("user"), log.user&.name], " "))
@@ -80,29 +81,6 @@ module ChoresHelper
 
   def last_performed_text(chore)
     chore&.last_performed&.strftime('%A, %B %e %Y') || "Not yet performed"
-  end
-
-  def perform_as_buttons(users)
-    output = []
-    users.each do |user|
-      output << content_tag(:button, fa_icon("user") + " #{user.name}",
-                            type: "button",
-                            class: "btn btn-success",
-                            onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
-    end
-    safe_join(output, "   ")
-  end
-
-  def perform_as_columns(users)
-    output = []
-    users.each do |user|
-      user_button = content_tag(:button, fa_icon("user") + " #{user.name}",
-                                type: "button",
-                                class: "btn btn-outline-success",
-                                onclick: "perform_chore_now('#{perform_now_chore_path(@chore.id, user_id: user.id)}');")
-      output << content_tag(:div, user_button, class: "col text-center")
-    end
-    safe_join(output, "")
   end
 
   def header_with_sort(name, display = nil)
