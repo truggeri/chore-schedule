@@ -30,6 +30,7 @@ gem "jquery-rails"
 gem "nokogiri", ">= 1.10.8" # CVE-2020-7595
 gem "rack-mini-profiler", require: false
 gem "turbolinks", "~> 5"
+gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
