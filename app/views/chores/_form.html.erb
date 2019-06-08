@@ -7,10 +7,10 @@
       <%= f.text_field(:description, class: "form-control") %>
     </div>
     <div class="col-8 chore-padding-8">
+      <% options = []
+         (1..30).each { |n| options << [n, n]} %>
       <%= label(:chore, :frequency) %>
-      <%= f.text_field(:frequency, class: "form-control") %>
-    </div>
-    <div class="col-4 chore-padding-8" style="margin-top: 40px;">
+      <%= f.select(:frequency, options, class: "form-cotrol") %>&nbsp;
       <%= f.select(:frequency_type, Chore.frequency_types,
                    class: "form-control", selected: Chore.frequency_types[@chore.frequency_type]) %>
     </div>
