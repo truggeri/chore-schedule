@@ -7,7 +7,7 @@
 <%= form_for @chore, url: action_path do |f| %>
   <div class="row">
     <div class="col-12 chore-padding-8">
-      <%= label(:chore, :description) %><br />
+      <%= label(:chore, :description) %>
       <%= f.text_field(:description, class: "form-control") %>
     </div>
     <div class="col-8 chore-padding-8">

@@ -1,5 +1,9 @@
 <% provide(:title, "Chores") %>
 
+<% unless @chore&.valid? %>
+  <%= render(partial: "shared/error_messages", locals: { model: @chore }) %>
+<% end %>
+
 <div class="row row-padded">
   <div class="col">
     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
