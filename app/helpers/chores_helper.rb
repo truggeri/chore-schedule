@@ -19,7 +19,7 @@ module ChoresHelper
       partial: "shared/generic_modal",
       locals: {
         action: "edit",
-        form: render(partial: "/chores/form", locals: { given_action: "update", show_buttons: false }),
+        form: render(partial: "/chores/form", locals: { action_path: chore_path(@chore) }),
         form_action: "edit_chore_submit(#{@chore.id});",
         model: "chore",
         submit_icon: fa_icon("edit", "fas"),
@@ -33,12 +33,12 @@ module ChoresHelper
     content_tag(:div, " ", class: "badge", style: style)
   end
 
-  def category_select(categories)
+  def category_select(categories, selected = nil)
     return "" unless categories&.size&.positive?
 
     options = [nil, '-']
     categories.each { |c| options << c }
-    select(:chore, :category_id, options)
+    select(:chore, :category_id, options, selected: selected)
   end
 
   def chore_sort_by_name(sort)

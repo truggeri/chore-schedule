@@ -19,3 +19,17 @@
     margin: 0px
   }
 }
+
+.create-chore-button {
+  text-align: right;
+}
+
+@include media-breakpoint-down(xs) {
+  .create-chore-button {
+    text-align: center;
+
+    button {
+      width: 100%;
+    }
+  }
+}

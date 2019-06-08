@@ -1,6 +1,10 @@
 <% return unless @chore.present? %>
-<% given_action ||= "create" %>
-<%= form_for @chore, url: { action: given_action } do |f| %>
+
+<%
+  action_path ||= chores_path(@chore)
+%>
+
+<%= form_for @chore, url: action_path do |f| %>
   <div class="row">
     <div class="col-12 chore-padding-8">
       <%= label(:chore, :description) %><br />
@@ -17,7 +21,7 @@
     <% if @categories&.size&.positive? %>
       <div class="col-12 chore-padding-8">
         <%= label(:chore, :category) %><br />
-        <%= category_select(@categories) %>
+        <%= category_select(@categories, @chore.category&.id) %>
       </div>
     <% end %>
   </div>

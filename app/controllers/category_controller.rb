@@ -1,6 +1,8 @@
 class CategoryController < ApplicationController
   before_action :authenticate_account!
 
+  before_action :load_categories, only: %i[show]
+
   def index
     @categories = Category.family(current_account&.family).order(name: :asc)
     @category = Category.new
@@ -9,6 +11,7 @@ class CategoryController < ApplicationController
   def show
     @category = Category.find_by(id: params[:id], family: current_account&.family)
     @chores   = @category&.chores
+    @chore    = Chore.new(category: @category)
   end
 
   def create

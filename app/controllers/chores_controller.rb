@@ -94,10 +94,6 @@ class ChoresController < ApplicationController
 
   private
 
-  def load_categories
-    @categories = Category.family(current_account&.family).pluck( :name, :id)
-  end
-
   def determine_sort(param)
     return :perform_next unless param&.to_sym.in?(%i[description frequency perform_next])
     param.to_sym

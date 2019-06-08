@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def ajax_redirect_to(url)
     head(302, x_ajax_redirect_url: url)
   end
+
+  def load_categories
+    @categories = Category.family(current_account&.family).pluck( :name, :id)
+  end
 end

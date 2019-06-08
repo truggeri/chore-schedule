@@ -1,6 +1,6 @@
 <% provide(:title, @category&.name || "Category") %>
 
-<div class="row text-left">
+<div class="row chore-padding-16">
   <div class="col text-left">
     <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Categories"]), category_index_path) %>
   </div>
@@ -9,10 +9,19 @@
   </div>
 </div>
 <div class="row chore-padding-16">
-  <div class="col-12 chore-padding-8">
+  <div class="col-12 col-sm-6 chore-padding-8">
     <h5>Chores</h5>
+  </div>
+  <div class="col-12 col-sm-6 create-chore-button">
+    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
+      <%= fa_icon("plus-circle") %> Create Chore
+    </button>
   </div>
   <div class="col-12">
     <%= chore_summary_columns(@chores) %>
   </div>
 </div>
+
+<%= render(partial: "shared/generic_modal", locals: { action: "create",
+                                                      model: "chore",
+                                                      form: render(partial: "chores/form") }) %>
