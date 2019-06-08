@@ -25,7 +25,8 @@ class ChoresController < ApplicationController
       flash[:success] = "Chore created successfully"
       redirect_to(@chore)
     else
-      render "new"
+      flash[:error] = "Chore could not be created"
+      redirect_to(chores_path)
     end
   end
 
