@@ -1,0 +1,68 @@
+// Fonts
+@font-face {
+  font-family: 'Permanent Marker';
+  font-display: swap;
+  src: url(asset-path('PermanentMarker-Regular.ttf'));
+}
+
+@import "../src/stylesheets/custom-bootstrap.scss";
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+//@import "bootstrap";
+@import '~bootstrap/scss/bootstrap';
+
+// https://fontawesome.com/how-to-use/on-the-web/using-with/sass
+//@import "fontawesome/fontawesome.scss";
+//@import "fontawesome/solid.scss";
+//@import "fontawesome/brands.scss";
+
+// fontawesome 5
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+@import "../src/stylesheets/*";
+
+a {
+  color: $link-color;
+}
+
+a:hover {
+  color: $link-color-hover;
+  text-decoration: none;
+}
+
+alert-padding {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+body {
+  background-color: $background-color;
+  background: repeating-linear-gradient(to top left, $background-color, $background-color 5px, $background-color-light 5px, $background-color-light 10px);
+  color: $body-text-color;
+  font-family: 'Open Sans', sans-serif;
+  min-height: calc(100% - 72px);
+}
+
+.debug_dump {
+  background-color: #f5f5f5;
+  border: 1px solid #111;
+  margin: 16px;
+  margin-top: 48px;
+  padding: 24px;
+}
+
+html {
+  height: 100%;
+}
+
+.last-row {
+  border-bottom: 0px;
+}
+
+.more-link {
+  font-size: 14px;
+  padding: 8px;
+  text-align: center;
+}

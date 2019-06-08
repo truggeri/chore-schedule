@@ -23,5 +23,5 @@ Turbolinks.start();
 
 import 'bootstrap/dist/js/bootstrap';
 
-import '../src/category.js';
-import '../src/chore.js';
+import '../src/javascript/category.js';
+import '../src/javascript/chore.js';
