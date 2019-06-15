@@ -23,5 +23,6 @@ class CategoriesTest < ActionDispatch::IntegrationTest
     get category_path(@category)
     assert_response(:success)
     assert_match(@category.name, @response.body)
+    assert_match("Create Chore", @response.body)
   end
 end

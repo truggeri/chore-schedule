@@ -9,7 +9,7 @@
     <div class="col-12 col-lg-6 chore-box">
       <div class="top-row">
         <h4><%= link_to(chore.description, chore_path(chore)) %></h4>
-        <div class="days-until-due"><%= days_until_due(chore, true) %></div>
+        <div class="days-until-due"><%= days_until_due_text(chore, true) %></div>
       </div>
       <div class="bottom-row">
         <% assigned_text = chore.assignments.last&.user&.name %>

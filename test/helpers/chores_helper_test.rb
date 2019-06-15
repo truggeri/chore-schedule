@@ -67,22 +67,22 @@ class ChoresHelperTest < ActionView::TestCase
     assert_dom_equal expected, chore_sort_links
   end
 
-  test "#days_until_due future" do
-    assert_equal @chore.days_until_due, days_until_due(@chore)
+  test "#days_until_due_text future" do
+    assert_equal @chore.days_until_due, days_until_due_text(@chore)
   end
 
-  test "#days_until_due today" do
+  test "#days_until_due_text today" do
     @chore.perform_next = 15.minutes.from_now
-    assert_equal "Today", days_until_due(@chore)
+    assert_equal "Today", days_until_due_text(@chore)
   end
 
-  test "#days_until_due past" do
+  test "#days_until_due_text past" do
     @chore.perform_next = 10.days.ago
-    assert_dom_equal "<span class=\"chore-overdue-text font-weight-bold\">Overdue</span>", days_until_due(@chore)
+    assert_dom_equal "<span class=\"chore-overdue-text font-weight-bold\">Overdue</span>", days_until_due_text(@chore)
   end
 
-  test "#days_until_due past, stylize=false" do
+  test "#days_until_due_text past, stylize=false" do
     @chore.perform_next = 10.days.ago
-    assert_equal 10, days_until_due(@chore, false)
+    assert_equal 10, days_until_due_text(@chore, false)
   end
 end

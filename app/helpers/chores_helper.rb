@@ -58,7 +58,7 @@ module ChoresHelper
     safe_join(output, "\n")
   end
 
-  def days_until_due(chore, stylize = true)
+  def days_until_due_text(chore, stylize = true)
     days = chore.days_until_due
     return days if days.positive?
     return "Today" if days.zero?
