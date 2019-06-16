@@ -21,7 +21,7 @@
       <div class="navbar-user">
         <ul class="navbar-nav mr-auto">
         <% if account_signed_in? %>
-          <li class="nav-item"><%= user_display %></li>
+          <li class="nav-item"><%= user_display(current_account&.user&.name) %></li>
           <li class="nav-item"><%= family_display %></li>
           <li class="nav-item">
             <%= link_to(safe_join([fa_icon("door-open", "fas"),"  Sign Out"]),

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  BASE_TITLE = "Chore Schedule".freeze
+
   def fa_icon(klass, fa_type = "fa")
     content_tag(:i, "", class: "#{fa_type} fa-#{klass}")
   end
@@ -11,18 +13,13 @@ module ApplicationHelper
   end
 
   def full_title(page_title = '')
-    base_title = "Chore Schedule"
-    if page_title.empty?
-      base_title
-    else
-      page_title + " | " + base_title
-    end
+    page_title.present? ? "#{page_title} | #{BASE_TITLE}" : BASE_TITLE
   end
 
-  def user_display
-    return "" if current_account&.user.blank?
+  def user_display(name)
+    return "" if name.blank?
 
-    output_text = safe_join([fa_icon("user", "fas"), " #{current_account.user.name}"])
+    output_text = safe_join([fa_icon("user", "fas"), " #{name}"])
     content_tag(:span, output_text, class: "navbar-user-name")
   end
 end
