@@ -12,13 +12,13 @@
 <div class="row chore-padding-16">
   <div class="col-12 col-md-4 chore-padding-8 chore-border-light"><h5>Last Done</h5></div>
   <div class="col-12 col-md-8 chore-padding-8 chore-performed-text chore-border-light">
-    <%= last_performed_text(@chore) %>
+    <%= @chore.last_performed_long %>
   </div>
 </div>
 <div class="row chore-padding-16">
   <div class="col-12 col-md-4 chore-padding-8 chore-border-ultralight"><h5>Due By</h5></div>
   <div class="col-12 col-md-8 chore-padding-8 chore-performed-text chore-border-ultralight">
-    <%= @chore.perform_next.strftime("%A, %B %e %Y") %> (<%= text_until_next_due(@chore) %>)
+    <%= @chore.perform_next %> (<%= @chore.perform_next_summary %>)
   </div>
 </div>
 <div class="row chore-padding-16">

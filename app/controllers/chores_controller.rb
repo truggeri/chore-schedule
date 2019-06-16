@@ -10,7 +10,7 @@ class ChoresController < ApplicationController
   end
 
   def show
-    @chore = Chore.includes(:category, :assignments).find_by(id: params[:id], family: current_account&.family)
+    @chore = Chore.includes(:category, :assignments).find_by(id: params[:id], family: current_account&.family).decorate
     @logs = ChorePerformanceLog.includes(:user)
                                .where(chore: @chore)
                                .family(current_account&.family)

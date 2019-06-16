@@ -79,23 +79,9 @@ module ChoresHelper
     safe_join(output)
   end
 
-  def last_performed_text(chore)
-    chore&.last_performed&.strftime('%A, %B %e %Y') || "Not yet performed"
-  end
-
   def header_with_sort(name, display = nil)
     display ||= COLUMN_DISPLAY_NAMES[name]
     query_order = :desc if @order == :asc
     link_to(display, chores_path(sort: name, order: query_order), class: "dropdown-item")
-  end
-
-  def text_until_next_due(chore)
-    if (Time.now - chore.perform_next).abs < 1.day
-      text = "Soon"
-    else
-      text = distance_of_time_in_words(Time.now, chore.perform_next)
-      text << " overdue" if chore.perform_next.past?
-    end
-    text
   end
 end
