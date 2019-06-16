@@ -61,4 +61,12 @@ class ChoresTest < ActionDispatch::IntegrationTest
     assert((Time.now.utc - @chore.last_performed).abs < 15.minutes)
     assert(cpl_count + 1, ChorePerformanceLog.where(chore: @chore, user: @account.user).count)
   end
+
+  test "/chore/assign" do
+    user = create(:user, family: @family)
+    get assign_chore_path(@chore), xhr: true, params: { user_id: user.id }
+    assert_response(:redirect)
+    @chore.reload
+    assert_equal(user, @chore.assignments.first&.user)
+  end
 end
