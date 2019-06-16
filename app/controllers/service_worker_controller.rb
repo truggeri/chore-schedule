@@ -5,5 +5,5 @@ class ServiceWorkerController < ApplicationController
 
   def manifest; end
 
-  def online; end
+  def offline; end
 end

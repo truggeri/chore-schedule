@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get 'perform_now', on: :member
   end
 
-  get '/service-worker.js', to: "service_worker#service_worker"
-  get '/manifest.json',     to: "service_worker#manifest"
-  get '/offline.html',      to: "service_worker#offline"
+  get '/service-worker', to: "service_worker#service_worker"
+  get '/manifest',       to: "service_worker#manifest"
+  get '/offline',        to: "service_worker#offline"
 end
