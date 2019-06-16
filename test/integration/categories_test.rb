@@ -25,4 +25,24 @@ class CategoriesTest < ActionDispatch::IntegrationTest
     assert_match(@category.name, @response.body)
     assert_match("Create Chore", @response.body)
   end
+
+  test "POST /category" do
+    cat_count = Category.count
+    post "/category", params: { category: { name: "Foo that bar" } }
+    assert_response(:redirect)
+    assert_equal(cat_count + 1, Category.count)
+  end
+
+  test "POST /category failure" do
+    cat_count = Category.count
+    post "/category", params: { category: { name: "" } }
+    assert_response(:redirect)
+    assert_equal(cat_count, Category.count)
+  end
+
+  test "DELETE /category/:id" do
+    delete category_path(@category)
+    assert_response(:redirect)
+    assert_equal(0, Category.where(id: @category.id).count)
+  end
 end
