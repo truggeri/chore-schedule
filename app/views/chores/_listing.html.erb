@@ -15,7 +15,7 @@
         <% assigned_text = chore.assignments.last&.user&.name %>
         <% assigned_text = assigned_text.present? ? "Assigned to " + assigned_text : "Not assigned" %>
         <div class="last-done"><%= assigned_text %></div>
-        Next due on <%= chore&.perform_next_string %>
+        Next due on <%= chore.perform_next %>
       </div>
     </div>
   <% end %>

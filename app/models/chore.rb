@@ -54,25 +54,12 @@ class Chore < ApplicationRecord
   scope :almost_due, ->(days = 3) {
     where("perform_next > ?", Time.now.utc).where("perform_next < ?", days.days.from_now)
   }
-  scope :by_user, ->(user) { joins(:assignments).where(assignments: { user: user }) }
+  scope :by_user,    ->(user) { joins(:assignments).where(assignments: { user: user }) }
   scope :by_urgency, -> { order(perform_next: :asc) }
-  scope :overdue, -> { where("perform_next < ?", Time.now.utc) }
+  scope :overdue,    -> { where("perform_next < ?", Time.now.utc) }
   # rubocop:enable Style/Lambda
 
   def self.front_page(limit: 5)
     all.by_urgency.limit(limit)
-  end
-
-  #
-  # Should be in a decorator
-  #
-  def last_performed_string
-    return "never" if last_performed.blank?
-
-    last_performed&.strftime("%a, %B %e %Y")
-  end
-
-  def perform_next_string
-    perform_next&.strftime("%a, %B %e %Y")
   end
 end

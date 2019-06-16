@@ -5,7 +5,7 @@ class ChoresController < ApplicationController
   def index
     @sort = determine_sort(params[:sort].presence)
     @order = determine_order(params[:order].presence)
-    @chores = Chore.family(current_account&.family).order(@sort => @order)
+    @chores = Chore.family(current_account&.family).order(@sort => @order).decorate
     @chore = Chore.new(family: current_account&.family, description: "New chore", frequency: 1)
   end
 
