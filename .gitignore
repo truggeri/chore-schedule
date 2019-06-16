@@ -42,3 +42,6 @@
 # Ignore env files
 *.env
 production.yaml
+
+# Coverage
+coverage/*

@@ -68,7 +68,8 @@ class ChoresHelperTest < ActionView::TestCase
   end
 
   test "#days_until_due_text future" do
-    assert_equal @chore.days_until_due, days_until_due_text(@chore)
+    expected = @chore.days_until_due.zero? ? "Today" : @chore.days_until_due
+    assert_equal(expected, days_until_due_text(@chore))
   end
 
   test "#days_until_due_text today" do

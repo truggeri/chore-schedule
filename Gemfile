@@ -27,6 +27,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'ffaker'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -41,8 +42,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'stackprof'
   gem 'web-console', '>= 3.3.0'
-
-# For call-stack profiling flamegraphs
 end
 
 group :test do
@@ -50,5 +49,3 @@ group :test do
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
 end
-
-# gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
