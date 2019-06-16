@@ -47,6 +47,7 @@ module CategoryHelper
 
   def chore_summary_columns(chores)
     return "No chores in this category" if chores.empty?
+
     output = []
     header_cols = []
     header_cols << content_tag(:div, "", class: "col chore-padding-8")
