@@ -33,11 +33,6 @@ class ChoresController < ApplicationController
     end
   end
 
-  def edit
-    @chore = Chore.includes(:category).find_by(id: params[:id], family: current_account&.family)
-    @categories = Category.family(current_account&.family).pluck(:name, :id)
-  end
-
   def update
     @chore = Chore.includes(:category).find_by(id: params[:id], family: current_account&.family)
     if @chore&.update_attributes(permitted_params)
