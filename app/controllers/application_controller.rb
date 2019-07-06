@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
+
   before_action :set_family_name, if: -> { account_signed_in? }
 
   private

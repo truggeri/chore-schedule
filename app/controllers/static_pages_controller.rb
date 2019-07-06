@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_account!, only: [:dashboard]
+  protect_from_forgery except: :index
+
+  before_action :authenticate_account!, only: :dashboard
 
   def index; end
 
