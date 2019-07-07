@@ -55,6 +55,9 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
 
+  # Issue when CloudFlare communicates with http and request (https) does't match. Could be solved by
+  # spending $7/month on unnecessary dyno resources at Heroku, or just disable this check...
+  # @see https://github.com/rails/rails/issues/22965
   config.action_controller.forgery_protection_origin_check = false
 
   # Use the lowest log level to ensure availability of diagnostic information

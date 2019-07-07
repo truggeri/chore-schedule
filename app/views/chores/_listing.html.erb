@@ -2,7 +2,7 @@
   chores ||= nil
 %>
 
-<% return nil if chores.blank? %>
+<% return "No chores" if chores.blank? %>
 
 <div class="row">
   <% chores.each do |chore| %>
