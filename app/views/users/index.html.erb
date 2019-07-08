@@ -1,0 +1,9 @@
+<% provide(:title, "Users") %>
+
+<div class="row">
+<% @users.each do |user| %>
+  <div class="col-12 col-md-6 chore-box">
+    <h4><%= fa_icon("user") %> <%= link_to(user.name, user_path(user)) %></h4>
+  </div>
+<% end %>
+</div>

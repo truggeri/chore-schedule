@@ -1,0 +1,28 @@
+<% return "No user found" if @user.nil? %>
+
+<% provide(:title, @user.name) %>
+
+<div class="col-12 chore-padding-8">
+  <h5>Assigned Chores</h5>
+</div>
+<% @user.assignments.each do |a| %>
+  <div class="row chore-padding-8">
+    <div class="col-12"><%= link_to(a.chore.description, chore_path(a.chore)) %></div>
+  </div>
+<% end %>
+<div class="row"><div class="col">&nbsp;</div></div>
+
+<div class="col-12 chore-padding-8 chore-border-light">
+  <h5>Recent Performances</h5>
+</div>
+<div class="row chore-padding-8">
+  <div class="col-7"><strong>Chore</strong></div>
+  <div class="col-5"><strong>Performed</strong></div>
+</div>
+<% @logs.each do |log| %>
+  <div class="row chore-padding-8">
+    <div class="col-7 chore-border-ultralight"><%= link_to(log.chore.description, chore_path(log.chore)) %></div>
+    <div class="col-5 chore-border-ultralight"><%= log.performed_at %></div>
+  </div>
+<% end %>
+<div class="row"><div class="col">&nbsp;</div></div>
