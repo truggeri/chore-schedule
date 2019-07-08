@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.family(current_account&.family)
   end
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.includes(:assignments)
                 .family(current_account&.family)
                 .find_by(id: params[:id])
+                .decorate
     @logs = ChorePerformanceLog.includes(:chore)
                                .family(current_account&.family)
                                .where(user: @user)
