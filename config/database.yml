@@ -12,7 +12,14 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV["CHORE_SCHEDULE_DB_HOST"].presence || "localhost" %>
+  pool: 5
+  timeout: 5000
+  username: <%= ENV["CHORE_SCHEDULE_DB_USERNAME"] %>
+  password: <%= ENV["CHORE_SCHEDULE_DB_PASSWORD"] %>
+  database: <%= ENV["CHORE_SCHEDULE_DB_DATABASE"].presence || "chore-schedule-test" %>
 
 production:
   <<: *default
