@@ -16,10 +16,11 @@ module ApplicationHelper
     page_title.present? ? "#{page_title} | #{BASE_TITLE}" : BASE_TITLE
   end
 
-  def user_display(name)
-    return "" if name.blank?
+  def user_display(user)
+    return "" if user.blank?
 
-    output_text = safe_join([fa_icon("user", "fas"), " #{name}"])
-    content_tag(:span, output_text, class: "navbar-user-name")
+    output_text = safe_join([fa_icon("user", "fas"), " #{user.name}"])
+    link = link_to(output_text, user_path(user))
+    content_tag(:span, link, class: "navbar-user-name")
   end
 end
