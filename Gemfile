@@ -19,6 +19,7 @@ gem 'draper', '~> 3.0.1'
 gem 'humanize', '~> 2.1.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem "nokogiri", ">= 1.10.4"
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
