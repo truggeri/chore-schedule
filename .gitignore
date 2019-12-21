@@ -45,3 +45,7 @@ production.yaml
 
 # Coverage
 coverage/*
+
+bin/*
+log/*
+storage/*

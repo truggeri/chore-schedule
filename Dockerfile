@@ -28,6 +28,7 @@ COPY app/ ./app/
 COPY config/ ./config/
 COPY db/ ./db/
 COPY lib/ ./lib/
+COPY public/ ./public/
 COPY vendor/ ./vendor/
 
 COPY config.ru .

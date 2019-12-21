@@ -5,7 +5,7 @@ coverage
 data
 log
 node_modules
-public
+public/assets
 storage
 test
 tmp
