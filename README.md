@@ -23,6 +23,22 @@ bundle install
 bundle exec rails server
 ```
 
+### Dockerfile
+
+There is an included Dockerfile that installs gems, copies relevant files and does an asset precomile. It doesn't use
+a mounted volume, so it's not ideal for local development, but it could quickly be modified to do so (this would enable
+live reloading of your code rather than rebuiding after every change). Build it with,
+
+```bash
+docker build --tag chore-schedule-app .
+```
+
+You can then run with a command like,
+
+```bash
+docker run --rm -p 3000:3000 -it -e DATABASE_URL=xxx chore-schedule-app:latest
+```
+
 ## Tests
 
 The test suite includes unit test for logic in models, helpers and decorators. It also includes some integration tests
