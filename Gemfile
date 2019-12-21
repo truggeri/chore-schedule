@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.6.5'
 
 gem 'pg', '~> 1.1.4'
 gem 'puma', '>= 3.12.2'
@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 # third-party gems
+gem 'annotate'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
@@ -20,6 +21,7 @@ gem 'humanize', '~> 2.1.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem "nokogiri", ">= 1.10.4"
+gem 'rack-mini-profiler', require: false
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
@@ -31,12 +33,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'annotate'
   gem 'flamegraph'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'memory_profiler'
   gem 'pry'
-  gem 'rack-mini-profiler', require: false
   gem 'solargraph', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
