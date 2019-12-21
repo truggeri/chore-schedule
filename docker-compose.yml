@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  db:
+    image: postgres:11.1
+    environment:
+      - POSTGRES_DB=${CHORE_SCHEDULE_DB_DATABASE}
+      - POSTGRES_PASSWORD=${CHORE_SCHEDULE_DB_PASSWORD}
+      - POSTGRES_USER=${CHORE_SCHEDULE_DB_USERNAME}
+    restart: always
+    networks:
+      - chore-schedule-network
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/pg:/var/lib/postgresql/data
+  web-app:
+    build: .
+    depends_on:
+      - db
+    networks:
+      - chore-schedule-network
+    ports:
+      - 3000:3000
+
+networks:
+  chore-schedule-network:
+    driver: bridge
