@@ -20,7 +20,7 @@ gem 'draper', '~> 3.0.1'
 gem 'humanize', '~> 2.1.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.8" # CVE-2020-7595
 gem 'rack-mini-profiler', require: false
 gem 'turbolinks', '~> 5'
 
