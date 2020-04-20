@@ -5,7 +5,7 @@ ruby '2.6.5'
 
 gem 'actionview', '>= 5.2.4.2'
 gem 'pg', '~> 1.1.4'
-gem 'puma', '>= 3.12.2'
+gem 'puma', '>= 4.3.3'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
