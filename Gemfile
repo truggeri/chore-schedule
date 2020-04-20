@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'actionview', '>= 5.2.4.2'
 gem 'pg', '~> 1.1.4'
 gem 'puma', '>= 3.12.2'
 gem 'rails', '~> 5.2.3'
