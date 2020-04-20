@@ -2,7 +2,7 @@
 
 ![Coverage badge](https://img.shields.io/badge/coverage-92%25-brightgreen.svg)
 
-An app for making and keeping a chore schedule. See it hosted at [https://www.choreplanfor.us](https://www.choreplanfor.us)
+An app for making and keeping a chore schedule. See it hosted at [https://www.choreplan.truggeri.com](https://www.choreplan.truggeri.com)
 
 ## About the Application
 
