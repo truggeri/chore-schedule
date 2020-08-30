@@ -22,7 +22,7 @@ module ChoresHelper
         form: render(partial: "/chores/form", locals: { action_path: chore_path(@chore) }),
         form_action: "edit_chore_submit(#{@chore.id});",
         model: "chore",
-        submit_icon: fa_icon("edit", "fas"),
+        submit_icon: fa_icon("edit", "fas")
       }
     )
   end

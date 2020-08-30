@@ -114,16 +114,12 @@ class ChoresController < ApplicationController
       return false
     end
     category = Category.find_by(id: param.to_i, family: current_account&.family)
-    params[:chore][:category_id] = if category&.valid?
-                                     param.to_i
-                                   else
-                                     nil
-                                   end
+    params[:chore][:category_id] = category&.valid? ? param.to_i : nil
   end
 
-  def frequency_type_to_sym(ft)
+  def frequency_type_to_sym(freq_type)
     Chore.frequency_types.each do |k, v|
-      params[:chore][:frequency_type] = k if ft == v
+      params[:chore][:frequency_type] = k if freq_type == v
     end
   end
 end

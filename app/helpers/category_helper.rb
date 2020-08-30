@@ -23,9 +23,10 @@ module CategoryHelper
     return content_tag(:div, "", class: "") if category.nil?
 
     cols = []
-    cols << content_tag(:div, safe_join([category_badge_with_count(category),
-                                              link_to(category.name, category_path(category))], " "),
-                                    class: COLUMN_CLASSES)
+    cols << content_tag(:div,
+                        safe_join([category_badge_with_count(category),
+                                   link_to(category.name, category_path(category))], " "),
+                        class: COLUMN_CLASSES)
     cols << content_tag(:div, category.chore_count, class: "#{COLUMN_CLASSES} col-3 col-md-2 text-center")
     trash_button = <<~END_OF_BUTTON
       <button type="button" class="btn delete-button" data-toggle="modal" data-target="#removeConfirmModal"

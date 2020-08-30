@@ -4,9 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.5"
 
 gem "actionpack", ">= 5.2.4.3" # CVE-2020-8166
+gem "actionview", ">= 5.2.4.3" # CVE-2020-8167
 gem "activestorage", ">= 5.2.4.3" # CVE-2020-8162
 gem "activesupport", ">= 5.2.4.3" # CVE-2020-8165
-gem "actionview", ">= 5.2.4.3" # CVE-2020-8167
 gem "pg", "~> 1.1.4"
 gem "puma", ">= 4.3.5" # GHSA-w64w-qqph-5gxm
 gem "rack", ">= 2.2.3" # CVE-2020-8184

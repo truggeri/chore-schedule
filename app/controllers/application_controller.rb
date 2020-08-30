@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_categories
-    @categories = Category.family(current_account&.family).pluck( :name, :id)
+    @categories = Category.family(current_account&.family).pluck(:name, :id)
   end
 end

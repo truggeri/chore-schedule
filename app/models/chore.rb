@@ -43,7 +43,7 @@ class Chore < ApplicationRecord
   end
 
   def frequency_to_time
-    eval("#{frequency.to_s}.#{frequency_type}", binding, __FILE__, __LINE__ + 1)
+    eval("#{frequency}.#{frequency_type}", binding, __FILE__, __LINE__ + 1)
   end
 
   def adjust_perform_next

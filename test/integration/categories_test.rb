@@ -16,7 +16,7 @@ class CategoriesTest < ActionDispatch::IntegrationTest
     get "/category"
     assert_response(:success)
     assert_match("<a href=\"#{category_path(@category)}\">#{@category.name}</a>", @response.body)
-    assert_equal(Category.family(@family).count, @response.body.scan(/<a href=.{1,2}\/category\/\d+/).size)
+    assert_equal(Category.family(@family).count, @response.body.scan(%r{<a href=.{1,2}\/category\/\d+}).size)
   end
 
   test "/category/:id" do

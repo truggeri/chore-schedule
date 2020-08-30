@@ -1,8 +1,11 @@
 AllCops:
   Exclude:
     - 'bin/**'
+    - 'config/**/*'
     - 'db/schema.rb'
+    - 'db/**/*'
     - 'lib/**/*'
+    - 'node_modules/**/*'
     - 'vendor/**/*'
   DisplayCopNames: true
 Layout/HashAlignment:
@@ -26,6 +29,15 @@ Layout/LineLength:
   Max:     120
   Exclude:
     - 'config/**/*'
+Metrics/AbcSize:
+  Enabled: true
+  Max: 25
+Metrics/ClassLength:
+  Enabled: true
+  Max: 120
+Metrics/MethodLength:
+  Enabled: true
+  Max: 25
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment: 

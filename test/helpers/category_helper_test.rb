@@ -9,8 +9,8 @@ class CategoryHelperTest < ActionView::TestCase
     chore = create(:chore)
     css_classes = "col chore-padding-8 chore-border-ultralight"
     cols = ["<div class='#{css_classes}'>#{link_to(chore.description, chore_path(chore))}</div>"]
-    cols << "<div class='#{css_classes}'>#{chore.last_performed&.strftime("%a, %B %e")}</div>"
-    cols << "<div class='#{css_classes}'>#{chore.perform_next&.strftime("%a, %B %e")}</div>"
+    cols << "<div class='#{css_classes}'>#{chore.last_performed&.strftime('%a, %B %e')}</div>"
+    cols << "<div class='#{css_classes}'>#{chore.perform_next&.strftime('%a, %B %e')}</div>"
     expected = "<div class='row'>#{cols.join}</div>"
     assert_dom_equal(expected, chore_summary_column(chore))
   end

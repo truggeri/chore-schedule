@@ -36,7 +36,8 @@ class ChoresHelperTest < ActionView::TestCase
   test "#category_select" do
     categories = [create(:category), create(:category)]
     result = category_select(categories)
-    expected = "<select name=\"chore[category_id]\" id=\"chore_category_id\"><option value=\"\"></option>\n<option value=\"-\">-</option>"
+    expected = "<select name=\"chore[category_id]\" id=\"chore_category_id\"><option value=\"\">" \
+               "</option>\n<option value=\"-\">-</option>"
     assert_includes result, expected
     categories.each do |cat|
       expected = "<option value=\"#{safe_join([cat])}\">#{safe_join([cat])}</option>"

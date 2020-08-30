@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.family(current_account&.family)
   end
@@ -15,6 +14,5 @@ class UsersController < ApplicationController
                                .order(id: :desc)
                                .limit(5)
                                .decorate
-
   end
 end
