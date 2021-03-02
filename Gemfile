@@ -5,6 +5,7 @@ ruby "2.6.5"
 
 gem "actionpack", ">= 5.2.4.3" # CVE-2020-8166
 gem "actionview", ">= 5.2.4.3" # CVE-2020-8167
+gem "activerecord", ">= 5.2.4.5" # CVE-2021-22880
 gem "activestorage", ">= 5.2.4.3" # CVE-2020-8162
 gem "activesupport", ">= 5.2.4.3" # CVE-2020-8165
 gem "pg", "~> 1.1.4"
