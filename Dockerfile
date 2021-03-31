@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-slim-buster as build-image
+FROM ruby:2.6.6-slim-buster as build-image
 
 # Install container dependencies
 ENV BUILD_PACKAGES="wget gnupg2 libgmp-dev make gcc patch g++"

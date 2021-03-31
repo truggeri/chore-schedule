@@ -1,13 +1,14 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.5"
+ruby "2.6.6"
 
 gem "actionpack", ">= 5.2.4.3" # CVE-2020-8166
 gem "actionview", ">= 5.2.4.3" # CVE-2020-8167
 gem "activerecord", ">= 5.2.4.5" # CVE-2021-22880
 gem "activestorage", ">= 5.2.4.3" # CVE-2020-8162
 gem "activesupport", ">= 5.2.4.3" # CVE-2020-8165
+# gem "kramdown", ">= 2.3.1" # CVE-2021-28834
 gem "pg", "~> 1.1.4"
 gem "puma", ">= 4.3.5" # GHSA-w64w-qqph-5gxm
 gem "rack", ">= 2.2.3" # CVE-2020-8184
@@ -44,15 +45,8 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "memory_profiler"
   gem "pry"
-  gem "solargraph", require: false
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "stackprof"
   gem "web-console", ">= 3.3.0"
-end
-
-group :test do
-  gem "capybara", ">= 2.15"
-  gem "chromedriver-helper"
-  gem "selenium-webdriver"
 end
