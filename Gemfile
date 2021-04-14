@@ -19,7 +19,7 @@ gem "websocket-extensions", ">= 0.1.5" # GHSA-g6wq-qcwm-j5g2
 
 # third-party gems
 gem "annotate"
-gem "bootsnap", ">= 1.1.0", require: false
+gem "bootsnap", ">= 1.7.3", require: false
 gem "bootstrap", "~> 4.3.1"
 gem "data_migrate", "~> 5.3.2"
 gem "devise", ">= 4.7.1"

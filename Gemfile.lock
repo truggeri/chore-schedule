@@ -238,7 +238,7 @@ DEPENDENCIES
   activestorage (>= 5.2.4.3)
   activesupport (>= 5.2.4.3)
   annotate
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.7.3)
   bootstrap (~> 4.3.1)
   byebug
   data_migrate (~> 5.3.2)
