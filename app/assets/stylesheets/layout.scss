@@ -57,7 +57,8 @@ footer {
   top: -28px;
 }
 
-@include media-breakpoint-up(sm) {
+// @include media-breakpoint-up(sm) {
+@media (min-width: 576px) and (max-width: 767.98px) {
   .main-header {
     font-size: 28px;
   }
