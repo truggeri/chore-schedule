@@ -21,7 +21,6 @@ gem "websocket-extensions", ">= 0.1.5" # GHSA-g6wq-qcwm-j5g2
 gem "annotate"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.3.1"
-gem "coffee-rails", "~> 4.2"
 gem "data_migrate", "~> 5.3.2"
 gem "devise", ">= 4.7.1"
 gem "draper", "~> 3.0.1"
@@ -30,7 +29,6 @@ gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "nokogiri", ">= 1.10.8" # CVE-2020-7595
 gem "rack-mini-profiler", require: false
-gem "turbolinks", "~> 5"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
