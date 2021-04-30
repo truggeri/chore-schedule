@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   private
 
   def set_family_name
-    session[:family_name] = current_account&.family[:name] if session[:family_name].blank?
+    return nil unless session[:family_name].blank? && current_account.present?
+
+    session[:family_name] = current_account.family[:name]
   end
 
   def ajax_redirect_to(url)

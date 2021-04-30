@@ -2,6 +2,8 @@ class ChoresController < ApplicationController
   before_action :authenticate_account!
   before_action :load_categories, only: %i[index show create]
 
+  ALLOWED_SORT_KEYS = %i[description frequency perform_next].freeze
+
   def index
     @sort = determine_sort(params[:sort].presence)
     @order = determine_order(params[:order].presence)
@@ -60,7 +62,7 @@ class ChoresController < ApplicationController
   def perform_now
     respond_to :js
     @chore = Chore.find_by(id: params[:id], family: current_account&.family)
-    ajax_redirect_to(chores_path); return if @chore.blank?
+    return ajax_redirect_to(chores_path) if @chore.blank?
 
     @chore.last_performed = Time.now.utc
     @chore.set_first_time
@@ -78,7 +80,7 @@ class ChoresController < ApplicationController
   def assign
     respond_to :js
     @chore = Chore.find_by(id: params[:id], family: current_account&.family)
-    ajax_redirect_to(chores_path); return if @chore.blank?
+    return ajax_redirect_to(chores_path) if @chore.blank?
 
     @assignment = Assignment.create(chore: @chore,
                                     user:  User.find_by(id: params[:user_id]))
@@ -93,7 +95,8 @@ class ChoresController < ApplicationController
   private
 
   def determine_sort(param)
-    return :perform_next unless param&.to_sym.in?(%i[description frequency perform_next])
+    return :perform_next unless param.present? && param.to_sym.in?(ALLOWED_SORT_KEYS)
+
     param.to_sym
   end
 
