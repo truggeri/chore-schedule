@@ -1,16 +1,17 @@
 <% provide(:title, "Unlock Account") %>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <div class="row">
-    <div class="col-12 chore-padding-8">
+  <div class="flex">
+    <div class="full chore-padding-8">
       <%= f.label :email %><br />
       <%= f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg") %>
     </div>
-    <div class="col-12 chore-padding-8">
+    <div class="full chore-padding-8">
       <%= f.submit("Resend", class: "btn btn-primary btn-lg") %>
     </div>
   </div>
 <% end %>
-<div class="col-12 chore-padding-8 text-center">
+
+<div class="chore-padding-8 text-center">
   <%= render "devise/shared/links" %>
 </div>

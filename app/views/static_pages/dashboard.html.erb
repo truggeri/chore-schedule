@@ -3,33 +3,33 @@
 <%
   overdue_chores ||= nil # no default, just for formatting
   due_soon_chores ||= nil
-  full_row_size = overdue_chores.present? && due_soon_chores.present? ? 6 : 12
-  nothing_to_do = !overdue_chores.present? && !due_soon_chores.present?
+  full_row_size = overdue_chores.present? && due_soon_chores.present? ? "half" : "full"
+  nothing_to_do = !(overdue_chores.present? || due_soon_chores.present?)
 %>
 
-<div class="row" style="padding-top: 16px;">
+<div class="flex" style="padding-top: 16px;">
   <% if overdue_chores.present? %>
-    <div class="col-sm-12 col-md-<%= full_row_size %>">
+    <div class="full <%= full_row_size %>-800">
       <h3>Overdue</h3>
       <div class="to-right dashboard-line">&nbsp;</div>
-      <%= render(partial: "chores/listing", locals: { chores: overdue_chores }) %>
+      <%= render("chores/listing", chores: overdue_chores) %>
       <%= more_link(chores_path, "Chores") %>
       <br />
     </div>
   <% end %>
 
   <% if due_soon_chores.present? %>
-    <div class="col-sm-12 col-md-<%= full_row_size %>">
+    <div class="full <%= full_row_size %>-800">
       <h3>Due Soon</h3>
       <div class="to-left dashboard-line">&nbsp;</div>
-      <%= render(partial: "chores/listing", locals: { chores: due_soon_chores }) %>
+      <%= render("chores/listing", chores: due_soon_chores) %>
       <%= more_link(chores_path, "Chores") %>
       <br />
     </div>
   <% end %>
 
   <% if nothing_to_do %>
-    <div class="col-12">
+    <div class="full">
       <h3>🎉 You're all done 🎉</h3>
       <%= more_link(chores_path, "Chores") %>
     </div>

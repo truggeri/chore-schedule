@@ -1,4 +1,4 @@
-var enable_tooltips, initial_delete_setup;
+var initial_delete_setup;
 
 this.edit_chore_submit = function(id) {
   $("#edit_chore_" + id).trigger("submit");
@@ -53,8 +53,4 @@ this.perform_or_assign_chore = function(path) {
     }
   });
   $.ajax();
-};
-
-enable_tooltips = function() {
-  $('[data-toggle="tooltip"]').tooltip();
 };

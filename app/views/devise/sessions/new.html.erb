@@ -1,29 +1,31 @@
 <% provide(:title, "Log In") %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="row">
-    <div class="col-12 chore-padding-8">
+  <div class="flex">
+    <div class="full chore-padding-8">
       <%= f.label :email %><br />
       <%= f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg") %>
     </div>
-    <div class="col-12 chore-padding-8">
+    <div class="full chore-padding-8">
       <%= f.label :password %><br />
       <%= f.password_field(:password, autocomplete: "current-password", class: "form-control form-control-lg") %>
     </div>
     <% if devise_mapping.rememberable? %>
-      <div class="col-12">
+      <div class="full">
         <br />
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label(:remember_me) do %>
+          <%= f.check_box(:remember_me) %>
+          <span class="checkable">Remember Me</span>
+        <% end %>
         <br />
       </div>
     <% end %>
-    <div class="col-12 chore-padding-8">
+    <div class="full chore-padding-8">
       <%= f.submit("Log in", class: "btn btn-primary btn-lg btn-block") %>
     </div>
   </div>
 <% end %>
 
-<div class="col-12 chore-padding-8 text-center">
+<div class="full chore-padding-8 text-center">
   <%= render "devise/shared/links" %>
 </div>
