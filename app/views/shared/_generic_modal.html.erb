@@ -1,4 +1,4 @@
-<% return nil unless action.present? && model.present?  %>
+<% return "" unless action.present? && model.present?  %>
 <%
   form        ||= render(partial: "form")
   form_action ||= "#{action}_#{model}_submit();"

@@ -4,9 +4,9 @@
 
 <% return "No chores" if chores.blank? %>
 
-<div class="row">
+<div class="flex">
   <% chores.each do |chore| %>
-    <div class="col-12 col-lg-6 chore-box">
+    <div class="full half-1000 chore-box">
       <div class="top-row">
         <h4><%= link_to(chore.description, chore_path(chore)) %></h4>
         <div class="days-until-due"><%= days_until_due_text(chore, true) %></div>

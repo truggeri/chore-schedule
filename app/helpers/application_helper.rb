@@ -9,7 +9,7 @@ module ApplicationHelper
     return "" if session[:family_name].blank?
 
     output_text = safe_join([fa_icon("users", "fas"), " #{session[:family_name]} Family"])
-    content_tag(:span, output_text, class: "navbar-family-name")
+    link_to(output_text, "#", class: "nav-link")
   end
 
   def full_title(page_title = '')
@@ -20,7 +20,6 @@ module ApplicationHelper
     return "" if user.blank?
 
     output_text = safe_join([fa_icon("user", "fas"), " #{user.name}"])
-    link = link_to(output_text, user_path(user))
-    content_tag(:span, link, class: "navbar-user-name")
+    link_to(output_text, user_path(user), class: "nav-link")
   end
 end

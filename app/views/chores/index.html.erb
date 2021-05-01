@@ -4,21 +4,17 @@
   <%= render(partial: "shared/error_messages", locals: { model: @chore }) %>
 <% end %>
 
-<div class="row row-padded">
-  <div class="col">
+<div class="flex row-padded">
+  <div class="half">
     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
       <%= fa_icon("plus-circle") %> Create
     </button>
   </div>
-  <div class="col" style="text-align: right;">
-    <div class="dropdown">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="half text-right">
+    <div class="">
+      <button class="button" id="sortMenuButton">
         <%= chore_sort_icon(@order) %> <%= chore_sort_by_name(@sort) %>
       </button>
-      <div class="dropdown-menu" aria-labelledby="sortMenuButton">
-        <%= chore_sort_links %>
-      </div>
     </div>
   </div>
 </div>

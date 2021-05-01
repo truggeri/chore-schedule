@@ -8,7 +8,7 @@
 @import "custom-bootstrap.scss";
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
+// @import "bootstrap";
 
 // https://fontawesome.com/how-to-use/on-the-web/using-with/sass
 @import "fontawesome/fontawesome.scss";
@@ -31,7 +31,6 @@ alert-padding {
   margin-right: 64px;
 }
 
-
 body {
   background-color: $background-color;
   background: repeating-linear-gradient(to top left, $background-color, $background-color 5px, $background-color-light 5px, $background-color-light 10px);
@@ -43,6 +42,7 @@ body {
 .debug_dump {
   background-color: #f5f5f5;
   border: 1px solid #111;
+  font-size: 14px;
   margin: 16px;
   margin-top: 48px;
   padding: 24px;
@@ -60,4 +60,16 @@ html {
   font-size: 14px;
   padding: 8px;
   text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }

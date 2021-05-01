@@ -1,48 +1,49 @@
 <% provide(:title, @chore&.description || "Chore") %>
 
-<div class="row text-left">
-  <div class="col text-left">
+<div class="flex text-left">
+  <div class="half text-left">
     <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Chores"]), chores_url) %>
   </div>
-  <div class="col text-right">
+  <div class="half text-right">
     <%= category_badge(@chore) %>
   </div>
 </div>
-<div class="row"><div class="col">&nbsp;</div></div>
-<div class="row chore-padding-16">
-  <div class="col-12 col-md-4 chore-padding-8 chore-border-light"><h5>Last Done</h5></div>
-  <div class="col-12 col-md-8 chore-padding-8 chore-performed-text chore-border-light">
+<div class="flex"><div class="full">&nbsp;</div></div>
+<div class="flex chore-padding-16">
+  <div class="full third-800 chore-padding-8 chore-border-light"><h5>Last Done</h5></div>
+  <div class="full two-third-800 chore-padding-8 chore-performed-text chore-border-light">
     <%= @chore.last_performed_long %>
   </div>
 </div>
-<div class="row chore-padding-16">
-  <div class="col-12 col-md-4 chore-padding-8 chore-border-ultralight"><h5>Due By</h5></div>
-  <div class="col-12 col-md-8 chore-padding-8 chore-performed-text chore-border-ultralight">
+<div class="flex chore-padding-16">
+  <div class="full third-800 chore-padding-8 chore-border-ultralight"><h5>Due By</h5></div>
+  <div class="full two-third-800 chore-padding-8 chore-performed-text chore-border-ultralight">
     <%= @chore.perform_next %> (<%= @chore.perform_next_summary %>)
   </div>
 </div>
-<div class="row chore-padding-16">
+<div class="flex chore-padding-16">
   <%= render(partial: "user_actions",
              locals: { users: @users, chore_assigned: @chore.assignments.first&.user_id, chore_id: @chore.id }) %>
 </div>
-<div class="row chore-padding-16">
-  <div class="col-12 chore-padding-8 chore-border-light">
+<div class="flex chore-padding-16">
+  <div class="full chore-padding-8 chore-border-light">
     <h5>
       History
-      <i class="fa fa-info-circle" style="font-size: 12px;" data-toggle="tooltip" data-placement="right"
-         title="The last five times this chore was performed"></i>
+      <span class="tooltip-right" data-tooltip="The last five times this chore was performed">
+        <i class="fa fa-info-circle" style="font-size: 12px;"></i>
+      </span>
     </h5>
   </div>
-  <div class="col-12 chore-padding-8" style="font-style: italic; font-size: 13px;"></div>
+  <div class="flex chore-padding-8" style="font-style: italic; font-size: 13px;"></div>
   <%= history_columns(@logs) %>
 </div>
-<div class="row chore-padding-16">
-  <div class="col-6 text-center">
+<div class="flex chore-padding-16">
+  <div class="half text-center">
     <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editChoreModal">
       <%= fa_icon("edit", "fas") %> Edit
     </button>
   </div>
-  <div class="col-6 text-center">
+  <div class="half text-center">
     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#removeConfirmModal">
       <%= fa_icon("trash") %> Remove
     </button>

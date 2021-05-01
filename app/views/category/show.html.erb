@@ -1,23 +1,23 @@
 <% provide(:title, @category&.name || "Category") %>
 
-<div class="row chore-padding-16">
-  <div class="col text-left">
+<div class="flex chore-padding-16">
+  <div class="half text-left">
     <%= link_to(safe_join([fa_icon("arrow-circle-left"), " All Categories"]), category_index_path) %>
   </div>
-  <div class="col text-right">
+  <div class="half text-right">
     <%= category_badge_with_count(@category, "#{@chores.size} chores") %>
   </div>
 </div>
-<div class="row chore-padding-16">
-  <div class="col-12 col-sm-6 chore-padding-8">
+<div class="flex chore-padding-16">
+  <div class="two-third half-800 chore-padding-8">
     <h5>Chores</h5>
   </div>
-  <div class="col-12 col-sm-6 create-chore-button">
+  <div class="third create-chore-button">
     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
       <%= fa_icon("plus-circle") %> Create Chore
     </button>
   </div>
-  <div class="col-12">
+  <div class="full">
     <%= chore_summary_columns(@chores) %>
   </div>
 </div>

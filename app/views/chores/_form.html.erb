@@ -1,16 +1,16 @@
-<% return unless @chore.present? %>
+<% return "" unless @chore.present? %>
 
 <%
   action_path ||= chores_path(@chore)
 %>
 
-<%= form_for @chore, url: action_path do |f| %>
-  <div class="row">
-    <div class="col-12 chore-padding-8">
+<%= form_for(@chore, url: action_path)do |f| %>
+  <div class="flex">
+    <div class="full chore-padding-8">
       <%= label(:chore, :description) %>
       <%= f.text_field(:description, class: "form-control") %>
     </div>
-    <div class="col-8 chore-padding-8">
+    <div class="two-third chore-padding-8">
       <% options = []
          (1..30).each { |n| options << [n, n]} %>
       <%= label(:chore, :frequency) %>
@@ -19,7 +19,7 @@
                    class: "form-control", selected: Chore.frequency_types[@chore.frequency_type]) %>
     </div>
     <% if @categories&.size&.positive? %>
-      <div class="col-12 chore-padding-8">
+      <div class="full chore-padding-8">
         <%= label(:chore, :category) %><br />
         <%= category_select(@categories, @chore.category&.id) %>
       </div>

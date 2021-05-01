@@ -17,6 +17,7 @@ nav.navbar {
     color: $nav-link-color;
     font-family: 'Permanent Marker', cursive;
     font-size: 14px;
+    padding: 16px;
   }
 
   // @include media-breakpoint-up(sm) {
@@ -32,6 +33,10 @@ nav.navbar {
 
   a.nav-link {
     color: $nav-link-color!important;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 16px;
   }
 
   a.nav-link:hover {
@@ -69,4 +74,10 @@ nav.navbar {
 .navbar-user-name {
   color: $background-color-dark;
   padding-right: 16px;
+}
+
+nav .burger ~ .menu {
+  @media (max-width: 60em) {
+    background: $color-waterfall;
+  }
 }

@@ -1,0 +1,30 @@
+<header>
+  <nav class='navbar'>
+    <%= link_to(safe_join([fa_icon("clipboard-list", "fas"), " Chore Plan for Us"]),
+                root_url, class: "brand navbar-brand", 'aria-label': "Go home") %>
+
+    <% if account_signed_in? %>
+      <%= link_to("Chores", chores_path, class: "brand nav-link") %>
+      <%= link_to("Categories", category_index_path, class: "brand nav-link") %>
+    <% end %>
+
+    <!-- responsive-->
+    <input id="bmenub" type="checkbox" class="show">
+    <label for="bmenub" class="burger pseudo button">&#8801;</label>
+
+    <div class="menu">
+      <% if account_signed_in? %>
+        <%= user_display(current_account&.user) %>
+        <%= family_display %>
+        <%= link_to(safe_join([fa_icon("door-open", "fas"),"  Sign Out"]),
+                              destroy_account_session_path,
+                              method:       :delete,
+                              class:        "nav-link",
+                              'aria-label': "Sign out") %>
+      <% else %>
+        <%= link_to(safe_join([fa_icon("user"), "  Log in"]),
+                    new_account_session_path, class: "nav-link", 'aria-label': "Log in") %>
+      <% end %>
+    </div>
+  </nav>
+</header>
