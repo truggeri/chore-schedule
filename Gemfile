@@ -15,12 +15,10 @@ gem "rack", ">= 2.2.3" # CVE-2020-8184
 gem "rails", "~> 5.2.5"
 gem "sassc-rails", "~> 2.1.2"
 gem "uglifier", ">= 1.3.0"
-gem "websocket-extensions", ">= 0.1.5" # GHSA-g6wq-qcwm-j5g2
 
 # third-party gems
 gem "annotate"
 gem "bootsnap", ">= 1.7.3", require: false
-gem "bootstrap", "~> 4.3.1"
 gem "data_migrate", "~> 5.3.2"
 gem "devise", ">= 4.7.1"
 gem "draper", "~> 3.0.1"
