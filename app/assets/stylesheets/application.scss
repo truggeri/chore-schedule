@@ -23,11 +23,6 @@ a:hover {
   text-decoration: none;
 }
 
-alert-padding {
-  margin-left: 64px;
-  margin-right: 64px;
-}
-
 body {
   background-color: $background-color;
   background: repeating-linear-gradient(to top left, $background-color, $background-color 5px, $background-color-light 5px, $background-color-light 10px);

@@ -1,0 +1,28 @@
+@import "colors.scss";
+
+.alert-danger {
+  background-color: $danger;
+  color: #444;
+}
+
+.alert-padding {
+  border-radius: 6px;
+  margin-left: 64px;
+  margin-right: 64px;
+  padding: 16px;
+}
+
+.alert-primary {
+  background-color: $primary;
+  color: white;
+}
+
+.alert-secondary {
+  background-color: $secondary;
+  color: white;
+}
+
+.alert-success {
+  background-color: $success;
+  color: white;
+}
