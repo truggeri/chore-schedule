@@ -24,7 +24,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/picnic_header' %>
+    <%= render("layouts/picnic_header") %>
     <div class="container-fluid body-container">
       <% flash.each do |message_type, message| %>
         <% message_type = "danger"  if message_type == "error" || message_type == "alert" %>

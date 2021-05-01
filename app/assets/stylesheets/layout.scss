@@ -38,6 +38,10 @@ footer {
   box-shadow: 0px 3px 8px #bbb;
   padding: 16px;
   margin: 24px 8px 8px 8px;
+
+  @media (max-width: 600px) {
+    margin-top: 64px;
+  }
 }
 
 .main-content {

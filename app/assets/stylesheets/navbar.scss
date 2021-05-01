@@ -20,13 +20,6 @@ nav.navbar {
     padding: 16px;
   }
 
-  // @include media-breakpoint-up(sm) {
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    a.navbar-brand {
-      font-size: 24px;
-    }
-  }
-
   a.navbar-brand:hover {
     color: $nav-link-color-hover;
   }
