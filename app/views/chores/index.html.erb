@@ -1,14 +1,14 @@
 <% provide(:title, "Chores") %>
 
 <% unless @chore&.valid? %>
-  <%= render(partial: "shared/error_messages", locals: { model: @chore }) %>
+  <%= render("shared/error_messages", model: @chore) %>
 <% end %>
 
 <div class="flex row-padded">
   <div class="half">
-    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createChoreModal">
+    <label for="create-chore-modal" class="button">
       <%= fa_icon("plus-circle") %> Create
-    </button>
+    </label>
   </div>
   <div class="half text-right">
     <div class="">
@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<%= render(partial: "chores/listing", locals: { chores: @chores }) %>
+<%= render("chores/listing", chores: @chores) %>
 
-<%= render(partial: "shared/generic_modal", locals: { action: "create", model: "chore" }) %>
-<%= render("remove_confirm_modal") %>
+<%= render("shared/generic_modal", action: "create", model: "chore") %>
+<%= render("shared/remove_confirm_modal", model: "chore") %>

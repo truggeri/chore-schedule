@@ -3,33 +3,33 @@
   form        ||= render(partial: "form")
   form_action ||= "#{action}_#{model}_submit();"
   submit_icon ||= fa_icon("plus")
-  combo = "#{action}#{model.capitalize}"
+  modal_id = "#{action}-#{model.downcase}-modal"
 %>
 
 <!-- <%= action %> <%= model %> Modal -->
-<div class="modal fade" id="<%= combo %>Modal" tabindex="-1" role="dialog"
-     aria-labelledby="<%= combo %>ModalLabel" aria-hidden="true">
+<div class="modal" tabindex="-1" role="dialog"
+     aria-labelledby="<%= modal_id %>Label" aria-hidden="true">
+  <input id="<%= modal_id %>" type="checkbox" />
+  <label for="<%= modal_id %>" class="overlay"></label>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="<%= combo %>Modal"><%= action.capitalize %> a <%= model.capitalize %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title"><%= action.capitalize %> a <%= model.capitalize %></h5>
+        <label for="<%= modal_id %>" class="close">&times;</label>
       </div>
       <div class="modal-body">
         <%= form %>
       </div>
       <div class="modal-footer">
         <div class="container">
-          <div class="row">
-            <div class="col-6">
+          <div class="flex">
+            <div class="half">
               <button type="button" value="<%= action.capitalize %>"
-                      class="btn btn-primary" onclick="<%= form_action %>">
+                      class="success" onclick="<%= form_action %>">
                 <%= submit_icon %> Save</button>
             </div>
-            <div class="col-6 text-right">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <div class="half text-right">
+              <label for="<%= modal_id %>" class="button dangerous">Close</label>
             </div>
           </div>
         </div>

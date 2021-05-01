@@ -28,13 +28,11 @@ module CategoryHelper
                                    link_to(category.name, category_path(category))], " "),
                         class: "#{COLUMN_CLASSES} four-fifth")
     cols << content_tag(:div, category.chore_count, class: "#{COLUMN_CLASSES} text-center")
-    trash_button = <<~END_OF_BUTTON
-      <button type="button" class="pseudo delete-button" data-toggle="modal" data-target="#removeConfirmModal"
-      onclick="adjust_category_delete_path('#{category_path(category)}', '#{category.name}');">
-      #{fa_icon('trash')}
-      </button>
-    END_OF_BUTTON
-    cols << content_tag(:div, trash_button.html_safe, class: "#{COLUMN_CLASSES} text-center")
+    trash_button = content_tag(:label, class: "button pseudo", for: "remove-confirm-modal",
+      onclick: "adjust_category_delete_path('#{category_path(category)}', '#{category.name}');") do
+      fa_icon("trash")
+    end
+    cols << content_tag(:div, trash_button, class: "#{COLUMN_CLASSES} text-center")
     content_tag(:div, safe_join(cols), class: "flex")
   end
 

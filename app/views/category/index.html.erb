@@ -2,12 +2,12 @@
 
 <div class="flex row-padded">
   <div class="full">
-    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createCategoryModal">
+    <label for="create-category-modal" class="button">
       <%= fa_icon("plus-circle") %> Create
-    </button>
+    </label>
   </div>
 </div>
 <%= category_summary(@categories) %>
 
-<%= render(partial: "shared/generic_modal", locals: { action: "create", model: "category" }) %>
-<%= render("remove_confirm_modal") %>
+<%= render("shared/generic_modal", action: "create", model: "category") %>
+<%= render("shared/remove_confirm_modal", model: "category") %>

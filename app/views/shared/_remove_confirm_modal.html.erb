@@ -1,0 +1,33 @@
+<% return "" unless model.present? %>
+
+<!-- Remove Confirm Modal -->
+<% modal_id = "remove-confirm-modal" %>
+<div class="modal" tabindex="-1" role="dialog"
+     aria-labelledby="<%= modal_id %>Label" aria-hidden="true">
+  <input id="<%= modal_id %>" type="checkbox" />
+  <label for="<%= modal_id %>" class="overlay"></label>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <label for="<%= modal_id %>" class="close">&times;</label>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to remove the <%= model %><span id="<%= model %>-name" class="font-italic"></span>?
+      </div>
+      <div class="modal-footer">
+        <div class="flex">
+          <div class="half">
+            <button type="button" value="Delete"
+                    class="warning" onclick="$.ajax()">
+              <%= fa_icon("trash") %> Remove
+            </button>
+          </div>
+          <div class="half text-right">
+            <label for="<%= modal_id %>" class="button dangerous">Close</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
