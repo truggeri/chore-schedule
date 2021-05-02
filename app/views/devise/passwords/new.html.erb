@@ -10,7 +10,7 @@
     <%= f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg") %>
   </div>
   <div class="full chore-padding-8">
-    <%= f.submit("Reset", class: "button") %>
+    <%= f.submit("Reset", class: "button", data: { disable: true }) %>
   </div>
 </div>
 <% end %>

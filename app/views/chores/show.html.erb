@@ -39,12 +39,12 @@
 </div>
 <div class="flex chore-padding-16">
   <div class="half text-center">
-    <label for="edit-chore-modal" class="button">
+    <label for="edit-chore-modal" class="button" data-disable="true">
       <%= fa_icon("edit", "fas") %> Edit
     </label>
   </div>
   <div class="half text-center">
-    <label for="remove-confirm-modal" class="button"
+    <label for="remove-confirm-modal" class="button" data-disable="true"
            onclick="adjust_chore_delete_path('<%= chore_path(@chore) %>', '<%= @chore.description %>');">
       <%= fa_icon("trash") %> Remove
     </label>

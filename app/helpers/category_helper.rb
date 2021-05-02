@@ -28,7 +28,7 @@ module CategoryHelper
                                    link_to(category.name, category_path(category))], " "),
                         class: "#{COLUMN_CLASSES} four-fifth")
     cols << content_tag(:div, category.chore_count, class: "#{COLUMN_CLASSES} text-center")
-    trash_button = content_tag(:label, class: "button pseudo", for: "remove-confirm-modal",
+    trash_button = content_tag(:label, class: "button pseudo", for: "remove-confirm-modal", data: { disable: true },
       onclick: "adjust_category_delete_path('#{category_path(category)}', '#{category.name}');") do
       fa_icon("trash")
     end

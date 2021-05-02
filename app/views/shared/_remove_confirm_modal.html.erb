@@ -20,7 +20,7 @@
           <div class="half">
             <%= form_with(url: root_path, method: :delete,
                           local: true, id: "remove_#{model}") do |f| %>
-              <button type="submit" class="warning">
+              <button type="submit" class="warning" data-disable="true">
                 <%= fa_icon("trash") %> Remove
               </button>
             <% end %>

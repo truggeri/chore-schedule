@@ -6,13 +6,13 @@
 
 <div class="flex row-padded">
   <div class="half">
-    <label for="create-chore-modal" class="button">
+    <label for="create-chore-modal" class="button" data-disable="true">
       <%= fa_icon("plus-circle") %> Create
     </label>
   </div>
   <div class="half text-right">
     <div class="">
-      <button class="button" id="sortMenuButton">
+      <button class="button" id="sortMenuButton" data-disable="true">
         <%= chore_sort_icon(@order) %> <%= chore_sort_by_name(@sort) %>
       </button>
     </div>

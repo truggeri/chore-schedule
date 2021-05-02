@@ -21,14 +21,16 @@
     <% unless chore_assigned %>
       <div style="position: absolute; right: 8px;">
         <%= link_to(assign_chore_path(chore_id, user_id: user.id)) do %>
-          <button type="submit" class="btn btn-outline-success tooltip-right" title="Assign chore to <%= user.name %>">
+          <button type="submit" class="btn btn-outline-success tooltip-right"
+                  title="Assign chore to <%= user.name %>" data-disable="true>
             <%= fa_icon("address-book", "fas") %>
           </button>
         <% end %>
       </div>
     <% end %>
     <%= link_to(perform_now_chore_path(chore_id, user_id: user.id)) do %>
-      <button type="submit" class="button <%= btn_cls %> full_btn" title="Perform this chore as <%= user.name %>">
+      <button type="submit" class="button <%= btn_cls %> full_btn"
+              title="Perform this chore as <%= user.name %>" data-disable="true">
         <%= fa_icon("user") %> <%= user.name %>
       </button>
     <% end %>
