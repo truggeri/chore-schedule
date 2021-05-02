@@ -33,7 +33,6 @@ class ChorePerformanceLogTest < ActiveSupport::TestCase
     assert(!@chore_log.valid?)
   end
 
-  # NOTE - good candidate for Timecop
   test "performed_at" do
     @chore_log = create(:chore_performance_log, performed_at: nil)
     assert_in_delta(Time.now.utc, @chore_log.performed_at, 5.seconds)

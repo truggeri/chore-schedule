@@ -2,12 +2,11 @@ class ChoresController < ApplicationController
   before_action :authenticate_account!
   before_action :load_categories, only: %i[index show create]
   before_action :load_chore,      only: %i[destroy perform_now assign]
+  before_action :set_order,       only: %i[index create]
 
   ALLOWED_SORT_KEYS = %i[description frequency perform_next].freeze
 
   def index
-    @sort   = determine_sort(params[:sort].presence)
-    @order  = determine_order(params[:order].presence)
     @chores = Chore.family(current_account&.family).order(@sort => @order).decorate
     @chore  = Chore.new(family: current_account&.family, description: "New chore", frequency: 1)
   end
@@ -29,9 +28,7 @@ class ChoresController < ApplicationController
       redirect_to(@chore)
     else
       flash[:error] = "Chore could not be created"
-      @sort = determine_sort(params[:sort].presence)
-      @order = determine_order(params[:order].presence)
-      @chores = Chore.family(current_account&.family).order(@sort => @order)
+      @chores       = Chore.family(current_account&.family).order(@sort => @order)
       render("chores/index")
     end
   end
@@ -97,6 +94,11 @@ class ChoresController < ApplicationController
 
     flash[:error] = "Chore could not be found"
     redirect_to(chores_path)
+  end
+
+  def set_order
+    @sort  = determine_sort(params[:sort].presence)
+    @order = determine_order(params[:order].presence)
   end
 
   def determine_sort(param)

@@ -26,6 +26,7 @@ gem "humanize", "~> 2.1.1"
 gem "jbuilder", "~> 2.5"
 gem "nokogiri", ">= 1.10.8" # CVE-2020-7595
 gem "rack-mini-profiler", require: false
+gem "rexml", ">= 3.2.5" # CVE-2021-28965
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

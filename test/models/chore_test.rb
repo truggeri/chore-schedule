@@ -27,9 +27,17 @@ class ChoreTest < ActiveSupport::TestCase
     @chore = create(:chore, :never_done)
   end
 
-  # NOTE - good candidate for Timecop
   test "first time due" do
-    assert_in_delta(Time.now.utc + eval("#{@chore.frequency}.#{@chore.frequency_type}"), @chore.perform_next, 5.seconds)
+    multiplier = case @chore.frequency_type
+                 when "months"
+                   30
+                 when "weeks"
+                   7
+                 else
+                   1
+                 end
+    offset = @chore.frequency * multiplier * 86_400
+    assert_in_delta(Time.now.utc + offset, @chore.perform_next, 5.seconds)
   end
 
   test "description not nil" do

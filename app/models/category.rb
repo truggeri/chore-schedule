@@ -25,7 +25,7 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   before_validation :add_color, on: :create
-  after_initialize  :add_color if :new_record?
+  after_initialize  :add_color, if: :new_record?
 
   def self.front_page(limit: 5)
     all.order(chore_count: :desc).limit(limit)
@@ -37,6 +37,6 @@ class Category < ApplicationRecord
     return nil if color.present?
 
     self.color = ""
-    3.times.each { self.color += "%02X" % Random.rand(0..255) }
+    3.times.each { self.color += format("%02X", Random.rand(0..255)) }
   end
 end

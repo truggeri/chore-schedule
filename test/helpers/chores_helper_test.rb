@@ -85,6 +85,6 @@ class ChoresHelperTest < ActionView::TestCase
 
   test "#days_until_due_text past, stylize=false" do
     @chore.perform_next = 10.days.ago
-    assert_equal 10, days_until_due_text(@chore, false)
+    assert_equal 10, days_until_due_text(@chore, stylize: false)
   end
 end

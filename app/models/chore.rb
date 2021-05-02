@@ -43,7 +43,15 @@ class Chore < ApplicationRecord
   end
 
   def frequency_to_time
-    eval("#{frequency}.#{frequency_type}", binding, __FILE__, __LINE__ + 1)
+    multiplier = case frequency_type
+                 when "months"
+                   30
+                 when "weeks"
+                   7
+                 else
+                   1
+                 end
+    frequency * multiplier * 86_400
   end
 
   def adjust_perform_next

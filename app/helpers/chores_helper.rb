@@ -50,13 +50,13 @@ module ChoresHelper
 
   def chore_sort_links
     output = []
-    COLUMN_DISPLAY_NAMES.keys.each do |column|
+    COLUMN_DISPLAY_NAMES.each_key do |column|
       output << header_with_sort(column)
     end
     safe_join(output, "\n")
   end
 
-  def days_until_due_text(chore, stylize = true)
+  def days_until_due_text(chore, stylize: true)
     days = chore.days_until_due
     return days if days.positive?
     return "Today" if days.zero?
