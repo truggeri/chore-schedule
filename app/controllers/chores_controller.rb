@@ -1,27 +1,28 @@
 class ChoresController < ApplicationController
   before_action :authenticate_account!
   before_action :load_categories, only: %i[index show create]
+  before_action :load_chore,      only: %i[destroy perform_now assign]
 
   ALLOWED_SORT_KEYS = %i[description frequency perform_next].freeze
 
   def index
-    @sort = determine_sort(params[:sort].presence)
-    @order = determine_order(params[:order].presence)
+    @sort   = determine_sort(params[:sort].presence)
+    @order  = determine_order(params[:order].presence)
     @chores = Chore.family(current_account&.family).order(@sort => @order).decorate
-    @chore = Chore.new(family: current_account&.family, description: "New chore", frequency: 1)
+    @chore  = Chore.new(family: current_account&.family, description: "New chore", frequency: 1)
   end
 
   def show
     @chore = Chore.includes(:category, :assignments).find_by(id: params[:id], family: current_account&.family).decorate
-    @logs = ChorePerformanceLog.includes(:user)
-                               .where(chore: @chore)
-                               .family(current_account&.family)
-                               .order(performed_at: :desc).limit(5)
+    @logs  = ChorePerformanceLog.includes(:user)
+                                .where(chore: @chore)
+                                .family(current_account&.family)
+                                .order(performed_at: :desc).limit(5)
     @users = User.family(current_account&.family).order(:id)
   end
 
   def create
-    @chore = Chore.new(permitted_params)
+    @chore        = Chore.new(permitted_params)
     @chore.family = current_account&.family
     if @chore.save
       flash[:success] = "Chore created successfully"
@@ -47,8 +48,7 @@ class ChoresController < ApplicationController
   end
 
   def destroy
-    @chore = Chore.find_by(id: params[:id], family: current_account&.family)
-    if @chore&.delete
+    if @chore.delete
       flash[:success] = "Chore successfully removed"
     else
       flash[:error] = "Chore could not be removed"
@@ -60,39 +60,44 @@ class ChoresController < ApplicationController
   end
 
   def perform_now
-    respond_to :js
-    @chore = Chore.find_by(id: params[:id], family: current_account&.family)
-    return ajax_redirect_to(chores_path) if @chore.blank?
-
     @chore.last_performed = Time.now.utc
     @chore.set_first_time
     if @chore.save
-      ChorePerformanceLog.create(chore: @chore,
-                                 user: User.find_by(id: params[:user_id]),
+      ChorePerformanceLog.create(chore:  @chore,
+                                 user:   User.find_by(id: params[:user_id]),
                                  family: current_account&.family)
       flash[:success] = "Chore performed"
     else
       flash[:error] = "Chore could not be performed"
     end
-    ajax_redirect_to(chore_path(@chore))
+    respond_to do |format|
+      format.js   { ajax_redirect_to(chore_path(@chore)) }
+      format.html { redirect_to(chore_path(@chore)) }
+    end
   end
 
   def assign
-    respond_to :js
-    @chore = Chore.find_by(id: params[:id], family: current_account&.family)
-    return ajax_redirect_to(chores_path) if @chore.blank?
-
-    @assignment = Assignment.create(chore: @chore,
-                                    user:  User.find_by(id: params[:user_id]))
+    @assignment = Assignment.create(chore: @chore, user: User.find_by(id: params[:user_id]))
     if @assignment.persisted?
       flash[:success] = "Chore assigned"
     else
       flash[:error] = "Chore could not be assigned"
     end
-    ajax_redirect_to(chore_path(@chore))
+    respond_to do |format|
+      format.js   { ajax_redirect_to(chore_path(@chore)) }
+      format.html { redirect_to(chore_path(@chore)) }
+    end
   end
 
   private
+
+  def load_chore
+    @chore = Chore.find_by(id: params[:id], family: current_account&.family)
+    return nil if @chore.present?
+
+    flash[:error] = "Chore could not be found"
+    redirect_to(chores_path)
+  end
 
   def determine_sort(param)
     return :perform_next unless param.present? && param.to_sym.in?(ALLOWED_SORT_KEYS)

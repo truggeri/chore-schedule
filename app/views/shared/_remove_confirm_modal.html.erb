@@ -18,10 +18,12 @@
       <div class="modal-footer">
         <div class="flex">
           <div class="half">
-            <button type="button" value="Delete"
-                    class="warning" onclick="$.ajax()">
-              <%= fa_icon("trash") %> Remove
-            </button>
+            <%= form_with(url: root_path, method: :delete,
+                          local: true, id: "remove_#{model}") do |f| %>
+              <button type="submit" class="warning">
+                <%= fa_icon("trash") %> Remove
+              </button>
+            <% end %>
           </div>
           <div class="half text-right">
             <label for="<%= modal_id %>" class="button dangerous">Close</label>

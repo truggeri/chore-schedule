@@ -17,20 +17,20 @@
 <div class="full"></div>
 <% users.each do |user| %>
   <div class="full half-600 fourth-800 text-center chore-padding-8" style="position: relative;">
-    <% onclick_path = perform_now_chore_path(chore_id, user_id: user.id) %>
     <% btn_cls = chore_assigned == user.id ? "btn-success" : "btn-outline-success" %>
     <% unless chore_assigned %>
       <div style="position: absolute; right: 8px;">
-        <button class="btn btn-outline-success tooltip-right" title="Assign chore to <%= user.name %>"
-                onclick="perform_or_assign_chore('<%= assign_chore_path(chore_id, user_id: user.id) %>');">
-          <%= fa_icon("address-book", "fas") %>
-        </button>
+        <%= link_to(assign_chore_path(chore_id, user_id: user.id)) do %>
+          <button type="submit" class="btn btn-outline-success tooltip-right" title="Assign chore to <%= user.name %>">
+            <%= fa_icon("address-book", "fas") %>
+          </button>
+        <% end %>
       </div>
     <% end %>
-    <button class="btn <%= btn_cls %> full_btn"
-            onclick="perform_or_assign_chore('<%= onclick_path %>');"
-            title="Perform this chore as <%= user.name %>">
-      <%= fa_icon("user") %> <%= user.name %>
-    </button>
+    <%= link_to(perform_now_chore_path(chore_id, user_id: user.id)) do %>
+      <button type="submit" class="button <%= btn_cls %> full_btn" title="Perform this chore as <%= user.name %>">
+        <%= fa_icon("user") %> <%= user.name %>
+      </button>
+    <% end %>
   </div>
 <% end %>

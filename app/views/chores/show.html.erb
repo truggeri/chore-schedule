@@ -44,7 +44,8 @@
     </label>
   </div>
   <div class="half text-center">
-    <label for="remove-confirm-modal" class="button">
+    <label for="remove-confirm-modal" class="button"
+           onclick="adjust_chore_delete_path('<%= chore_path(@chore) %>', '<%= @chore.description %>');">
       <%= fa_icon("trash") %> Remove
     </label>
   </div>

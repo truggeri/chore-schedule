@@ -17,10 +17,10 @@ module ChoresHelper
   def chore_edit_modal
     render(
       "shared/generic_modal",
-      action: "edit",
-      form: render(partial: "/chores/form", locals: { action_path: chore_path(@chore) }),
+      action:      "edit",
+      form:        render("/chores/form", action_path: chore_path(@chore)),
       form_action: "edit_chore_submit(#{@chore.id});",
-      model: "chore",
+      model:       "chore",
       submit_icon: fa_icon("edit", "fas")
     )
   end
