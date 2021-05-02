@@ -14,7 +14,7 @@ class ChoresHelperTest < ActionView::TestCase
   test "#category_badge with a category" do
     @chore = create(:chore, :with_category)
     expected = "<div id='category-badge'><a href='/category/#{@chore.category.id}'>\
-<span class='badge badge-pill badge-secondary' style='background-color: ##{@chore.category.color};'>\
+<span class='label' style='background-color: ##{@chore.category.color};'>\
 #{@chore.category.name}</span></a></div>"
     assert_dom_equal expected, category_badge(@chore)
   end
@@ -62,9 +62,9 @@ class ChoresHelperTest < ActionView::TestCase
   end
 
   test "#chore_sort_links" do
-    expected = "<a class=\"dropdown-item\" href=\"/chores?sort=description\">Name</a>
-<a class=\"dropdown-item\" href=\"/chores?sort=frequency\">Frequency</a>
-<a class=\"dropdown-item\" href=\"/chores?sort=perform_next\">Next Due</a>"
+    expected = "<a class=\"stack\" href=\"/chores?sort=description\">Name</a>
+<a class=\"stack\" href=\"/chores?sort=frequency\">Frequency</a>
+<a class=\"stack\" href=\"/chores?sort=perform_next\">Next Due</a>"
     assert_dom_equal expected, chore_sort_links
   end
 

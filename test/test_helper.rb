@@ -1,16 +1,13 @@
+require_relative '../config/environment'
+
 if Rails.env.test?
-  require "simplecov"
-  # NOTE-truggeri-20190616 Exempting these as there's no code in them yet
-  EXEMPT_CLASSES = %w[channels jobs mailers].freeze
+  require 'simplecov'
   SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::HTMLFormatter])
-  SimpleCov.start 'rails' do
-    EXEMPT_CLASSES.each { |dir| add_filter "app/#{dir}/" }
-  end
+  SimpleCov.start 'rails'
 end
 
-ENV['RAILS_ENV'] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+ENV['RAILS_ENV'] ||= 'test'
+require 'rails/test_help'
 
 module ActiveSupport
   class TestCase

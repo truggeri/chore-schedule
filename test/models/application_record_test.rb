@@ -14,8 +14,4 @@ class ApplicationRecordTest < ActiveSupport::TestCase
     family = create(:family)
     assert_equal(0, Chore.family(family).count)
   end
-
-  test "#family scope no family" do
-    assert_equal(1, Chore.family(nil).count)
-  end
 end

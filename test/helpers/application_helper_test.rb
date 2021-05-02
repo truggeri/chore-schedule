@@ -21,7 +21,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "#family_display" do
-    expected = "<span class='navbar-family-name'>#{fa_icon('users', 'fas')} Robinson Family</span>"
+    expected = "<a class=\"nav-link\" href=\"#\">#{fa_icon('users', 'fas')} Robinson Family</a>"
     session[:family_name] = "Robinson"
     assert_dom_equal(expected, family_display)
   end
@@ -39,7 +39,8 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "#user_display" do
-    expected = "<span class='navbar-user-name'>#{fa_icon('user', 'fas')} Fred</span>"
-    assert_dom_equal(expected, user_display("Fred"))
+    user = create(:user)
+    expected = "<a class=\"nav-link\" href=\"/users/#{user.id}\">#{fa_icon('user', 'fas')} #{user.name}</a>"
+    assert_dom_equal(expected, user_display(user))
   end
 end
