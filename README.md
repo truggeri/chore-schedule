@@ -1,5 +1,6 @@
 # Chore Schedule
 
+![Build badge](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![Coverage badge](https://img.shields.io/badge/coverage-92%25-brightgreen.svg)
 
 An app for making and keeping a chore schedule. See it hosted at [https://choreplan.truggeri.com](https://choreplan.truggeri.com)

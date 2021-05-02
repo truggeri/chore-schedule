@@ -8,6 +8,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
   DisplayCopNames: true
+  NewCops: enable
 Layout/HashAlignment:
   Enabled: false
 Layout/EmptyLines:
@@ -43,4 +44,5 @@ Style/Documentation:
 Style/FrozenStringLiteralComment: 
   Enabled: false
 Style/StringLiterals:
-  Enabled: false
+  Enabled: true
+  EnforcedStyle: "double_quotes"

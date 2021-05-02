@@ -33,7 +33,8 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails", "~> 5.0.2"
   gem "ffaker"
-  gem 'rubocop'
+  gem "rubocop"
+  gem "rubocop-rails"
   gem "simplecov", require: false
 end
 

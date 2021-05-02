@@ -34,7 +34,7 @@ module ChoresHelper
   def category_select(categories, selected = nil)
     return "" unless categories&.size&.positive?
 
-    options = [nil, '-']
+    options = [nil, "-"]
     categories.each { |c| options << c }
     select(:chore, :category_id, options, selected: selected)
   end

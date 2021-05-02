@@ -15,7 +15,7 @@
 #  index_assignments_on_user_id   (user_id)
 #
 
-require 'test_helper'
+require "test_helper"
 
 class AssignmentTest < ActiveSupport::TestCase
   def setup

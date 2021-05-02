@@ -6,7 +6,7 @@ class ChoreDecorator < Draper::Decorator
   end
 
   def last_performed_long
-    model.last_performed&.strftime('%A, %B %e %Y') || "Not yet performed"
+    model.last_performed&.strftime("%A, %B %e %Y") || "Not yet performed"
   end
 
   def perform_next

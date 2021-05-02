@@ -12,7 +12,7 @@ module ApplicationHelper
     link_to(output_text, "#", class: "nav-link")
   end
 
-  def full_title(page_title = '')
+  def full_title(page_title = "")
     page_title.present? ? "#{page_title} | #{BASE_TITLE}" : BASE_TITLE
   end
 

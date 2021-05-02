@@ -1,13 +1,13 @@
-require_relative '../config/environment'
+require_relative "../config/environment"
 
 if Rails.env.test?
-  require 'simplecov'
+  require "simplecov"
   SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::HTMLFormatter])
-  SimpleCov.start 'rails'
+  SimpleCov.start "rails"
 end
 
-ENV['RAILS_ENV'] ||= 'test'
-require 'rails/test_help'
+ENV["RAILS_ENV"] ||= "test"
+require "rails/test_help"
 
 module ActiveSupport
   class TestCase
