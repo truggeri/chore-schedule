@@ -1,4 +1,4 @@
-class CreateChores < ActiveRecord::Migration[5.2]
+class CreateChores < ActiveRecord::Migration[6.0]
   def change
     create_table :chores do |t|
       t.bigint      :category_id

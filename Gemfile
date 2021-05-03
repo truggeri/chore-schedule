@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.6"
+ruby "3.0.0"
 
 gem "actionpack", ">= 5.2.4.3" # CVE-2020-8166
 gem "actionview", ">= 5.2.4.3" # CVE-2020-8167
@@ -12,16 +12,15 @@ gem "activesupport", ">= 5.2.4.3" # CVE-2020-8165
 gem "pg", "~> 1.1.4"
 gem "puma", ">= 4.3.5" # GHSA-w64w-qqph-5gxm
 gem "rack", ">= 2.2.3" # CVE-2020-8184
-gem "rails", "~> 5.2.5"
+gem "rails", "~> 6.1.3.1"
 gem "sassc-rails", "~> 2.1.2"
 gem "uglifier", ">= 1.3.0"
 
 # third-party gems
 gem "annotate"
 gem "bootsnap", ">= 1.7.3", require: false
-gem "data_migrate", "~> 5.3.2"
 gem "devise", ">= 4.7.1"
-gem "draper", "~> 3.0.1"
+gem "draper"
 gem "humanize", "~> 2.1.1"
 gem "jbuilder", "~> 2.5"
 gem "nokogiri", ">= 1.10.8" # CVE-2020-7595

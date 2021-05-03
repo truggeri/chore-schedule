@@ -1,4 +1,4 @@
-class CreateChorePerformanceLogs < ActiveRecord::Migration[5.2]
+class CreateChorePerformanceLogs < ActiveRecord::Migration[6.0]
   def change
     create_table :chore_performance_logs do |t|
       t.bigint      :chore_id,      null: false

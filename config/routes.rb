@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated :account do
-    root "static_pages#index"
+    root "static_pages#index", as: :homepage
   end
 
   get "dashboard", to: "static_pages#dashboard"

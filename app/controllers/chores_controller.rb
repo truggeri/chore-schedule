@@ -35,7 +35,7 @@ class ChoresController < ApplicationController
 
   def update
     @chore = Chore.includes(:category).find_by(id: params[:id], family: current_account&.family)
-    if @chore&.update_attributes(permitted_params)
+    if @chore&.update(permitted_params)
       flash[:success] = "Chore '#{@chore.description}' has been updated"
       redirect_to(@chore)
     else

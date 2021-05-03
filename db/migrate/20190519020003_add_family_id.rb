@@ -1,4 +1,4 @@
-class AddFamilyId < ActiveRecord::Migration[5.2]
+class AddFamilyId < ActiveRecord::Migration[6.0]
   def change
     %i[categories chores chore_performance_logs accounts users].each do |table|
       add_column table, :family_id, :bigint
