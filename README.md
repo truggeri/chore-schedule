@@ -3,6 +3,11 @@
 [![Test](https://github.com/truggeri/chore-schedule/actions/workflows/ruby.yml/badge.svg)](https://github.com/truggeri/chore-schedule/actions/workflows/ruby.yml)
 ![Coverage badge](https://img.shields.io/badge/coverage-92%25-brightgreen.svg)
 
+![RoR Badge](https://img.shields.io/badge/-Ruby_On_Rails-b32424?style=flat&labelColor=cc0000&logo=ruby-on-rails&logoColor=white)
+![Postgres Badge](https://img.shields.io/badge/-PostgreSQL-426078?style=flat&labelColor=336791&logo=postgresql&logoColor=white)
+![Heroku Badge](https://img.shields.io/badge/-Heroku-45197f?style=flat&labelColor=430098&logo=heroku&logoColor=white)
+![Docker Badge](https://img.shields.io/badge/-Docker-4b99d4?style=flat&labelColor=2496ED&logo=docker&logoColor=white)
+
 An app for making and keeping a chore schedule. See it hosted at [https://choreplan.truggeri.com](https://choreplan.truggeri.com)
 
 ## About the Application

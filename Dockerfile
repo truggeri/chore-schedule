@@ -1,4 +1,4 @@
-FROM ruby:2.6.6-slim-buster as build-image
+FROM ruby:3.0.0-slim-buster as build-image
 
 # Install container dependencies
 ENV BUILD_PACKAGES="wget gnupg2 libgmp-dev make gcc patch g++"
@@ -19,7 +19,7 @@ RUN set -eux; \
 WORKDIR /app
 COPY Gemfile* ./
 COPY .ruby-version .
-RUN gem install bundler --version 2.0.2 --quiet
+RUN gem install bundler --version 2.2.3 --quiet
 RUN bundle install --with production --without development test --quiet
 
 FROM build-image as default-image
