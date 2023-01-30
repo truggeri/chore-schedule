@@ -12,7 +12,7 @@ gem "activesupport", ">= 5.2.4.3" # CVE-2020-8165
 gem "pg", "~> 1.1.4"
 gem "puma", ">= 4.3.5" # GHSA-w64w-qqph-5gxm
 gem "rack", ">= 2.2.3" # CVE-2020-8184
-gem "rails", "~> 6.1.3.2"
+gem "rails", "~> 7.0.4.2"
 gem "sassc-rails", "~> 2.1.2"
 gem "uglifier", ">= 1.3.0"
 
